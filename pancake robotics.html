@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pancake Robotics</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root { --accent: #48ffab; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #f8f8f8;
+  background-color: #0d0d0d;
+  overflow-x: hidden;
+}
+
+/* Glow Text */
+.glow { color: var(--accent); text-shadow: 0 0 8px var(--accent), 0 0 20px var(--accent); }
+.glow2 { color: #ff489d; text-shadow: 0 0 8px #ff489d, 0 0 20px #ff489d; }
+.glow3 { color: #ffa3ce; text-shadow: 0 0 8px #ffa3ce, 0 0 20px #ffa3ce; }
+/* Polaroid for Members */
+.polaroid {
+  background: #111;
+  border: 4px solid var(--accent);
+  box-shadow: 0 0 20px rgba(72,255,171,0.6);
+  border-radius: 12px;
+  padding: 0.75rem;
+  transform: rotate(var(--angle, 0deg));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.polaroid:hover { transform: scale(1.05) rotate(0deg); box-shadow: 0 0 40px rgba(72,255,171,0.9); }
+.polaroid img { border-radius: 8px; width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 3px solid #000; }
+.polaroid h3 { margin-top: 0.75rem; font-weight: 600; color: var(--accent); }
+
+/* Film-strip style for Sponsors */
+.film-card {
+  position: relative;
+  background: #111;
+  border-radius: 12px;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 20px rgba(72,255,171,0.6);
+  overflow: visible;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(var(--angle-sponsor, 0deg));
+}
+.film-card:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 0 40px rgba(72,255,171,0.9);
+}
+
+.imagebox {
+  position: relative;
+  width: 86%;
+  aspect-ratio: 5/3;
+  flex-shrink: 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 4px;
+  z-index: 0;
+}
+
+.imagebox img {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.film-card h3 { margin-top: 0.5rem; font-weight: 600; color: var(--accent); }
+.film-card p { margin-top: 0.25rem; font-size: 0.9rem; color: #ccc; padding: 0 0.5rem 0.5rem; }
+
+.film-card .perforation {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  z-index: 1;
+}
+.film-card .perforation-left { left: -10px; }
+.film-card .perforation-right { right: -10px; }
+.film-card .perforation div {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: #111;
+  margin: 0 auto;
+}
+
+/* Blurred Boxes */
+.blurred-box {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  box-shadow: 0 0 30px rgba(72,255,171,0.3);
+  border: 1px solid rgba(72,255,171,0.2);
+  position: relative;
+}
+.box-title {
+  position: absolute;
+  top: -16px;
+  left: 24px;
+  background-color: var(--accent);
+  color: #0d0d0d;
+  font-weight: bold;
+  padding: 0.3rem 1rem;
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+/* Auto-grid */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 1.5rem;
+}
+
+/* Header & Footer */
+header {
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 15px rgba(72,255,171,0.3);
+  top: 0;
+  z-index: 50;
+}
+main {
+  padding-top: 6rem; /* offset so content doesn’t go under fixed header */
+}
+footer {
+  width: 100vw;
+  background: rgba(0,0,0,0.7);
+  text-align: center;
+  padding: 1.5rem 0;
+  color: #ccc;
+}
+
+/* Honeycomb Background */
+.circuit-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.circuit-bg svg { width: 100%; height: 100%; }
+.hex { fill: none; stroke: var(--accent); stroke-width: 1.5; opacity: 0.1; }
+
+</style>
+</head>
+<body>
+
+<div class="circuit-bg"><svg id="honeySvg"></svg></div>
+
+<div class="content relative">
+  <header class="flex justify-between items-center">
+    <h1 class="text-3xl font-bold glow">Pancake Robotics</h1><h1 class="text-3xl font-bold glow2">one pancake, many opportunities!</h1>
+  </header>
+
+  <main>
+    <!-- About -->
+    <section id="about" class="py-8 px-6">
+      <div class="blurred-box text-center">
+        <div class="box-title">About Us</div>
+        <p class="max-w-3xl mx-auto text-lg text-gray-300 mt-4">
+          Placeholder description
+        </p>
+        <p class="mt-2 italic text-gray-500">"Placeholder tagline"</p>
+      </div>
+    </section>
+
+    <!-- Members -->
+    <section id="members" class="py-8 px-6">
+      <div class="blurred-box">
+        <div class="box-title">Current Members - Youtube Channels</div>
+        <div class="auto-grid mt-4">
+
+          <a href="https://www.youtube.com/@fiskurtunez" target="_blank" rel="noopener noreferrer">
+            <div class="polaroid" style="--angle:-3deg">
+              <img src="https://yt3.googleusercontent.com/kPSPGXadMlY5ByfLAM_IWPqluAzhFeqYvvzIM5JXbpOCcRYkUVdrHvpYjhbKSHyEjBcL3FiFnw=s160-c-k-c0x00ffffff-no-rj" alt="FiskurTunez Youtube PFP">
+              <h3>FiskurTunez</h3>
+              <p style="margin:0; color:#fff;">placeholder</p>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/@SimplyBugsy" target="_blank" rel="noopener noreferrer">
+            <div class="polaroid" style="--angle:2deg">
+              <img src="https://yt3.googleusercontent.com/40tHo1qncU-RRPGYto-K48YY6izxSNLWNHZrWmcbxcI001yfMrEuBUHvTt4p9ROSz27OKG5UTw=s160-c-k-c0x00ffffff-no-rj" alt="placeholder">
+              <h3>SimplyBugsy</h3>
+              <p style="margin:0; color:#fff;">placeholder</p>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/@AV-8History" target="_blank" rel="noopener noreferrer">
+            <div class="polaroid" style="--angle:-2deg">
+              <img src="https://yt3.googleusercontent.com/n-oasU2t8ZSA6RaSIhSySQsqZSn0WhF390IR0PL3d-hGd9wZisbZ3rvJ1b6gwg4xIxPI20f1_A=s160-c-k-c0x00ffffff-no-rj" alt="placeholder">
+              <h3>AV-8 History</h3>
+              <p style="margin:0; color:#fff;">placeholder</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="py-8 px-6">
+      <div class="blurred-box">
+        <div class="box-title">Sponsors</div>
+        <div class="auto-grid mt-4">
+
+          <!-- Sponsor 1 -->
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <div class="film-card" style="--angle-sponsor:5deg;">
+              <div class="perforation perforation-left">
+                <div></div><div></div><div></div><div></div>
+              </div>
+              <div class="perforation perforation-right">
+                <div></div><div></div><div></div><div></div>
+              </div>
+              <div class="imagebox">
+                <img src="https://fiskurplayz.gay/assets/hikikomori.png" alt="Sponsor 1">
+              </div>
+              <div style="height:10px;"></div>
+              <div class="imagebox" style="background:#000; height:auto;">
+                <div style="text-align:center; padding:0.5rem;">
+                  <h3 class="glow" style="color:#48ffab; margin:0;">Sponsor 1</h3>
+                  <p style="margin:0; color:#fff;">placeholder</p>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Sponsor 2 -->
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <div class="film-card" style="--angle-sponsor:-2deg;">
+              <div class="perforation perforation-left">
+                <div></div><div></div><div></div><div></div>
+              </div>
+              <div class="perforation perforation-right">
+                <div></div><div></div><div></div><div></div>
+              </div>
+              <div class="imagebox">
+                <img src="https://fiskurplayz.gay/assets/hikikomori.png" alt="Sponsor 2">
+              </div>
+              <div style="height:10px;"></div>
+              <div class="imagebox" style="background:#000; height:auto;">
+                <div style="text-align:center; padding:0.5rem;">
+                  <h3 class="glow" style="color:#48ffab; margin:0;">Sponsor 2</h3>
+                  <p style="margin:0; color:#fff;">placeholder</p>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Sponsor 3 -->
+          <a href="#" target="_blank" rel="noopener noreferrer">
+          <div class="film-card" style="--angle-sponsor:4deg;">
+            <div class="perforation perforation-left">
+              <div></div><div></div><div></div><div></div>
+            </div>
+            <div class="perforation perforation-right">
+              <div></div><div></div><div></div><div></div>
+            </div>
+            <div class="imagebox">
+              <img src="https://fiskurplayz.gay/assets/hikikomori.png" alt="Sponsor 3">
+            </div>
+            <div style="height:10px;"></div>
+            <div class="imagebox" style="background:#000; height:auto;">
+              <div style="text-align:center; padding:0.5rem;">
+                <h3 class="glow" style="color:#48ffab; margin:0;">Sponsor 3</h3>
+                <p style="margin:0; color:#fff;">placeholder</p>
+              </div>
+            </div>
+          </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <footer>
+       Pancake Robotics | QEGS Alford, UK | FTC UK & Ireland | Team xxxxx
+    </footer>
+  </main>
+</div>
+
+<script>
+const svgNS = "http://www.w3.org/2000/svg";
+const svg = document.getElementById("honeySvg");
+svg.setAttribute("width", "100%");
+svg.setAttribute("height", "100%");
+
+const radius = 45;
+const hexWidth = 2 * radius;
+const hexHeight = Math.sqrt(3) * radius;
+
+function createHex(x, y) {
+  const points = [];
+  for (let i = 0; i < 6; i++) {
+    const angle = Math.PI / 180 * (60 * i);
+    points.push(`${x + radius * Math.cos(angle)},${y + radius * Math.sin(angle)}`);
+  }
+  const polygon = document.createElementNS(svgNS, "polygon");
+  polygon.setAttribute("points", points.join(" "));
+  polygon.setAttribute("class", "hex");
+  return polygon;
+}
+
+function drawHexGrid() {
+  // Clear previous hexagons
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+  const cols = Math.ceil(window.innerWidth / (hexWidth * 0.75)) + 4;
+  const rows = Math.ceil(window.innerHeight / hexHeight) + 4;
+
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const x = col * hexWidth * 0.75;
+      const y = row * hexHeight + (col % 2 ? hexHeight / 2 : 0);
+      svg.appendChild(createHex(x, y));
+    }
+  }
+}
+
+// Draw initially
+drawHexGrid();
+
+// Redraw on resize
+window.addEventListener('resize', drawHexGrid);
+
+</script>
+</body>
+</html>
