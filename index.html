@@ -16,11 +16,17 @@ body {
   overflow-x: hidden;
 }
 
-/* Glow Text */
+.accentText { color: var(--accent);}
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(72,255,171,0.7);
+}
+
+
 .glow { color: var(--accent); text-shadow: 0 0 8px var(--accent), 0 0 20px var(--accent); }
 .glow2 { color: #ff489d; text-shadow: 0 0 8px #ff489d, 0 0 20px #ff489d; }
 .glow3 { color: #ffa3ce; text-shadow: 0 0 8px #ffa3ce, 0 0 20px #ffa3ce; }
-/* Polaroid for Members */
+
 .polaroid {
   background: #111;
   border: 4px solid var(--accent);
@@ -34,7 +40,6 @@ body {
 .polaroid img { border-radius: 8px; width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 3px solid #000; }
 .polaroid h3 { margin-top: 0.75rem; font-weight: 600; color: var(--accent); }
 
-/* Film-strip style for Sponsors */
 .film-card {
   position: relative;
   background: #111;
@@ -100,7 +105,6 @@ body {
   margin: 0 auto;
 }
 
-/* Blurred Boxes */
 .blurred-box {
   background: rgba(0,0,0,0.4);
   backdrop-filter: blur(15px);
@@ -112,6 +116,12 @@ body {
   border: 1px solid rgba(72,255,171,0.2);
   position: relative;
 }
+
+.blurred-bar {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(15px);
+}
+
 .box-title {
   position: absolute;
   top: -16px;
@@ -125,14 +135,12 @@ body {
   font-size: 1rem;
 }
 
-/* Auto-grid */
 .auto-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
   gap: 1.5rem;
 }
 
-/* Header & Footer */
 header {
   width: 100%;
   background: rgba(0,0,0,0.6);
@@ -142,7 +150,7 @@ header {
   z-index: 50;
 }
 main {
-  padding-top: 6rem; /* offset so content doesn’t go under fixed header */
+  padding-top: 6rem;
 }
 footer {
   width: 100vw;
@@ -152,10 +160,106 @@ footer {
   color: #ccc;
 }
 
-/* Honeycomb Background */
 .circuit-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 .circuit-bg svg { width: 100%; height: 100%; }
 .hex { fill: none; stroke: var(--accent); stroke-width: 1.5; opacity: 0.1; }
+
+.nav-toggle {
+  position: fixed;
+  top: 120px;
+  right: 24px;
+  width: 2.2rem;
+  height: 1.8rem;
+  z-index: 90;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.nav-toggle span {
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--accent), 0 0 12px var(--accent);
+  transition: all 0.3s ease;
+}
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 280px;
+  height: 100vh;
+  background: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(20px);
+  border-left: 2px solid var(--accent);
+  box-shadow: -5px 0 30px rgba(72,255,171,0.3);
+  transition: right 0.4s ease;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-center { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  justify-self: center;
+}
+
+.nav-menu.active { right: 0; }
+.nav-menu a {
+  color: #f8f8f8;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+.nav-menu a:hover {
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent);
+}
+
+@media (max-width: 768px) {
+  header { flex-direction: column; align-items: flex-start; }
+  header h1 + h1 { margin-left: 0; margin-top: 0.5rem; }
+  .nav-menu {
+    width: 100%;
+    right: -100%;
+    border-left: none;
+    border-top: 1px solid rgba(72,255,171,0.4);
+    background: rgba(10,10,10,0.6);
+    backdrop-filter: blur(30px);
+  }
+  .nav-menu.active { right: 0; }
+  .nav-toggle { top: 140px; right: 16px; width: 1.8rem; height: 1.5rem; transform: scale(1.2); }
+}
+
+.nav-toggle {
+  transition: top 0.3s ease, right 0.3s ease;
+}
+
+.glow2-line {
+  width: 90%;
+  height: 3px;
+  background-color: #ff489d;
+  box-shadow: 0 0 10px #ff489d, 0 0 20px #ff489d, 0 0 40px #ff489d;
+  border-radius: 9999px;
+}
+
 
 </style>
 </head>
@@ -164,139 +268,157 @@ footer {
 <div class="circuit-bg"><svg id="honeySvg"></svg></div>
 
 <div class="content relative">
-  <header class="flex justify-between items-center">
-    <h1 class="text-3xl font-bold glow">Pancake Robotics</h1><h1 class="text-3xl font-bold glow2">one pancake, many opportunities!</h1>
-  </header>
 
-  <main>
-    <!-- About -->
-    <section id="about" class="py-8 px-6">
-      <div class="blurred-box text-center">
-        <div class="box-title">About Us</div>
-        <p class="max-w-3xl mx-auto text-lg text-gray-300 mt-4">
-          Placeholder description
-        </p>
-        <p class="mt-2 italic text-gray-500">"Placeholder tagline"</p>
-      </div>
-    </section>
+<header class="flex flex-wrap justify-between items-center px-6 py-4 w-full z-50 relative blurred-bar">
+  <h1 class="text-3xl font-bold glow">Pancake Robotics</h1>
+  <h1 class="text-xl sm:text-2xl font-bold text-pink-500 mt-2 sm:mt-0 sm:ml-auto glow2">
+    one pancake, many opportunities!
+  </h1>
+</header>
 
-    <!-- Members -->
-    <section id="members" class="py-8 px-6">
-      <div class="blurred-box">
-        <div class="box-title">Current Members - Youtube Channels</div>
-        <div class="auto-grid mt-4">
+<!-- Floating Hamburger Nav -->
+<div id="navToggle" class="nav-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
-          <a href="https://www.youtube.com/@fiskurtunez" target="_blank" rel="noopener noreferrer">
-            <div class="polaroid" style="--angle:-3deg">
-              <img src="https://yt3.googleusercontent.com/kPSPGXadMlY5ByfLAM_IWPqluAzhFeqYvvzIM5JXbpOCcRYkUVdrHvpYjhbKSHyEjBcL3FiFnw=s160-c-k-c0x00ffffff-no-rj" alt="FiskurTunez Youtube PFP">
-              <h3>FiskurTunez</h3>
-              <p style="margin:0; color:#fff;">placeholder</p>
-            </div>
-          </a>
+<!-- Slide-out nav menu -->
+<nav id="navMenu" class="nav-menu">
+  <a href="#about">About</a>
+  <a href="#members">Members</a>
+  <a href="#sponsors">Sponsors</a>
+</nav>
 
-          <a href="https://www.youtube.com/@SimplyBugsy" target="_blank" rel="noopener noreferrer">
-            <div class="polaroid" style="--angle:2deg">
-              <img src="https://yt3.googleusercontent.com/40tHo1qncU-RRPGYto-K48YY6izxSNLWNHZrWmcbxcI001yfMrEuBUHvTt4p9ROSz27OKG5UTw=s160-c-k-c0x00ffffff-no-rj" alt="placeholder">
-              <h3>SimplyBugsy</h3>
-              <p style="margin:0; color:#fff;">placeholder</p>
-            </div>
-          </a>
+<main>
+<!-- About -->
+<section id="about" class="py-8 px-6">
+  <div class="blurred-box text-center">
+    <div class="box-title">About Us</div>
+    <p class="max-w-4xl mx-auto text-lg text-gray-300 mt-4">
+      Pancake Robotics is a small Robotics Club ran by students of QEGS Alford. 
+      
+      <br><br>
+      Since starting in the 2024/5 season, 'Into The Deep' (Presented by RTX), we have been participating in
+      <a href="https://firstuk.org" target="_blank" rel="noopener noreferrer" class="accentText underline">FIRST Tech Challenge UK & Ireland’s</a>
+      regional competitions, with the aim of qualifying for the national championships.
+    </p><br><br>
+      <div class="glow2-line mx-auto my-6"></div>
+<br><br><br>
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-6 content-center">
+      <div class="flex-shrink-0 w-32 h-32 md:w-48 md:h-48 rounded-xl overflow-hidden border-4 border-green-400 shadow-glow">
+      <img id="ytAvatar" alt="YouTube Logo" class="w-full h-full object-cover">
+    </div>
+    <div class="flex-1 text-left">
+      <h2 id="ytTitle" class="text-2xl font-bold glow mb-2">Loading...</h2>
+      <p id="ytSubs" class="text-green-400 mb-2"></p>
+      <p id="ytDesc" class="text-gray-300 mb-2"></p>
+      <a id="ytLink" href="#" target="_blank" class="inline-block mt-2 px-4 py-2 bg-green-400 text-black font-bold rounded hover:bg-green-300 transition">
+        Visit Channel
+      </a>
+    </div>
+  </div>
+  </div>
 
-          <a href="https://www.youtube.com/@AV-8History" target="_blank" rel="noopener noreferrer">
-            <div class="polaroid" style="--angle:-2deg">
-              <img src="https://yt3.googleusercontent.com/n-oasU2t8ZSA6RaSIhSySQsqZSn0WhF390IR0PL3d-hGd9wZisbZ3rvJ1b6gwg4xIxPI20f1_A=s160-c-k-c0x00ffffff-no-rj" alt="placeholder">
-              <h3>AV-8 History</h3>
-              <p style="margin:0; color:#fff;">placeholder</p>
-            </div>
-          </a>
+</section>
 
+<!-- Members -->
+<section id="members" class="py-8 px-6">
+  <div class="blurred-box">
+    <div class="box-title">Current Members - Youtube Channels</div>
+    <div class="auto-grid mt-4">
+
+      <a href="https://www.youtube.com/@fiskurtunez" target="_blank" rel="noopener noreferrer">
+        <div class="polaroid" style="--angle:-3deg">
+          <img src="https://yt3.googleusercontent.com/kPSPGXadMlY5ByfLAM_IWPqluAzhFeqYvvzIM5JXbpOCcRYkUVdrHvpYjhbKSHyEjBcL3FiFnw=s160-c-k-c0x00ffffff-no-rj" alt="FiskurTunez Youtube PFP">
+          <h3>FiskurTunez</h3>
         </div>
-      </div>
-    </section>
+      </a>
 
-    <!-- Sponsors Section -->
-    <section id="sponsors" class="py-8 px-6">
-      <div class="blurred-box">
-        <div class="box-title">Sponsors</div>
-        <div class="auto-grid mt-4">
+      <a href="https://www.youtube.com/@SimplyBugsy" target="_blank" rel="noopener noreferrer">
+        <div class="polaroid" style="--angle:2deg">
+          <img src="https://yt3.googleusercontent.com/40tHo1qncU-RRPGYto-K48YY6izxSNLWNHZrWmcbxcI001yfMrEuBUHvTt4p9ROSz27OKG5UTw=s160-c-k-c0x00ffffff-no-rj" alt="placeholder">
+          <h3>SimplyBugsy</h3>
+        </div>
+      </a>
 
-          <!-- Sponsor 1 -->
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <div class="film-card" style="--angle-sponsor:5deg;">
-              <div class="perforation perforation-left">
-                <div></div><div></div><div></div><div></div>
-              </div>
-              <div class="perforation perforation-right">
-                <div></div><div></div><div></div><div></div>
-              </div>
-              <div class="imagebox">
-                <img src="https://fiskurplayz.gay/assets/hikikomori.png" alt="Sponsor 1">
-              </div>
-              <div style="height:10px;"></div>
-              <div class="imagebox" style="background:#000; height:auto;">
-                <div style="text-align:center; padding:0.5rem;">
-                  <h3 class="glow" style="color:#48ffab; margin:0;">Sponsor 1</h3>
-                  <p style="margin:0; color:#fff;">placeholder</p>
-                </div>
-              </div>
-            </div>
-          </a>
+      <a href="https://www.youtube.com/@AV-8History" target="_blank" rel="noopener noreferrer">
+        <div class="polaroid" style="--angle:-2deg">
+          <img src="https://yt3.googleusercontent.com/n-oasU2t8ZSA6RaSIhSySQsqZSn0WhF390IR0PL3d-hGd9wZisbZ3rvJ1b6gwg4xIxPI20f1_A=s160-c-k-c0x00ffffff-no-rj" alt="placeholder">
+          <h3>AV-8 History</h3>
+        </div>
+      </a>
 
-          <!-- Sponsor 2 -->
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <div class="film-card" style="--angle-sponsor:-2deg;">
-              <div class="perforation perforation-left">
-                <div></div><div></div><div></div><div></div>
-              </div>
-              <div class="perforation perforation-right">
-                <div></div><div></div><div></div><div></div>
-              </div>
-              <div class="imagebox">
-                <img src="https://fiskurplayz.gay/assets/hikikomori.png" alt="Sponsor 2">
-              </div>
-              <div style="height:10px;"></div>
-              <div class="imagebox" style="background:#000; height:auto;">
-                <div style="text-align:center; padding:0.5rem;">
-                  <h3 class="glow" style="color:#48ffab; margin:0;">Sponsor 2</h3>
-                  <p style="margin:0; color:#fff;">placeholder</p>
-                </div>
-              </div>
-            </div>
-          </a>
+    </div>
+  </div>
+</section>
 
-          <!-- Sponsor 3 -->
-          <a href="#" target="_blank" rel="noopener noreferrer">
-          <div class="film-card" style="--angle-sponsor:4deg;">
-            <div class="perforation perforation-left">
-              <div></div><div></div><div></div><div></div>
-            </div>
-            <div class="perforation perforation-right">
-              <div></div><div></div><div></div><div></div>
-            </div>
-            <div class="imagebox">
-              <img src="https://fiskurplayz.gay/assets/hikikomori.png" alt="Sponsor 3">
-            </div>
-            <div style="height:10px;"></div>
-            <div class="imagebox" style="background:#000; height:auto;">
-              <div style="text-align:center; padding:0.5rem;">
-                <h3 class="glow" style="color:#48ffab; margin:0;">Sponsor 3</h3>
-                <p style="margin:0; color:#fff;">placeholder</p>
-              </div>
+<!-- Sponsors Section -->
+<section id="sponsors" class="py-8 px-6">
+  <div class="blurred-box">
+    <div class="box-title">Sponsors</div>
+    <div class="auto-grid mt-4">
+
+      <!-- Sponsor 1 -->
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        <div class="film-card" style="--angle-sponsor:5deg;">
+          <div class="perforation perforation-left"><div></div><div></div><div></div><div></div></div>
+          <div class="perforation perforation-right"><div></div><div></div><div></div><div></div></div>
+          <div class="imagebox"><img src="https://fiskurplayz.gay/assets/hikikomori.png" alt="Sponsor 1"></div>
+          <div style="height:10px;"></div>
+          <div class="imagebox" style="background:#000; height:auto;">
+            <div style="text-align:center; padding:0.5rem;">
+              <h3 class="glow" style="color:#48ffab; margin:0;">Sponsor 1</h3>
+              <p style="margin:0; color:#fff;">placeholder</p>
             </div>
           </div>
-          </a>
-
         </div>
-      </div>
-    </section>
+      </a>
 
-    <footer>
-       Pancake Robotics | QEGS Alford, UK | FTC UK & Ireland | Team xxxxx
-    </footer>
-  </main>
+      <!-- Sponsor 2 -->
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        <div class="film-card" style="--angle-sponsor:-2deg;">
+          <div class="perforation perforation-left"><div></div><div></div><div></div><div></div></div>
+          <div class="perforation perforation-right"><div></div><div></div><div></div><div></div></div>
+          <div class="imagebox"><img src="https://fiskurplayz.gay/assets/hikikomori.png" alt="Sponsor 2"></div>
+          <div style="height:10px;"></div>
+          <div class="imagebox" style="background:#000; height:auto;">
+            <div style="text-align:center; padding:0.5rem;">
+              <h3 class="glow" style="color:#48ffab; margin:0;">Sponsor 2</h3>
+              <p style="margin:0; color:#fff;">placeholder</p>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Sponsor 3 -->
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        <div class="film-card" style="--angle-sponsor:4deg;">
+          <div class="perforation perforation-left"><div></div><div></div><div></div><div></div></div>
+          <div class="perforation perforation-right"><div></div><div></div><div></div><div></div></div>
+          <div class="imagebox"><img src="https://fiskurplayz.gay/assets/hikikomori.png" alt="Sponsor 3"></div>
+          <div style="height:10px;"></div>
+          <div class="imagebox" style="background:#000; height:auto;">
+            <div style="text-align:center; padding:0.5rem;">
+              <h3 class="glow" style="color:#48ffab; margin:0;">Sponsor 3</h3>
+              <p style="margin:0; color:#fff;">placeholder</p>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer class="blurred-bar">
+  Pancake Robotics | QEGS Alford, UK | FTC UK & Ireland | Team xxxxx
+</footer>
+</main>
 </div>
 
 <script>
+// Honeycomb background
 const svgNS = "http://www.w3.org/2000/svg";
 const svg = document.getElementById("honeySvg");
 svg.setAttribute("width", "100%");
@@ -319,12 +441,9 @@ function createHex(x, y) {
 }
 
 function drawHexGrid() {
-  // Clear previous hexagons
   while (svg.firstChild) svg.removeChild(svg.firstChild);
-
   const cols = Math.ceil(window.innerWidth / (hexWidth * 0.75)) + 4;
   const rows = Math.ceil(window.innerHeight / hexHeight) + 4;
-
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
       const x = col * hexWidth * 0.75;
@@ -333,13 +452,96 @@ function drawHexGrid() {
     }
   }
 }
-
-// Draw initially
 drawHexGrid();
-
-// Redraw on resize
 window.addEventListener('resize', drawHexGrid);
 
+
+
+
+// Nav toggle
+const header = document.querySelector('header');
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+const navLinks = navMenu.querySelectorAll('a');
+
+const startTopDesktop = 120; // desktop initial
+const endTopDesktop = 16;    // desktop final
+const startTopMobile = 140;  // mobile initial
+const endTopMobile = 16;     // mobile final
+
+// Scroll-based top animation
+function updateNavPosition() {
+  const scrollY = window.scrollY;
+  const isMobile = window.innerWidth <= 768;
+
+  const startTop = isMobile ? startTopMobile : startTopDesktop;
+  const endTop = isMobile ? endTopMobile : endTopDesktop;
+  const headerHeight = header.offsetHeight;
+
+  const t = Math.min(Math.max(scrollY / headerHeight, 0), 1);
+  navToggle.style.top = startTop - (startTop - endTop) * t + "px";
+}
+
+// Initialize
+updateNavPosition();
+
+// Update on scroll and resize
+window.addEventListener('scroll', updateNavPosition);
+window.addEventListener('resize', updateNavPosition);
+
+// Nav toggle functionality
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
+
+// Close nav when a link is clicked
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('active');
+    navMenu.classList.remove('active');
+  });
+});
+
 </script>
+
+
+
+
+
+<script>
+// Replace with your channel ID and YouTube API key
+const channelId = "UCBVMvcvmw_-3hT7e-30YkSQ";
+const apiKey = "AIzaSyC1Edh-Z5LKxPSDW_p0ES5t4PBUl4zDizw";
+
+async function fetchYouTubeData() {
+  const url = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${apiKey}`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    if (!data.items || data.items.length === 0) return;
+
+    const channel = data.items[0];
+    const avatar = channel.snippet.thumbnails.high.url;
+    const title = channel.snippet.title;
+    const desc = channel.snippet.description;
+    const subs = channel.statistics.subscriberCount;
+
+    document.getElementById("ytAvatar").src = avatar;
+    document.getElementById("ytTitle").innerText = title;
+    document.getElementById("ytDesc").innerText = desc.length > 200 ? desc.slice(0, 200) + "..." : desc;
+    document.getElementById("ytSubs").innerText = `${Number(subs).toLocaleString()} subscribers`;
+    document.getElementById("ytLink").href = `https://www.youtube.com/channel/${channelId}`;
+  } catch (err) {
+    console.error("YouTube API error:", err);
+  }
+}
+
+// Load on page start
+fetchYouTubeData();
+</script>
+
+
+
 </body>
 </html>
