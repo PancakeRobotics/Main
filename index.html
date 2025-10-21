@@ -25,7 +25,7 @@ body {
 
 .glow { color: var(--accent); text-shadow: 0 0 8px var(--accent), 0 0 20px var(--accent); }
 .glow2 { color: #ff489d; text-shadow: 0 0 8px #ff489d, 0 0 20px #ff489d; }
-.glow3 { color: #ffa3ce; text-shadow: 0 0 8px #ffa3ce, 0 0 20px #ffa3ce; }
+.glow3 { color: #ffa3ce; text-shadow: 0 0 8px #ffa3ce, 0 0 20px #ffa3ce; background: #000;}
 
 .polaroid {
   background: #111;
@@ -98,10 +98,10 @@ body {
 .film-card .perforation-right { right: -10px; }
 .film-card .perforation div {
   width: 18px;
-  height: 18px;
-  border-radius: 50%;
+  height: 36px;
+  border-radius: 25%;
   border: 3px solid var(--accent);
-  background: #111;
+  background: var(--accent);
   margin: 0 auto;
 }
 
@@ -364,7 +364,7 @@ footer {
         <div class="film-card" style="--angle-sponsor:5deg;">
           <div class="perforation perforation-left"><div></div><div></div><div></div><div></div></div>
           <div class="perforation perforation-right"><div></div><div></div><div></div><div></div></div>
-          <div class="imagebox"><img src="https://fiskurplayz.gay/assets/hikikomori.png" alt="Sponsor 1"></div>
+          <div class="imagebox"><img src="https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png" alt="Sponsor 1"></div>
           <div style="height:10px;"></div>
           <div class="imagebox" style="background:#000; height:auto;">
             <div style="text-align:center; padding:0.5rem;">
@@ -380,7 +380,7 @@ footer {
         <div class="film-card" style="--angle-sponsor:-2deg;">
           <div class="perforation perforation-left"><div></div><div></div><div></div><div></div></div>
           <div class="perforation perforation-right"><div></div><div></div><div></div><div></div></div>
-          <div class="imagebox"><img src="https://fiskurplayz.gay/assets/hikikomori.png" alt="Sponsor 2"></div>
+          <div class="imagebox"><img src="https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png" alt="Sponsor 2"></div>
           <div style="height:10px;"></div>
           <div class="imagebox" style="background:#000; height:auto;">
             <div style="text-align:center; padding:0.5rem;">
@@ -396,7 +396,7 @@ footer {
         <div class="film-card" style="--angle-sponsor:4deg;">
           <div class="perforation perforation-left"><div></div><div></div><div></div><div></div></div>
           <div class="perforation perforation-right"><div></div><div></div><div></div><div></div></div>
-          <div class="imagebox"><img src="https://fiskurplayz.gay/assets/hikikomori.png" alt="Sponsor 3"></div>
+          <div class="imagebox"><img src="https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png" alt="Sponsor 3"></div>
           <div style="height:10px;"></div>
           <div class="imagebox" style="background:#000; height:auto;">
             <div style="text-align:center; padding:0.5rem;">
@@ -510,7 +510,6 @@ navLinks.forEach(link => {
 
 
 <script>
-// Replace with your channel ID and YouTube API key
 const channelId = "UCBVMvcvmw_-3hT7e-30YkSQ";
 const apiKey = "AIzaSyC1Edh-Z5LKxPSDW_p0ES5t4PBUl4zDizw";
 
