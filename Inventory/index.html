@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventory | Pancake Robotics</title>
+
+<link href="https://db.onlinewebfonts.com/c/21949b025df9045160fda6566f635b36?family=SyrupSans-Regular" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://pancakerobotics.co.uk/assets/StyleSheet.css" rel="stylesheet">
+
+<style>
+
+</style>
+</head>
+
+<body>
+
+<div class="circuit-bg"><svg id="honeySvg"></svg></div>
+
+<div class="content relative">
+
+<header class="flex flex-wrap justify-between items-center px-6 py-4 w-full z-50 relative blurred-bar">
+  <h1 class="MapleMonoFont text-3xl font-bold accentText">Pancake Robotics</h1>
+  <h1 class="MapleMonoFont text-xl sm:text-2xl font-bold text-pink-500 mt-2 sm:mt-0 sm:ml-auto complementText">
+    one pancake, many opportunities!
+  </h1>
+</header>
+
+<div id="navToggle" class="nav-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<nav id="navMenu" class="nav-menu">
+  <a href="https://pancakerobotics.co.uk">Home</a>
+  <a href="https://pancakerobotics.co.uk/Inventory">Inventory</a>
+</nav>
+
+<main>
+
+<section id="parts" class="py-8 px-6">
+  <div class="blurred-box text-center">
+    <div class="box-title">Part Inventory</div>
+
+    <div class="overflow-x-auto">
+      <table id="partsTable" class="min-w-full text-left border-collapse MapleMonoFont">
+        <thead class="text-pink-400 border-b border-pink-500/30">
+          <tr>
+            <th class="py-2 px-3">Part ID</th>
+            <th class="py-2 px-3">Part Name</th>
+            <th class="py-2 px-3">Tags</th>
+          </tr>
+        </thead>
+        <tbody id="partsBody" style="font-size: 18px;">
+
+
+            <script>
+            const CSV_URL = "https://pancakerobotics.co.uk/assets/parts.csv?10";
+            let activeFilter = null;
+
+            function stringToColor(str) {
+              const palette = [
+                "#ff6b6b", "#ff922b", "#fab005", "#40c057", "#2f9e44",
+                "#0891b2", "#4c6ef5", "#845ef7", "#be4bdb", "#e64980",
+                "#f783ac", "#96f2d7", "#63e6be", "#74c0fc", "#9775fa",
+                "#ffa8a8", "#ffd43b", "#c0eb75"
+              ];
+
+              let hash = 0;
+              for (let i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
+              }
+
+              return palette[Math.abs(hash) % palette.length];
+            }
+
+            function makeTag(name) {
+              const color = stringToColor(name);
+              return `
+                <span 
+                  class="px-2 py-1 rounded-xl text-black text-sm font-semibold mr-1 cursor-pointer transition"
+                  style="background:${color};"
+                  onclick="filterByTag('${name}')"
+                >
+                  ${name}
+                </span>
+              `;
+            }
+
+            function loadParts() {
+              fetch(CSV_URL)
+                .then(response => response.text())
+                .then(text => {
+                  const lines = text.trim().split("\n");
+                  const tbody = document.getElementById("partsBody");
+                  tbody.innerHTML = ""; 
+
+                  lines.forEach(line => {
+                    const [id, name, altRaw] = line.split(",");
+
+                    const altNames = altRaw
+                      .split(/[,;]+/)
+                      .map(s => s.trim())
+                      .filter(s => s.length > 0);
+
+                    const row = document.createElement("tr");
+                    row.className = "hover:bg-white/5 transition";
+
+                    row.setAttribute("data-tags", altNames.join("|"));
+
+                    row.innerHTML = `
+                      <td class="py-2 px-3">${id.trim()}</td>
+                      <td class="py-2 px-3">${name.trim()}</td>
+                      <td class="py-2 px-3">
+                        ${altNames.map(tag => makeTag(tag)).join(" ")}
+                      </td>
+                    `;
+
+                    tbody.appendChild(row);
+                  });
+                })
+                .catch(error => console.error("Error loading parts:", error));
+            }
+
+            document.addEventListener("DOMContentLoaded", loadParts);
+
+            function filterByTag(tag) {
+              if (activeFilter === tag) {
+                clearFilter();
+                return;
+              }
+
+              activeFilter = tag;
+
+              const rows = document.querySelectorAll("#partsBody tr");
+
+              rows.forEach(row => {
+                const tags = row.getAttribute("data-tags").split("|");
+                row.style.display = tags.includes(tag) ? "" : "none";
+              });
+
+              showClearFilterButton(tag);
+            }
+
+            function clearFilter() {
+              activeFilter = null;
+
+              const rows = document.querySelectorAll("#partsBody tr");
+              rows.forEach(row => row.style.display = "");
+
+              const btn = document.getElementById("clearFilterBtn");
+              if (btn) btn.remove();
+            }
+
+            function showClearFilterButton(tag) {
+              let existing = document.getElementById("clearFilterBtn");
+              if (existing) existing.remove();
+
+              const table = document.getElementById("partsTable");
+
+              const btn = document.createElement("div");
+              btn.id = "clearFilterBtn";
+              btn.className = "my-3";
+              btn.innerHTML = `
+                <span 
+                  class="px-3 py-1 rounded-xl text-black text-sm font-bold cursor-pointer"
+                  style="background:#ffffff; border: 2px solid #ff6b6b;"
+                  onclick="clearFilter()"
+                >
+                  Clear filter: ${tag}
+                </span>
+              `;
+              
+              table.parentElement.prepend(btn);
+            }
+          </script>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="blurred-bar">
+  Pancake Robotics | QEGS Alford, UK | FTC UK & Ireland | Team 27880
+</footer>
+</main>
+</div>
+
+<script src="https://pancakerobotics.co.uk/assets/PageElements.js?"></script>
+
+</body>
+</html>
