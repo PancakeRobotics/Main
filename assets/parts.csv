@@ -6,7 +6,7 @@ REV-41-1097,Smart Robot Servo ,Actuators
 REV-41-1119,5.5mm Nut Driver ,Hardware and tools
 REV-41-1124,M3 x 20mm Hex Cap Screws ,Hardware and tools
 REV-41-1125,M3 x 35mm Hex Cap Screws ,Hardware and tools
-REV-41-1147,High Strength Hex Hub ,Transmitting and transforming motion
+REV-41-1147,High Strength Hex Hub ,Motion
 REV-41-1161,Zip Ties - 160mm ,Hardware and tools
 REV-41-1163,Surgical Tubing - 3mm ,Hardware and tools
 REV-41-1166,Battery Holder Plate ,Structure
@@ -21,7 +21,7 @@ REV-41-1307,15mm Plastic 45 Degree Bracket ,Structure
 REV-41-1308,15mm Plastic 30 Degree Bracket ,Structure
 REV-41-1311, 15mm Plastic 120 Degree Bracket ,Structure
 REV-41-1315,15mm Gearbox Motion Bracket ,Structure
-REV-41-1316,15mm Hex Pillow Block ,Transmitting and transforming motion
+REV-41-1316,15mm Hex Pillow Block ,Motion
 REV-41-1317,15mm Bearing Pillow Block ,Supporting motion
 REV-41-1318,15mm Plastic Variable Angle Bracket ,Structure
 REV-41-1319,15mm Plastic Servo Bracket ,Structure
@@ -32,30 +32,30 @@ REV-41-1324,5mm Hex Shaft Spacer - 3mm ,Constraining Motion
 REV-41-1325,5mm Hex Shaft Spacer - 1.5mm ,Constraining Motion
 REV-41-1326,Through Bore Bearing - Short ,Supporting motion
 REV-41-1327,Shaft Collars ,Constraining Motion
-REV-41-1328,Servo Shaft Adapter ,Transmitting and transforming motion
+REV-41-1328,Servo Shaft Adapter ,Motion
 REV-41-1329,Through Bore Bearing - Long ,Supporting motion
-REV-41-1331,15 Tooth Plastic Gear ,Transmitting and transforming motion
-REV-41-1332,30 Tooth Plastic Gear ,Transmitting and transforming motion
-REV-41-1333,125 Tooth Plastic Gear ,Transmitting and transforming motion
-REV-41-1334,45 Tooth Plastic Gear ,Transmitting and transforming motion
-REV-41-1335,60 Tooth Plastic Gear ,Transmitting and transforming motion
-REV-41-1336,72 Tooth Plastic Gear ,Transmitting and transforming motion
-REV-41-1337,90 Tooth Plastic Gear ,Transmitting and transforming motion
-REV-41-1338,10 Tooth #25 Sprocket ,Transmitting and transforming motion
-REV-41-1339,15 Tooth #25 Sprocket ,Transmitting and transforming motion
-REV-41-1340,20 Tooth #25 Sprocket ,Transmitting and transforming motion
-REV-41-1343,40 Tooth #25 Sprocket ,Transmitting and transforming motion
-REV-41-1347,5mm x 75mm Hex Shaft ,Transmitting and transforming motion
-REV-41-1348,5mm x 90mm Hex Shaft ,Transmitting and transforming motion
-REV-41-1349,5mm x 135mm Hex Shaft ,Transmitting and transforming motion
+REV-41-1331,15 Tooth Plastic Gear ,Motion
+REV-41-1332,30 Tooth Plastic Gear ,Motion
+REV-41-1333,125 Tooth Plastic Gear ,Motion
+REV-41-1334,45 Tooth Plastic Gear ,Motion
+REV-41-1335,60 Tooth Plastic Gear ,Motion
+REV-41-1336,72 Tooth Plastic Gear ,Motion
+REV-41-1337,90 Tooth Plastic Gear ,Motion
+REV-41-1338,10 Tooth #25 Sprocket ,Motion
+REV-41-1339,15 Tooth #25 Sprocket ,Motion
+REV-41-1340,20 Tooth #25 Sprocket ,Motion
+REV-41-1343,40 Tooth #25 Sprocket ,Motion
+REV-41-1347,5mm x 75mm Hex Shaft ,Motion
+REV-41-1348,5mm x 90mm Hex Shaft ,Motion
+REV-41-1349,5mm x 135mm Hex Shaft ,Motion
 REV-41-1354,90mm Traction Wheel ,Drivetrain types
 REV-41-1359,M3 x 8mm Hex Cap Screws,Hardware and tools
 REV-41-1360,M3 x 16mm Hex Cap Screws,Hardware and tools
 REV-41-1361,M3 Nyloc Nuts ,Hardware and tools
-REV-41-1362,5mm x 400mm Hex Shaft ,Transmitting and transforming motion
-REV-41-1364,Servo Gear Adapter ,Transmitting and transforming motion
-REV-41-1365,#25 Roller Chain - 10 ft ,Transmitting and transforming motion
-REV-41-1366,#25 Master Links,Transmitting and transforming motion
+REV-41-1362,5mm x 400mm Hex Shaft ,Motion
+REV-41-1364,Servo Gear Adapter ,Motion
+REV-41-1365,#25 Roller Chain - 10 ft ,Motion
+REV-41-1366,#25 Master Links,Motion
 REV-41-1373,Hook and Loop Fastener - 13.5mm x 2mm,Hardware and tools
 REV-41-1374,5.5mm Combination Wrench,Hardware and tools
 REV-41-14312,15mm Extrusion - 225mm - 90° Ends ,Structure
@@ -71,7 +71,7 @@ REV-41-1600,UltraPlanetary Gearbox Kit & HD Hex Motor ,Actuators
 REV-41-1621,UltraPlanetary Outside Mounting Bracket ,Structure
 REV-41-1623,UltraPlanetary Bent Mounting Bracket ,Structure
 REV-41-1687,U Channel Endcap ,Structure
-REV-41-1702,Tensioning Bushing - 39mm ,Transmitting and transforming motion
+REV-41-1702,Tensioning Bushing - 39mm ,Motion
 REV-41-1762,45mm x 15mm C Channel - 408mm ,Structure
 REV-41-1767,45mm x 15mm C Channel - 248mm ,Structure
 REV-41-1820,Aluminum Double Servo Arm ,Actuators
@@ -79,8 +79,8 @@ REV-41-1828,Aluminum Servo Horn V2 ,Actuators
 REV-41-1839,450mm x 300mm x 4mm Corrugated Plastic Sheet ,Structure
 REV-41-1846,Motion Pattern Spacer ,Structure
 REV-41-1907,M3 X 8MM T-Slot Screw,Hardware and tools
-REV-41-2150,1in Grip Wheel - 5mm Hex Bore - Soft (Light Gray) ,Transmitting and transforming motion
-REV-41-2702,Flap Wheel - 5mm Hex Bore - Medium ,Transmitting and transforming motion
+REV-41-2150,1in Grip Wheel - 5mm Hex Bore - Soft (Light Gray) ,Motion
+REV-41-2702,Flap Wheel - 5mm Hex Bore - Medium ,Motion
 REV-42-1442,#25 Chain Tool ,Hardware and tools
 REV-45-1259,15mm Hinge Kit ,Structure
 REV-45-1882,Allen wrench Pack,Hardware and tools
