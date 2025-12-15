@@ -3,6 +3,8 @@
     "name": "John Doe",
     "description": "Team captain and lead programmer. Passionate about robotics and coding.",
     "avatar": "https://example.com/avatar1.jpg",
+    "department": "Dmnt_Management",
+    "role": "Team Captain",
     "social": {
       "youtube": "https://www.youtube.com/@johndoe",
       "twitter": "https://twitter.com/johndoe",
@@ -13,6 +15,8 @@
     "name": "Jane Smith",
     "description": "Mechanical engineer specializing in robot design and fabrication.",
     "avatar": "https://example.com/avatar2.jpg",
+    "department": "Dmnt_Engineering",
+    "role": "Lead Builder",
     "social": {
       "youtube": "https://www.youtube.com/@janesmith",
       "linkedin": "https://www.linkedin.com/in/janesmith"
@@ -22,6 +26,8 @@
     "name": "Alex Johnson",
     "description": "Marketing and outreach coordinator. Loves sharing our robotics journey.",
     "avatar": "https://example.com/avatar3.jpg",
+    "department": "Dmnt_Design",
+    "role": "Outreach Manager",
     "social": {
       "youtube": "https://www.youtube.com/@alexjohnson",
       "tiktok": "https://www.tiktok.com/@alexjohnson"
