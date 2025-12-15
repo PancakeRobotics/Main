@@ -26,11 +26,43 @@
     "name": "Alex Johnson",
     "description": "Marketing and outreach coordinator. Loves sharing our robotics journey.",
     "avatar": "https://example.com/avatar3.jpg",
-    "department": "Dmnt_Design",
+    "department": "Dmnt_Communications",
     "role": "Outreach Manager",
     "social": {
       "youtube": "https://www.youtube.com/@alexjohnson",
       "tiktok": "https://www.tiktok.com/@alexjohnson"
+    }
+  },
+  {
+    "name": "Bob Wilson",
+    "description": "Documentation specialist ensuring all processes are well-recorded.",
+    "avatar": "https://example.com/avatar4.jpg",
+    "department": "Dmnt_Documentation",
+    "role": "Documentation Lead",
+    "social": {
+      "github": "https://github.com/bobwilson"
+    }
+  },
+  {
+    "name": "Charlie Brown",
+    "description": "Software developer focusing on robot control systems.",
+    "avatar": "https://example.com/avatar5.jpg",
+    "department": "Dmnt_Coding",
+    "role": "Lead Programmer",
+    "social": {
+      "github": "https://github.com/charliebrown",
+      "linkedin": "https://www.linkedin.com/in/charliebrown"
+    }
+  },
+  {
+    "name": "Diana Prince",
+    "description": "Creative designer handling graphics and visual elements.",
+    "avatar": "https://example.com/avatar6.jpg",
+    "department": "Dmnt_Design",
+    "role": "Design Lead",
+    "social": {
+      "instagram": "https://www.instagram.com/dianaprince",
+      "behance": "https://www.behance.net/dianaprince"
     }
   }
 ]
