@@ -9,7 +9,9 @@
 <link href="https://pancakerobotics.co.uk/assets/StyleSheet.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
-
+<style>
+    .ExMember{background-color: #616161; color: #2b2b2b;}
+</style>
 </head>
 
 <body>
@@ -79,15 +81,20 @@ async function fetchMembers() {
     container.innerHTML = '';
     members.forEach(member => {
       const angle = Math.random() * 6 - 3;
+      const isExMember = member.department === 'ExMember';
       const div = document.createElement('div');
       div.className = 'blurred-box mb-8';
+      if (isExMember) {
+        div.style.backgroundColor = 'rgba(70, 70, 70, 0.4)';
+      }
       div.innerHTML = `
-        <div class="box-title ${member.department || ''}"><span>${member.name}</span></div>
+        <div class="box-title ${isExMember ? 'ExMember' : member.department || ''}"><span>${member.name}</span></div>
         <div class="mt-4 flex items-center gap-4">
           <img src="${member.avatar}" alt="${member.name}" class="rounded-lg object-cover flex-shrink-0" style="width: 180px; height: 180px;">
           <div class="flex-1 flex flex-col justify-center">
             <p class="text-gray-300 text-center">${member.description}</p>
             <p class="text-gray-300 text-center text-gray-400"><span class="role-label">Role:</span> ${member.role || 'N/A'}</p>
+            <p class="text-gray-300 text-center text-gray-400"><span class="from-label">Member from:</span> ${member.from || 'N/A'}</p>
             <div class="mt-4 flex justify-center gap-4">
               ${Object.entries(member.social || {}).map(([platform, link]) => 
                 `<a href="${link}" target="_blank" rel="noopener noreferrer" class="accentText"><i class="${getIconClass(platform)} text-3xl"></i></a>`
@@ -101,6 +108,8 @@ async function fetchMembers() {
       const bgColor = getComputedStyle(boxTitle).backgroundColor;
       const roleLabel = div.querySelector('.role-label');
       if (roleLabel) roleLabel.style.color = bgColor;
+      const fromLabel = div.querySelector('.from-label');
+      if (fromLabel) fromLabel.style.color = bgColor;
     });
   } catch (error) {
     console.error('Error fetching members:', error);
