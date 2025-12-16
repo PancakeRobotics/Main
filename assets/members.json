@@ -87,7 +87,10 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Design",
     "role": "Head of Design & Brand Identity, Website Developer",
-    "social": {}
+    "social": {
+      "music": "https://www.youtube.com/@fiskurtunez",
+      "film": "https://www.youtube.com/@PurpleSeaProductions"
+    }
   },
   {
     "name": "Jessica",
