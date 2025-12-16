@@ -14,6 +14,10 @@
     font-style: normal;
 }
 
+  .pancakeprintfont{
+    font-family: "pancake_printregular", "Maple Mono", sans-serif;
+  }
+
   :root {
     --accent: #48ffab; 
     --compliment: #ff489d;
