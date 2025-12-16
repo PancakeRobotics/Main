@@ -43,6 +43,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Engineering",
     "role": "Head of Engineering, Manipulation Officer, Electrical Engineer, Health & Safety Officer, Finance Officer, Communications Officer",
+    "from": "2025-present",
     "social": {}
   },
   {
@@ -51,6 +52,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Engineering",
     "role": "Manipulation Officer, Drivetrain Engineer, Filming Coordinator, Video Editor, Software Developer",
+    "from": "2024-present",
     "social": {
       "youtube": "https://www.youtube.com/@SimplyBugsy"
     }
@@ -61,6 +63,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Engineering",
     "role": "Base Engineer",
+    "from": "2025-present",
     "social": {}
   },
   {
@@ -69,6 +72,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Communications",
     "role": "Communications Officer",
+    "from": "2024-present",
     "social": {}
   },
   {
@@ -77,6 +81,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Coding",
     "role": "Head of Coding, Software Developer, Data Officer",
+    "from": "2024-present",
     "social": {}
   },
   {
@@ -85,6 +90,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Design",
     "role": "Head of Design & Brand Identity, Website Developer",
+    "from": "2024-present",
     "social": {
       "music": "https://www.youtube.com/@fiskurtunez",
       "film": "https://www.youtube.com/@PurpleSeaProductions"
@@ -96,6 +102,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Design",
     "role": "Concept Artist",
+    "from": "2025-present",
     "social": {}
   },
   {
@@ -104,6 +111,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Design",
     "role": "Misc. Artist",
+    "from": "2025-present",
     "social": {}
   },
     {
@@ -112,6 +120,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Design",
     "role": "Video Editor",
+    "from": "2024-2025",
     "social": {}
   }
 ]
