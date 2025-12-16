@@ -1,68 +1,121 @@
 [
   {
-    "name": "John Doe",
-    "description": "Team captain and lead programmer. Passionate about robotics and coding.",
-    "avatar": "https://example.com/avatar1.jpg",
+    "name": "Caiden",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Management",
-    "role": "Team Captain",
+    "role": "Project Manager, Head of Communications & Outreach, Strategy Officer",
     "social": {
-      "youtube": "https://www.youtube.com/@johndoe",
-      "twitter": "https://twitter.com/johndoe",
-      "instagram": "https://www.instagram.com/johndoe"
+      "youtube": "https://www.youtube.com/@AV-8History",
     }
   },
   {
-    "name": "Jane Smith",
-    "description": "Mechanical engineer specializing in robot design and fabrication.",
-    "avatar": "https://example.com/avatar2.jpg",
-    "department": "Dmnt_Engineering",
-    "role": "Lead Builder",
+    "name": "Nola",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
+    "department": "Dmnt_Management",
+    "role": "Project Manager",
     "social": {
-      "youtube": "https://www.youtube.com/@janesmith",
-      "linkedin": "https://www.linkedin.com/in/janesmith"
     }
   },
   {
-    "name": "Alex Johnson",
-    "description": "Marketing and outreach coordinator. Loves sharing our robotics journey.",
-    "avatar": "https://example.com/avatar3.jpg",
-    "department": "Dmnt_Communications",
-    "role": "Outreach Manager",
-    "social": {
-      "youtube": "https://www.youtube.com/@alexjohnson",
-      "tiktok": "https://www.tiktok.com/@alexjohnson"
-    }
-  },
-  {
-    "name": "Bob Wilson",
-    "description": "Documentation specialist ensuring all processes are well-recorded.",
-    "avatar": "https://example.com/avatar4.jpg",
+    "name": "Sadie",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Documentation",
-    "role": "Documentation Lead",
+    "role": "Head of Documentation, Inventory Manager, Concept Artist",
     "social": {
-      "github": "https://github.com/bobwilson"
     }
   },
   {
-    "name": "Charlie Brown",
-    "description": "Software developer focusing on robot control systems.",
-    "avatar": "https://example.com/avatar5.jpg",
+    "name": "Max",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
+    "department": "Dmnt_Management",
+    "role": "Finance Officer",
+    "social": {
+      "youtube": "https://www.youtube.com/@AV-8History",
+    }
+  },
+  {
+    "name": "Dylan",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
+    "department": "Dmnt_Engineering",
+    "role": "Head of Engineering, Manipulation Officer, Electrical Engineer, Health & Safety Officer, Finance Officer, Communications Officer",
+    "social": {
+    }
+  },
+  {
+    "name": "Harvey",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
+    "department": "Dmnt_Engineering",
+    "role": "Manipulation Officer, Drivetrain Engineer, Filming Coordinator, Video Editor, Software Developer",
+    "social": {
+    }
+  },
+  {
+    "name": "Wiliam",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
+    "department": "Dmnt_Engineering",
+    "role": "Base Engineer",
+    "social": {
+    }
+  },
+  {
+    "name": "Coby",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
+    "department": "Dmnt_Communications",
+    "role": "Communications Officer",
+    "social": {
+    }
+  },
+  {
+    "name": "Archie",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
+    "department": "Video Editor",
+    "role": "",
+    "social": {
+    }
+  },
+  {
+    "name": "Jack",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Coding",
-    "role": "Lead Programmer",
+    "role": "Head of Coding, Software Developer, Data Officer",
     "social": {
-      "github": "https://github.com/charliebrown",
-      "linkedin": "https://www.linkedin.com/in/charliebrown"
     }
   },
   {
-    "name": "Diana Prince",
-    "description": "Creative designer handling graphics and visual elements.",
-    "avatar": "https://example.com/avatar6.jpg",
+    "name": "Harry",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Design",
-    "role": "Design Lead",
+    "role": "Head of Design & Brand Identity, Website Developer",
     "social": {
-      "instagram": "https://www.instagram.com/dianaprince",
-      "behance": "https://www.behance.net/dianaprince"
+    }
+  },
+  {
+    "name": "Jessica",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
+    "department": "Dmnt_Design",
+    "role": "Concept Artist",
+    "social": {
+    }
+  },
+  {
+    "name": "Amber",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
+    "department": "Dmnt_Design",
+    "role": "Misc. Artist",
+    "social": {
     }
   }
 ]
