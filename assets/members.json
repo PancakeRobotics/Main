@@ -47,7 +47,9 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Engineering",
     "role": "Manipulation Officer, Drivetrain Engineer, Filming Coordinator, Video Editor, Software Developer",
-    "social": {}
+    "social": {
+      "youtube": "https://www.youtube.com/@SimplyBugsy"
+    }
   },
   {
     "name": "Wiliam",
