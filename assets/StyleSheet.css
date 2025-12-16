@@ -6,6 +6,13 @@
     src: url(https://cdn.jsdelivr.net/fontsource/fonts/maple-mono@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/maple-mono@latest/latin-400-normal.woff) format('woff');
   }
 
+@font-face {
+    font-family: 'pancake_printregular';
+    src: url('pancakeprint-regular-webfont.woff2') format('woff2'),
+         url('pancakeprint-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
   :root {
     --accent: #48ffab; 
