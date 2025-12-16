@@ -6,7 +6,7 @@
     "department": "Dmnt_Management",
     "role": "Project Manager, Head of Communications & Outreach, Strategy Officer",
     "social": {
-      "youtube": "https://www.youtube.com/@AV-8History",
+      "youtube": "https://www.youtube.com/@AV-8History"
     }
   },
   {
@@ -15,8 +15,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Management",
     "role": "Project Manager",
-    "social": {
-    }
+    "social": {}
   },
   {
     "name": "Sadie",
@@ -24,8 +23,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Documentation",
     "role": "Head of Documentation, Inventory Manager, Concept Artist",
-    "social": {
-    }
+    "social": {}
   },
   {
     "name": "Max",
@@ -33,9 +31,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Management",
     "role": "Finance Officer",
-    "social": {
-      "youtube": "https://www.youtube.com/@AV-8History",
-    }
+    "social": {}
   },
   {
     "name": "Dylan",
@@ -43,8 +39,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Engineering",
     "role": "Head of Engineering, Manipulation Officer, Electrical Engineer, Health & Safety Officer, Finance Officer, Communications Officer",
-    "social": {
-    }
+    "social": {}
   },
   {
     "name": "Harvey",
@@ -52,8 +47,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Engineering",
     "role": "Manipulation Officer, Drivetrain Engineer, Filming Coordinator, Video Editor, Software Developer",
-    "social": {
-    }
+    "social": {}
   },
   {
     "name": "Wiliam",
@@ -61,8 +55,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Engineering",
     "role": "Base Engineer",
-    "social": {
-    }
+    "social": {}
   },
   {
     "name": "Coby",
@@ -70,8 +63,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Communications",
     "role": "Communications Officer",
-    "social": {
-    }
+    "social": {}
   },
   {
     "name": "Archie",
@@ -79,8 +71,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Video Editor",
     "role": "",
-    "social": {
-    }
+    "social": {}
   },
   {
     "name": "Jack",
@@ -88,8 +79,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Coding",
     "role": "Head of Coding, Software Developer, Data Officer",
-    "social": {
-    }
+    "social": {}
   },
   {
     "name": "Harry",
@@ -97,8 +87,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Design",
     "role": "Head of Design & Brand Identity, Website Developer",
-    "social": {
-    }
+    "social": {}
   },
   {
     "name": "Jessica",
@@ -106,8 +95,7 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Design",
     "role": "Concept Artist",
-    "social": {
-    }
+    "social": {}
   },
   {
     "name": "Amber",
@@ -115,7 +103,6 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Design",
     "role": "Misc. Artist",
-    "social": {
-    }
+    "social": {}
   }
 ]
