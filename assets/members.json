@@ -68,14 +68,6 @@
     "social": {}
   },
   {
-    "name": "Archie",
-    "description": "...",
-    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
-    "department": "Video Editor",
-    "role": "",
-    "social": {}
-  },
-  {
     "name": "Jack",
     "description": "...",
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
@@ -108,6 +100,14 @@
     "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
     "department": "Dmnt_Design",
     "role": "Misc. Artist",
+    "social": {}
+  },
+    {
+    "name": "Archie",
+    "description": "...",
+    "avatar": "https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png",
+    "department": "Dmnt_Design",
+    "role": "Video Editor",
     "social": {}
   }
 ]
