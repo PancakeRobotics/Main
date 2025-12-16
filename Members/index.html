@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Members | Pancake Robotics</title>
+
+<link href="https://db.onlinewebfonts.com/c/21949b025df9045160fda6566f635b36?family=SyrupSans-Regular" rel="stylesheet">
+<link href="https://pancakerobotics.co.uk/assets/StyleSheet.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+
+<div class="circuit-bg"><svg id="honeySvg"></svg></div>
+
+<div class="content relative">
+
+<header class="flex flex-wrap justify-between items-center px-6 py-4 w-full z-50 relative blurred-bar">
+  <h1 class="pancakeprintfont text-3xl font-bold accentText">Pancake Robotics</h1>
+  <h1 class="MapleMonoFont text-xl sm:text-2xl font-bold text-pink-500 mt-2 sm:mt-0 sm:ml-auto complementText">
+    one pancake, many opportunities!
+  </h1>
+</header>
+
+<!-- Floating Hamburger Nav -->
+<div id="navToggle" class="nav-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Slide-out nav menu -->
+<nav id="navMenu" class="nav-menu pancakeprintfont">
+  <a href="https://pancakerobotics.co.uk">Home</a>
+  <a href="https://pancakerobotics.co.uk/Inventory">Inventory</a>
+  <a href="https://pancakerobotics.co.uk/Members">Members</a>
+</nav>
+
+<main>
+<!-- Members -->
+<section id="members" class="py-8 px-6">
+  <div id="members-container">
+    <!-- Members will be loaded here -->
+  </div>
+</section>
+<br>
+<footer class="blurred-bar">
+  Pancake Robotics | QEGS Alford, UK | FTC UK & Ireland | Team 27880
+</footer>
+</main>
+</div>
+
+<script src="https://pancakerobotics.co.uk/assets/PageElements.js?"></script>
+
+<script>
+function getIconClass(platform) {
+  const icons = {
+    youtube: 'fab fa-youtube',
+    twitter: 'fab fa-twitter',
+    instagram: 'fab fa-instagram',
+    linkedin: 'fab fa-linkedin',
+    tiktok: 'fab fa-tiktok',
+    github: 'fab fa-github',
+    discord: 'fab fa-discord',
+    film: 'fas fa-film',
+    music: 'fas fa-music'
+  };
+  return icons[platform.toLowerCase()] || 'fas fa-link';
+}
+
+async function fetchMembers() {
+  const url = `https://pancakerobotics.co.uk/assets/members.json?ts=${Date.now()}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const members = await response.json();
+    const container = document.getElementById('members-container');
+    container.innerHTML = ''; // Clear any existing content
+    members.forEach(member => {
+      const angle = Math.random() * 6 - 3; // Random angle between -3 and 3
+      const div = document.createElement('div');
+      div.className = 'blurred-box mb-8';
+      div.innerHTML = `
+        <div class="box-title ${member.department || ''}"><span>${member.name}</span></div>
+        <div class="mt-4 flex items-center gap-4">
+          <img src="${member.avatar}" alt="${member.name}" class="rounded-lg object-cover flex-shrink-0" style="width: 180px; height: 180px;">
+          <div class="flex-1 flex flex-col justify-center">
+            <p class="text-gray-300 text-center">${member.description}</p>
+            <p class="text-gray-300 text-center text-gray-400"><span class="role-label">Role:</span> ${member.role || 'N/A'}</p>
+            <div class="mt-4 flex justify-center gap-4">
+              ${Object.entries(member.social || {}).map(([platform, link]) => 
+                `<a href="${link}" target="_blank" rel="noopener noreferrer" class="accentText"><i class="${getIconClass(platform)} text-3xl"></i></a>`
+              ).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+      container.appendChild(div);
+      // Set the color of "Role:" to match the background color of the department
+      const boxTitle = div.querySelector('.box-title');
+      const bgColor = getComputedStyle(boxTitle).backgroundColor;
+      const roleLabel = div.querySelector('.role-label');
+      if (roleLabel) roleLabel.style.color = bgColor;
+    });
+  } catch (error) {
+    console.error('Error fetching members:', error);
+    document.getElementById('members-container').innerHTML = '<p class="text-red-400">Failed to load members data. Please check the console for details.</p>';
+  }
+}
+
+// Load members on page start
+fetchMembers();
+</script>
+
+
+
+</body>
+</html>
