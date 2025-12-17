@@ -111,7 +111,7 @@ async function fetchMembers() {
       }
       div.innerHTML = `
         <div class="box-title2 ${isExMember ? 'ExMember' : member.department || ''}"><span>${member.name}</span></div>
-        <div class="mt-4 flex items-center gap-4">
+        <div class="mt-4 flex flex-col sm:flex-row items-center gap-4">
           <img src="${member.avatar}" alt="${member.name}" class="rounded-lg object-cover flex-shrink-0" style="width: 180px; height: 180px;">
           <div class="flex-1 flex flex-col justify-center">
             <p class="text-gray-400 text-center">${member.description}</p>
