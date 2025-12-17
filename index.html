@@ -11,6 +11,38 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
 
+<style>
+        .card-grid {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+      .social-card {
+      background: rgba(110, 110, 110, 0.05);
+      border-radius: 14px;
+      padding: 24px;
+      width: fit-content;
+      text-align: center;
+      text-decoration: none;
+      color: #f5f6fa;
+      transition: transform 0.2s ease;;
+    }
+
+    .light-mode .social-card {
+      background-color: rgba(145, 145, 145, 0.1) !important;
+      color: #111111 !important;
+    }
+
+
+    .card-grid {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+</style>
 
 </head>
 
@@ -38,7 +70,8 @@
   <a href="https://pancakerobotics.co.uk/Inventory">Inventory</a>
   <a href="https://pancakerobotics.co.uk/Members">Members</a>
   <div class="nav-footer">
-    <button id="theme-toggle" class="nav-toggle-btn"><i id="theme-toggle-icon" class="fas fa-moon"></i> Theme</button>
+    <button id="theme-toggle" class="nav-toggle-btn"><i id="theme-toggle-icon" class="fas fa-moon"></i> Theme</button><br>
+    <span id="n/a" style="color: rgba(0, 0, 0, 0);"><i id="n/aa" class="fas fa-moon"></i></span>
   </div>
 </nav>
 
@@ -67,6 +100,22 @@
           </div>
         </div>
       </a>
+  </div>
+
+</section>
+
+<section id="contact" class="py-8 px-6">
+  <div class="blurred-box text-center">
+    <div class="box-title">Contact Us</div><br>
+
+<div class="card-grid">
+      
+      <span class="social-card">
+        <div class="font-bold accentText"><i class="fa-solid fa-envelope"></i></div>
+        <i>pancakeroboticsqegsalford@gmail.com</i>
+      </span>
+</div>
+<br>
   </div>
 
 </section>
@@ -155,7 +204,6 @@
   </div>
 </section>
 
-<!-- Theme Toggle moved into nav menu -->
 
 <footer class="blurred-bar">
   Pancake Robotics | QEGS Alford, UK | FTC UK & Ireland | Team 27880
@@ -199,7 +247,6 @@ fetchYouTubeData();
   const root = document.documentElement;
   const toggleBtn = document.getElementById('theme-toggle');
   const icon = document.getElementById('theme-toggle-icon');
-  // Set initial mode from localStorage
   if (localStorage.getItem('theme') === 'light') {
     root.classList.add('light-mode');
     icon.classList.remove('fa-moon');
@@ -214,24 +261,17 @@ fetchYouTubeData();
   });
 })();
 
-// Lightweight SVG handling: rely on CSS rules for .light-mode to recolor SVG.
-// Avoid per-element DOM writes which can cause slow theme toggles.
 (function() {
   const toggleBtn = document.getElementById('theme-toggle');
-  // Ensure any external scripts that redraw the SVG can trigger a reflow
-  // by toggling a data attribute; this is cheap compared to updating many elements.
   function pokeSvg() {
     const honeySvg = document.getElementById('honeySvg');
     if (!honeySvg) return;
-    // toggle a data attribute to hint at style recalculation when needed
     const v = honeySvg.getAttribute('data-theme-poke') === '1' ? '0' : '1';
     honeySvg.setAttribute('data-theme-poke', v);
   }
 
-  // On theme change, quickly poke the SVG once to ensure CSS rules apply.
   if (toggleBtn) {
     toggleBtn.addEventListener('click', function() {
-      // schedule a single poke after the class toggle completes
       requestAnimationFrame(() => requestAnimationFrame(pokeSvg));
     });
   }
@@ -242,7 +282,6 @@ fetchYouTubeData();
 
 </body>
 </html>
-
 
 
 
