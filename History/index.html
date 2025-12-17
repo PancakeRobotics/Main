@@ -44,6 +44,201 @@
     }
 </style>
 
+
+
+
+    <style>
+
+      /* ─────────────── Video Grid ─────────────────────────────────────────────────────────────────────────── */
+      .video-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-bottom: 40px;
+        margin-top: -5px;
+
+        margin-left: 25px;
+        margin-right: 25px;
+      }
+
+      .video-grid.low {
+        margin-top: 30px;
+        margin-bottom: 0px;
+      }
+
+      .video-grid.desc {
+        margin-top: -35px;
+      }
+
+      .video-card {
+        background: #332F41;
+        border-radius: 14px;
+        padding: 12px;
+        width: calc(33.333% - 20px);
+        min-width: 280px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        box-sizing: border-box;
+        transition: transform 0.2s ease;
+        text-decoration: none;
+        background-color: color-mix(in srgb, var(--title-color, rgba(51, 25, 71,0.5)) 100%, transparent);
+      }
+
+      .video-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .youtube-embed,
+      .youtube-thumbnail {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 10px;
+        border: none;
+        object-fit: cover;
+      }
+
+      .video-title {
+        margin-top: 10px;
+        font-size: 1.05em;
+        color: #FCF434;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      
+      .video-date {
+        color: #ffffff;
+        font-style: italic;
+        font-size: 14px;
+      }
+
+
+
+      /* ─────────────── Timeline ───────────────────────────────────────────────────────────────────────────── */
+      .timeline-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+
+      .timeline {
+        position: relative;
+        width: 100%;
+        max-width: 700px;
+        padding: 40px 20px 60px 20px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 24px; /* stop the line before the end-cap */
+        width: 4px;
+        background: #FCF434;
+        transform: translateX(-50%);
+        z-index: 0;
+      }
+
+      /* Top Cap */
+        .timeline::after {
+          content: "";
+          position: absolute;
+          top: -2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 20px;
+          height: 4px;
+          background: #FCF434;
+          z-index: 1;
+        }
+
+      .timeline-end-cap {
+        position: absolute;
+        left: 50%;
+        bottom: 12px;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 12px solid #FCF434;
+        z-index: 1;
+      }
+
+      .timeline-entry {
+        position: relative;
+        margin-bottom: 80px;
+        text-align: center;
+      }
+
+      .timeline-date {
+        padding: 6px 12px;
+        border-radius: 8px;
+        display: inline-block;
+        margin-bottom: 14px;
+        background: rgba(17, 17, 17,1);
+        backdrop-filter: blur(15px);
+        color: #9C59D1;
+        font-weight: bold;
+        font-size: 1.1em;
+        border-radius: 20px;
+        position: relative;
+
+      }
+
+      .timeline-content {
+        background: rgba(17, 17, 17, 1);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        padding: 2rem;
+        margin: 2rem auto;
+        max-width: 1200px;
+        position: relative;
+      }
+
+      .timeline-video {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 10px;
+        border: none;
+      }
+
+      .timeline-title {
+        margin-top: 10px;
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+
+      .purpleText{
+        color: #B883E0;
+      }
+      
+      .greenText{
+        color: #B7F684;
+      }
+
+      .smaller {
+        font-size: 14px;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+
+
+    </style>
+
+
+
+
+
+
+
+
+
+
+
 </head>
 
 <body>
@@ -77,15 +272,53 @@
 </nav>
 
 <main>
-<section id="history" class="py-8 px-6">
-  <div class="blurred-box text-center">
-    <div class="box-title">Coming soon</div>
-    <p class="max-w-4xl mx-auto text-gray-300 mt-4">
-      Coming soon
-    </p><br>
-  </div>
 
-</section>
+
+
+
+
+
+
+
+    <div class="blurred-box">
+    <div class="box-title">Our History</div>
+      <br><br>
+
+
+  <div class="timeline-wrapper">
+    
+    <div class="timeline">
+
+      <div class="timeline-entry">
+        <div class="timeline-date text-pink-500">31st August 2024</div>
+        <div class="timeline-content">
+
+          <a class="video-image" href="https://www.youtube.com/watch?v=kgCSgKFfhQU" target="_blank">
+            <img class="youtube-thumbnail" src="https://i0.wp.com/www.bishoprook.com/wp-content/uploads/2021/05/placeholder-image-gray-16x9-1.png?ssl=1" alt="EP.num: Name Thumbnail">
+          </a>
+          <div class="video-title greenText smaller italic">Image Caption</div>
+
+          <div class="timeline-title accentText">Title</div>
+          Placeholder Text
+        </div>
+      </div>
+
+
+
+      <!-- ➕ Add more entries here -->
+
+
+      <div class="timeline-end-cap"></div>
+      
+    </div>
+    
+  </div>
+  <br><br>
+</div>
+
+
+
+
 
 
 
@@ -166,5 +399,4 @@ fetchYouTubeData();
 
 </body>
 </html>
-
 
