@@ -1,0 +1,187 @@
+  .light-mode {
+    background-color: #f5f5f5 !important;
+    color: #333 !important;
+  }
+  .light-mode body,
+  .light-mode .circuit-bg {
+    background-color: #f5f5f5 !important;
+    background-image: none !important;
+  }
+  .light-mode .blurred-box {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid #ddd !important;
+  }
+  .light-mode .blurred-bar {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    color: #333 !important;
+  }
+  .light-mode .box-title {
+    color: #333 !important;
+  }
+  .light-mode .text-gray-300 {
+    color: #666 !important;
+  }
+  .light-mode .accentText {
+    color: #e040fb !important; /* magenta */
+  }
+  .light-mode .border-green-400 {
+    border-color: #e040fb !important;
+  }
+  .light-mode .text-green-400 {
+    color: #e040fb !important;
+  }
+  .light-mode .shadow-glow {
+    box-shadow: 0 0 16px 2px #e040fb !important;
+  }
+  .light-mode .complimentLine {
+    background: linear-gradient(90deg, #e040fb 0%, #ffb5f7 100%) !important;
+  }
+  .light-mode .bg-green-400 {
+    background-color: #e040fb !important;
+  }
+  .light-mode .complementText {
+    color: #e040fb !important;
+  }
+  .nav-toggle-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 10px;
+  }
+  .nav-toggle-btn:hover {
+    opacity: 0.8;
+  }
+  /* Reserve space at bottom of nav for footer toggle (don't override positioning) */
+  .nav-menu {
+    padding-bottom: 4rem; /* space for footer toggle */
+  }
+  .nav-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.75rem;
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+  .nav-footer .nav-toggle-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+  }
+  .nav-toggle-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 10px;
+  }
+  .nav-toggle-btn:hover {
+    opacity: 0.8;
+  }
+  .light-mode .polaroid {
+    background: #fff !important;
+    border: 2px solid #e040fb !important;
+    box-shadow: 0 4px 24px 0 #e040fb33 !important;
+  }
+  .light-mode .polaroid h3 {
+    color: #e040fb !important;
+  }
+  .light-mode .polaroid img {
+    border: 2px solid #e040fb !important;
+  }
+  .light-mode .film-card {
+    background: #fff !important;
+    border: 2px solid #e040fb !important;
+    box-shadow: 0 4px 24px 0 #e040fb33 !important;
+  }
+  .light-mode .film-card .imagebox {
+    background: #fff !important;
+    border: 1px solid #e040fb !important;
+  }
+  .light-mode .film-card h3 {
+    color: #e040fb !important;
+  }
+  .light-mode .perforation div {
+    background: #e040fb !important;
+  }
+  /* Nav menu links and hamburger */
+  .light-mode .nav-menu,
+  .light-mode .nav-menu a {
+    color: #e040fb !important;
+  }
+  .light-mode .nav-toggle span {
+    background: #e040fb !important;
+  }
+  /* Background hexagons (honeycomb/circuit-bg) */
+  /* Background hexagons (honeycomb/circuit-bg) */
+  .light-mode .circuit-bg svg,
+  .light-mode #honeySvg,
+  .light-mode #honeySvg *,
+  .light-mode .circuit-bg svg * {
+    filter: none !important;
+    stroke: #e040fb !important;
+    fill: #fff !important;
+    color: #e040fb !important;
+  }
+  /* extra selectors for possible dynamically-added classes */
+  .light-mode .hex,
+  .light-mode .hexagon,
+  .light-mode .honey {
+    stroke: #e040fb !important;
+    fill: #fff !important;
+  }
+  /* Title bar things (box-title, blurred-bar) */
+  .light-mode .box-title {
+    background: #fff !important;
+    color: #e040fb !important;
+    border: 2px solid #e040fb !important;
+  }
+  .light-mode .blurred-bar {
+    background: rgba(255,255,255,0.95) !important;
+    color: #e040fb !important;
+    border-bottom: 2px solid #e040fb !important;
+  }
+  /* Fix film card cutout outlines (perforation) to magenta border, not fill */
+  .light-mode .film-card .perforation div {
+    background: transparent !important;
+    border: 2px solid #e040fb !important;
+  }
+  /* Ensure all text is readable in light mode */
+  .light-mode,
+  .light-mode .text-white,
+  .light-mode .text-gray-100,
+  .light-mode .text-gray-200,
+  .light-mode .text-gray-300,
+  .light-mode .text-gray-400,
+  .light-mode .text-gray-50 {
+    color: #333 !important;
+  }
+  .light-mode .text-green-400 {
+    color: #e040fb !important;
+  }
+  /* Fix YouTube channel name, film card placeholder, and theme toggle button text in light mode */
+  .light-mode #ytTitle,
+  .light-mode .YouTubeCard h2,
+  .light-mode .film-card p,
+  .light-mode .film-card .glow,
+  .light-mode #theme-toggle,
+  .light-mode #theme-toggle i {
+    color: #333 !important;
+  }
+  /* Nav menu text black in light mode */
+  .light-mode .nav-menu,
+  .light-mode .nav-menu a {
+    color: #222 !important;
+  }
+  /* Hexagons in background magenta in light mode */
+  .light-mode .circuit-bg svg,
+  .light-mode #honeySvg {
+    filter: none !important;
+    stroke: #e040fb !important;
+    fill: #e040fb !important;
+  }
