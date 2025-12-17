@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,10 @@
 
 <link href="https://db.onlinewebfonts.com/c/21949b025df9045160fda6566f635b36?family=SyrupSans-Regular" rel="stylesheet">
 <link href="https://pancakerobotics.co.uk/assets/StyleSheet.css?Font" rel="stylesheet">
+<link href="https://pancakerobotics.co.uk/assets/LightModeStyles.css?Font" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
+
 
 </head>
 
@@ -35,6 +37,9 @@
   <a href="https://pancakerobotics.co.uk">Home</a>
   <a href="https://pancakerobotics.co.uk/Inventory">Inventory</a>
   <a href="https://pancakerobotics.co.uk/Members">Members</a>
+  <div class="nav-footer">
+    <button id="theme-toggle" class="nav-toggle-btn"><i id="theme-toggle-icon" class="fas fa-moon"></i> Theme</button>
+  </div>
 </nav>
 
 <main>
@@ -73,7 +78,7 @@
 
       <a href="https://www.youtube.com/@fiskurtunez" target="_blank" rel="noopener noreferrer">
         <div class="polaroid" style="--angle:-3deg">
-          <img src="https://yt3.googleusercontent.com/kPSPGXadMlY5ByfLAM_IWPqluAzhFeqYvvzIM5JXbpOCcRYkUVdrHvpYjhbKSHyEjBcL3FiFnw=s160-c-k-c0x00ffffff-no-rj" alt="FiskurTunez Youtube PFP">
+          <img src="https://fiskurplayz.gay/assets/images/pfps/FiskurTunez_Icons_PFP.png" alt="FiskurTunez Youtube PFP">
           <h3>FiskurTunez</h3>
         </div>
       </a>
@@ -150,6 +155,8 @@
   </div>
 </section>
 
+<!-- Theme Toggle moved into nav menu -->
+
 <footer class="blurred-bar">
   Pancake Robotics | QEGS Alford, UK | FTC UK & Ireland | Team 27880
 </footer>
@@ -187,6 +194,48 @@ async function fetchYouTubeData() {
 
 // Load on page start
 fetchYouTubeData();
+
+(function() {
+  const root = document.documentElement;
+  const toggleBtn = document.getElementById('theme-toggle');
+  const icon = document.getElementById('theme-toggle-icon');
+  // Set initial mode from localStorage
+  if (localStorage.getItem('theme') === 'light') {
+    root.classList.add('light-mode');
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+  }
+  toggleBtn.addEventListener('click', function() {
+    root.classList.toggle('light-mode');
+    const isLight = root.classList.contains('light-mode');
+    icon.classList.toggle('fa-moon', !isLight);
+    icon.classList.toggle('fa-sun', isLight);
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+})();
+
+// Lightweight SVG handling: rely on CSS rules for .light-mode to recolor SVG.
+// Avoid per-element DOM writes which can cause slow theme toggles.
+(function() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  // Ensure any external scripts that redraw the SVG can trigger a reflow
+  // by toggling a data attribute; this is cheap compared to updating many elements.
+  function pokeSvg() {
+    const honeySvg = document.getElementById('honeySvg');
+    if (!honeySvg) return;
+    // toggle a data attribute to hint at style recalculation when needed
+    const v = honeySvg.getAttribute('data-theme-poke') === '1' ? '0' : '1';
+    honeySvg.setAttribute('data-theme-poke', v);
+  }
+
+  // On theme change, quickly poke the SVG once to ensure CSS rules apply.
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+      // schedule a single poke after the class toggle completes
+      requestAnimationFrame(() => requestAnimationFrame(pokeSvg));
+    });
+  }
+})();
 </script>
 
 
