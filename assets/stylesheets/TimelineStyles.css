@@ -1,0 +1,128 @@
+
+      .youtube-embed,
+      .youtube-thumbnail {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 10px;
+        border: none;
+        object-fit: cover;
+      }
+
+      .video-title {
+        margin-top: 10px;
+        font-size: 1.05em;
+        color: #FCF434;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      
+      .video-date {
+        color: #ffffff;
+        font-style: italic;
+        font-size: 14px;
+      }
+
+
+      .timeline-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+
+      .timeline {
+        position: relative;
+        width: 100%;
+        max-width: 700px;
+        padding: 40px 20px 60px 20px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 24px; /* stop the line before the end-cap */
+        width: 4px;
+        background: #FCF434;
+        transform: translateX(-50%);
+        z-index: 0;
+      }
+
+      /* Top Cap */
+        .timeline::after {
+          content: "";
+          position: absolute;
+          top: -2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 20px;
+          height: 4px;
+          background: #FCF434;
+          z-index: 1;
+        }
+
+      .timeline-end-cap {
+        position: absolute;
+        left: 50%;
+        bottom: 12px;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 12px solid #FCF434;
+        z-index: 1;
+      }
+
+      .timeline-entry {
+        position: relative;
+        margin-bottom: 80px;
+        text-align: center;
+      }
+
+      .timeline-date {
+        padding: 6px 12px;
+        border-radius: 8px;
+        display: inline-block;
+        margin-bottom: 14px;
+        background: rgba(17, 17, 17,1);
+        backdrop-filter: blur(15px);
+        color: #9C59D1;
+        font-weight: bold;
+        font-size: 1.1em;
+        border-radius: 20px;
+        position: relative;
+
+      }
+
+      .timeline-content {
+        background: rgba(17, 17, 17, 1);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        padding: 2rem;
+        margin: 2rem auto;
+        max-width: 1200px;
+        position: relative;
+      }
+
+      .timeline-video {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 10px;
+        border: none;
+      }
+
+      .timeline-title {
+        margin-top: 10px;
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+
+
+      .smaller {
+        font-size: 14px;
+      }
+
+      .italic {
+        font-style: italic;
+      }
