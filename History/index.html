@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>History | Pancake Robotics</title>
+<title>Pancake Robotics</title>
 
 <link href="https://db.onlinewebfonts.com/c/21949b025df9045160fda6566f635b36?family=SyrupSans-Regular" rel="stylesheet">
 <link href="https://pancakerobotics.co.uk/assets/stylesheets/StyleSheet.css" rel="stylesheet">
@@ -12,7 +12,31 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://kit.fontawesome.com/78cf3ba70d.js" crossorigin="anonymous"></script>
 
+<script>
+  var appearancePref = localStorage.getItem('theme');
+  if (appearancePref) {
+    document.querySelector('html').classList.add('appearance--' + appearancePref);
+  }
+</script>
 
+<style>
+  .image-appearance--dark,
+  .image-appearance--light {
+    display: none;
+  }
+
+  html.appearance--dark {
+    .image-appearance--dark {
+      display: inline-block;
+    }
+  }
+
+  html.appearance--light {
+    .image-appearance--light {
+      display: inline-block;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -64,11 +88,93 @@
     <div class="timeline">
 
       <div class="timeline-entry">
+        <div class="timeline-date text-pink-500">1st October 2024</div>
+        <div class="timeline-content">
+          <img class="youtube-thumbnail" src="https://pancakerobotics.co.uk/assets/images/ftc-first-dive-wallpaper-lightdark.png" alt="official FIRST AGE wallpaper (light)">          
+          <div class="video-title MapleMonoFont accentText smaller italic">FIRST® DIVE™ presented by Qualcomm</div>
+          <div class="timeline-title text-pink-500">Pancake Robotics</div>
+          <p class="text-gray-300">
+            On this date, Pancake Robotics officially began! <br>
+            We are a student-led robotics team based at Queen Elizabeth's Grammar School in Alford, UK, competing at FTC-UK competitions!<br>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="timeline-entry">
+        <div class="timeline-date text-pink-500">8th October 2024</div>
+        <div class="timeline-content">
+
+          <img class="youtube-thumbnail" src="https://pancakerobotics.co.uk/assets/images/Pancake Robotics Chef Noah 16by9.png" alt="Chef Noah 16:9 Image">
+          <div class="video-title MapleMonoFont accentText smaller italic">Our mascott, Chef Noah, created by Harry</div>
+
+          <div class="timeline-title text-pink-500">Chef's Kiss</div>
+          <p class="text-gray-300">
+            After the group got together on the 1st of October, we realised we would need a logo for our Youtube Channel and other social media platforms.
+            Harry Herring, head of the design department, created our mascot "Chef Noah", which has become an iconic symbol for our team.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-date text-pink-500">Late 2024</div>
+        <div class="timeline-content">
+
+          <img class="youtube-thumbnail" src="https://pancakerobotics.co.uk/assets/images/PamBehindBars.jpg" alt="Chef Noah 16:9 Image">
+          <div class="video-title MapleMonoFont accentText smaller italic">Pam Cakes locked behind bars - The crime? That terrible pun.</div>
+
+          <div class="timeline-title text-pink-500">PUNcake Robotics</div>
+          <p class="text-gray-300">
+            Eventually we had to face the fact that our team name "Pancake Robotics" would lead to a lot of pancake-related puns.<br>
+            This led to our 2024/5 season robot being named "Pam Cakes". We decided that we should make it a tradition to name our robots after pancake-related puns!<br>
+          </p>
+
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-date text-pink-500">25th March 2025</div>
+        <div class="timeline-content">
+
+          <img class="youtube-thumbnail" src="https://pancakerobotics.co.uk/assets/images/Pancake robotics competition day.jpg" alt="Pam Cakes on Competition Day">
+          <div class="video-title MapleMonoFont accentText smaller italic">An image capturing the begining of one of our games. We are the robot in the top left of the playing field.</div>
+
+          <div class="timeline-title text-pink-500">Competition Day</div>
+          <p class="text-gray-300">
+            The time had come to show off all our hard work at the FTC UK & Ireland competition!<br>
+            Our team arrived at the venue (Sheffield-Hallam Uni), filled with excitement and a bit of nervousness. After a few setbacks (namely needing to file down part of our robot, as it exceeded size limits), we were ready to compete.<br>
+            We played 5 matches in total, winning 2 of them! Overall this placed us in 10th place! This was an amazing achievement for our first competition, and we can't wait to improve even further in the 2025/6 season!<br>
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-date text-pink-500">6th September 2025</div>
+        <div class="timeline-content">
+
+
+        <img src="https://pancakerobotics.co.uk/assets/images/FIRST_AGE-wallpaper-dark.png" alt="An image with two color modes" class="youtube-thumbnail image-appearance--dark">
+        <img src="https://pancakerobotics.co.uk/assets/images/FIRST_AGE-wallpaper-light.jpg" alt="An image with two color modes" class="youtube-thumbnail image-appearance--light">
+
+
+          <div class="video-title MapleMonoFont accentText smaller italic">FIRST® AGE™ presented by Qualcomm</div>
+
+          <div class="timeline-title text-pink-500">A New Season</div>
+          <p class="text-gray-300">
+            The new FTC UK & Ireland season, FIRST AGE, has officially begun!<br>
+            We are excited to start designing and building our new robot for this season, and can't wait to see what challenges and opportunities it brings!<br>
+          </p>
+        </div>
+      </div>
+
+      <!-- Template for future timeline entries:
+      <div class="timeline-entry">
         <div class="timeline-date text-pink-500">31st August 2024</div>
         <div class="timeline-content">
 
           <a class="video-image" href="https://www.youtube.com/watch?v=kgCSgKFfhQU" target="_blank">
-            <img class="youtube-thumbnail" src="https://i0.wp.com/www.bishoprook.com/wp-content/uploads/2021/05/placeholder-image-gray-16x9-1.png?ssl=1" alt="EP.num: Name Thumbnail">
+            <img class="youtube-thumbnail" src="https://i0.wp.com/www.bishoprook.com/wp-content/uploads/2021/05/placeholder-image-gray-16x9-1.png?ssl=1" alt="placeholder image">
           </a>
           <div class="video-title MapleMonoFont accentText smaller italic">Image Caption</div>
 
@@ -78,8 +184,7 @@
           </p>
         </div>
       </div>
-
-
+      -->
 
       <!-- ➕ Add more entries here -->
 
