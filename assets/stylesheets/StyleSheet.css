@@ -14,8 +14,20 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'SyrupSans-Regular';
+    src: url('syrup-sans.woff2') format('woff2'),
+         url('syrup-sans.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
   .pancakeprintfont{
     font-family: "pancake_printregular", "Maple Mono", sans-serif;
+  }
+
+  .syrupsansfont{
+    font-family: "SyrupSans-Regular", sans-serif;
   }
 
   :root {
