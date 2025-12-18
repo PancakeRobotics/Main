@@ -3,240 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pancake Robotics</title>
+<title>History | Pancake Robotics</title>
 
 <link href="https://db.onlinewebfonts.com/c/21949b025df9045160fda6566f635b36?family=SyrupSans-Regular" rel="stylesheet">
 <link href="https://pancakerobotics.co.uk/assets/stylesheets/StyleSheet.css" rel="stylesheet">
 <link href="https://pancakerobotics.co.uk/assets/stylesheets/LightModeStyles.css" rel="stylesheet">
+<link href="https://pancakerobotics.co.uk/assets/stylesheets/TimelineStyles.css?lightmode" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://kit.fontawesome.com/78cf3ba70d.js" crossorigin="anonymous"></script>
-
-<style>
-        .card-grid {
-      display: flex;
-      gap: 32px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-      .social-card {
-      background: rgba(110, 110, 110, 0.05);
-      border-radius: 14px;
-      padding: 24px;
-      width: fit-content;
-      text-align: center;
-      text-decoration: none;
-      color: #f5f6fa;
-      transition: transform 0.2s ease;;
-    }
-
-    .light-mode .social-card {
-      background-color: rgba(145, 145, 145, 0.1) !important;
-      color: #111111 !important;
-    }
-
-
-    .card-grid {
-      display: flex;
-      gap: 32px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-</style>
-
-
-
-
-    <style>
-
-      /* ─────────────── Video Grid ─────────────────────────────────────────────────────────────────────────── */
-      .video-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-        margin-bottom: 40px;
-        margin-top: -5px;
-
-        margin-left: 25px;
-        margin-right: 25px;
-      }
-
-      .video-grid.low {
-        margin-top: 30px;
-        margin-bottom: 0px;
-      }
-
-      .video-grid.desc {
-        margin-top: -35px;
-      }
-
-      .video-card {
-        background: #332F41;
-        border-radius: 14px;
-        padding: 12px;
-        width: calc(33.333% - 20px);
-        min-width: 280px;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-        text-align: center;
-        box-sizing: border-box;
-        transition: transform 0.2s ease;
-        text-decoration: none;
-        background-color: color-mix(in srgb, var(--title-color, rgba(51, 25, 71,0.5)) 100%, transparent);
-      }
-
-      .video-card:hover {
-        transform: translateY(-5px);
-      }
-
-      .youtube-embed,
-      .youtube-thumbnail {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        border-radius: 10px;
-        border: none;
-        object-fit: cover;
-      }
-
-      .video-title {
-        margin-top: 10px;
-        font-size: 1.05em;
-        color: #FCF434;
-        font-weight: bold;
-        font-size: 15px;
-        margin-bottom: 10px;
-      }
-      
-      .video-date {
-        color: #ffffff;
-        font-style: italic;
-        font-size: 14px;
-      }
-
-
-
-      /* ─────────────── Timeline ───────────────────────────────────────────────────────────────────────────── */
-      .timeline-wrapper {
-        display: flex;
-        justify-content: center;
-      }
-
-      .timeline {
-        position: relative;
-        width: 100%;
-        max-width: 700px;
-        padding: 40px 20px 60px 20px;
-      }
-
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 0;
-        bottom: 24px; /* stop the line before the end-cap */
-        width: 4px;
-        background: #FCF434;
-        transform: translateX(-50%);
-        z-index: 0;
-      }
-
-      /* Top Cap */
-        .timeline::after {
-          content: "";
-          position: absolute;
-          top: -2px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 20px;
-          height: 4px;
-          background: #FCF434;
-          z-index: 1;
-        }
-
-      .timeline-end-cap {
-        position: absolute;
-        left: 50%;
-        bottom: 12px;
-        transform: translateX(-50%);
-        width: 0;
-        height: 0;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-top: 12px solid #FCF434;
-        z-index: 1;
-      }
-
-      .timeline-entry {
-        position: relative;
-        margin-bottom: 80px;
-        text-align: center;
-      }
-
-      .timeline-date {
-        padding: 6px 12px;
-        border-radius: 8px;
-        display: inline-block;
-        margin-bottom: 14px;
-        background: rgba(17, 17, 17,1);
-        backdrop-filter: blur(15px);
-        color: #9C59D1;
-        font-weight: bold;
-        font-size: 1.1em;
-        border-radius: 20px;
-        position: relative;
-
-      }
-
-      .timeline-content {
-        background: rgba(17, 17, 17, 1);
-        backdrop-filter: blur(15px);
-        border-radius: 20px;
-        padding: 2rem;
-        margin: 2rem auto;
-        max-width: 1200px;
-        position: relative;
-      }
-
-      .timeline-video {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        border-radius: 10px;
-        border: none;
-      }
-
-      .timeline-title {
-        margin-top: 10px;
-        font-size: 1.1em;
-        font-weight: bold;
-      }
-
-      .purpleText{
-        color: #B883E0;
-      }
-      
-      .greenText{
-        color: #B7F684;
-      }
-
-      .smaller {
-        font-size: 14px;
-      }
-
-      .italic {
-        font-style: italic;
-      }
-
-
-    </style>
-
-
-
-
-
-
-
-
-
 
 
 </head>
@@ -296,10 +70,12 @@
           <a class="video-image" href="https://www.youtube.com/watch?v=kgCSgKFfhQU" target="_blank">
             <img class="youtube-thumbnail" src="https://i0.wp.com/www.bishoprook.com/wp-content/uploads/2021/05/placeholder-image-gray-16x9-1.png?ssl=1" alt="EP.num: Name Thumbnail">
           </a>
-          <div class="video-title greenText smaller italic">Image Caption</div>
+          <div class="video-title MapleMonoFont accentText smaller italic">Image Caption</div>
 
-          <div class="timeline-title accentText">Title</div>
-          Placeholder Text
+          <div class="timeline-title text-pink-500">Title</div>
+          <p class="text-gray-300">
+            Placeholder Text
+          </p>
         </div>
       </div>
 
@@ -399,4 +175,3 @@ fetchYouTubeData();
 
 </body>
 </html>
-
