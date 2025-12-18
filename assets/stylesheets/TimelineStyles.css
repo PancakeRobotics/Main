@@ -126,3 +126,14 @@
       .italic {
         font-style: italic;
       }
+
+    .light-mode .timeline-date {
+        padding: 6px 12px;
+        background: rgba(238, 238, 238,1);
+
+      }
+
+
+    .light-mode .timeline-content {
+        background: rgba(238, 238, 238, 1);
+    }
