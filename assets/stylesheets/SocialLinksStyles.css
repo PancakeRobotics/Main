@@ -1,0 +1,54 @@
+    .card-grid {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 75%;
+      justify-self: center;
+    }
+
+
+    .social-card {
+      background: rgba(110, 110, 110, 0.05);
+      border-radius: 14px;
+      padding: 24px;
+      width: fit-content;
+      text-align: center;
+      text-decoration: none;
+      color: var(--accent);
+      transition: transform 0.2s ease;;
+      border: 4px solid var(--accent);
+    }
+
+    .social-card-comingsoon {
+      background: rgba(255,255,255, 0.15);
+      border-radius: 14px;
+      padding: 24px;
+      width: fit-content;
+      text-align: center;
+      text-decoration: none;
+      color: #969696;
+      transition: transform 0.2s ease;;
+      border: 4px solid #969696;
+    }
+
+    .light-mode .social-card {
+      background-color: rgba(145, 145, 145, 0.1) !important;
+      color: #111111 !important;
+      border: 2px solid #e040fb !important;
+    }
+
+    .light-mode .social-card-comingsoon {
+      background-color: rgba(0, 0,0, 0.15) !important;
+      color: #111111 !important;
+      border: 2px solid #696969 !important;;
+      border-radius: 14px;
+      padding: 24px;
+      width: fit-content;
+      text-align: center;
+      text-decoration: none;
+      color: #696969;
+      transition: transform 0.2s ease;;
+    }
+
+    .social-card:hover { transform: scale(1.05) rotate(0deg); box-shadow: 0 0 20px var(--accent); }
