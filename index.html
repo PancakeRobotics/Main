@@ -6,43 +6,25 @@
 <title>Pancake Robotics</title>
 
 <link href="https://db.onlinewebfonts.com/c/21949b025df9045160fda6566f635b36?family=SyrupSans-Regular" rel="stylesheet">
+
 <link href="https://pancakerobotics.co.uk/assets/stylesheets/StyleSheet.css" rel="stylesheet">
 <link href="https://pancakerobotics.co.uk/assets/stylesheets/LightModeStyles.css" rel="stylesheet">
+<link href="https://pancakerobotics.co.uk/assets/stylesheets/SocialLinksStyles.css" rel="stylesheet">
+
 <script src="https://kit.fontawesome.com/78cf3ba70d.js" crossorigin="anonymous"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
-        .card-grid {
-      display: flex;
-      gap: 32px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+<script>
 
-      .social-card {
-      background: rgba(110, 110, 110, 0.05);
-      border-radius: 14px;
-      padding: 24px;
-      width: fit-content;
-      text-align: center;
-      text-decoration: none;
-      color: #f5f6fa;
-      transition: transform 0.2s ease;;
-    }
+function copy_to_clipboard() {
 
-    .light-mode .social-card {
-      background-color: rgba(145, 145, 145, 0.1) !important;
-      color: #111111 !important;
-    }
+    var text = "pancakeroboticsqegsalford@gmail.com"
 
+    navigator.clipboard.writeText( text );
+    alert("Email address copied to clipboard!");
+  }
 
-    .card-grid {
-      display: flex;
-      gap: 32px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-</style>
+</script>
 
 </head>
 
@@ -107,17 +89,65 @@
 </section>
 
 <section id="contact" class="py-8 px-6">
-  <div class="blurred-box text-center">
-    <div class="box-title">Contact Us</div><br>
+    <div class="blurred-box text-center">
+    <div class="box-title">Links & Contacts</div><br>
 
 <div class="card-grid">
       
-      <span class="social-card">
-        <div class="font-bold accentText"><i class="fa-solid fa-envelope"></i></div>
-        <i>pancakeroboticsqegsalford@gmail.com</i>
-      </span>
+      <button class="social-card" onclick="copy_to_clipboard()">
+        <i class="fa-regular fa-envelope"></i>
+      </button>
+
+      <a class="social-card" href="https://www.youtube.com/@pancakerobotics" target="_blank">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+
+      <a class="social-card" href="https://github.com/PancakeRobotics" target="_blank">
+        <i class="fa-brands fa-github"></i>
+      </a>
+
+      <a class="social-card-comingsoon">
+        <i class="fa-brands fa-discord"></i>
+      </a>
+
+      <a class="social-card-comingsoon">
+        <i class="fa-brands fa-bluesky"></i>
+      </a>
+
+      <a class="social-card-comingsoon">
+        <i class="fa-brands fa-twitter"></i>
+      </a>
+      
+      <a class="social-card-comingsoon">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+
+      <a class="social-card-comingsoon">
+        <i class="fa-brands fa-tumblr"></i>
+      </a>
+
+      <a class="social-card-comingsoon">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+
+      <a class="social-card-comingsoon">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+
+      <a class="social-card-comingsoon">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+
+      <a class="social-card-comingsoon">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+
+      <a class="social-card-comingsoon">
+        <i class="fa-brands fa-reddit"></i>
+      </a>
 </div>
 <br>
+
   </div>
 
 </section>
@@ -284,7 +314,6 @@ fetchYouTubeData();
 
 </body>
 </html>
-
 
 
 
