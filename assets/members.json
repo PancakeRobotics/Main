@@ -104,7 +104,8 @@
     "department": "Dmnt_Design",
     "role": "Concept Artist",
     "from": "2025-present",
-    "social": {}
+    "social": {},
+    "nicknames": {"Test1", "Test2"}
   },
   {
     "name": "Amber",
