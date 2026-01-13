@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +14,14 @@
 
 <script src="https://kit.fontawesome.com/78cf3ba70d.js" crossorigin="anonymous"></script>
 <script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  
+
+.social-card:hover {
+  transform: rotate(var(--rand-rot)) scale(1.06);
+}
+</style>
 
 <script>
 
@@ -92,7 +101,8 @@ function copy_to_clipboard() {
     <div class="blurred-box text-center">
     <div class="box-title">Links & Contacts</div><br>
 
-<div class="card-grid">
+
+<div class="card-grid" style="max-width: 75%; font-size: 30px;">
       
       <button class="social-card" onclick="copy_to_clipboard()">
         <i class="fa-regular fa-envelope"></i>
@@ -100,6 +110,10 @@ function copy_to_clipboard() {
 
       <a class="social-card" href="https://www.youtube.com/@pancakerobotics" target="_blank">
         <i class="fa-brands fa-youtube"></i>
+      </a>
+
+      <a class="social-card" href="https://www.tumblr.com/pancakerobotics" target="_blank">
+        <i class="icon-text fa-brands fa-tumblr"></i>
       </a>
 
       <a class="social-card" href="https://github.com/PancakeRobotics" target="_blank">
@@ -120,10 +134,6 @@ function copy_to_clipboard() {
       
       <a class="social-card-comingsoon">
         <i class="fa-brands fa-x-twitter"></i>
-      </a>
-
-      <a class="social-card-comingsoon">
-        <i class="fa-brands fa-tumblr"></i>
       </a>
 
       <a class="social-card-comingsoon">
@@ -237,10 +247,51 @@ function copy_to_clipboard() {
 </section>
 
 
+<style>
+  .columns-3 {
+  column-count: 3;
+  column-gap: 40px;
+  }
+
+  .columns-2 {
+  column-count: 2;
+  column-gap: 40px;
+  }
+
+  .credits {
+    font-size: 20px;
+    font-family: 'Maple Mono' monospace;
+  }
+</style>
+
+<section id="credits" class="py-8 px-6">
+    <div class="blurred-box text-center">
+    <div class="box-title">Credits</div><br>
+    <div class="columns-3 credits">
+        <i class="fa-regular fa-envelope"></i><i class="fa-brands fa-youtube"></i><i class="fa-brands fa-tumblr"></i><i class="fa-brands fa-github"></i> ran by Harry Herring<br>
+        <i class="fa-brands fa-discord"></i> COMING SOON<br>
+        <i class="fa-brands fa-bluesky"></i> COMING SOON<br>
+        <i class="fa-brands fa-twitter"></i> COMING SOON<br>
+        <i class="fa-brands fa-x-twitter"></i> COMING SOON<br>
+        <i class="fa-brands fa-instagram"></i> COMING SOON<br>
+        <i class="fa-brands fa-tiktok"></i> COMING SOON<br>
+        <i class="fa-brands fa-facebook"></i> COMING SOON<br>
+        <i class="fa-brands fa-linkedin"></i> COMING SOON<br>
+        <i class="fa-brands fa-reddit"></i> COMING SOON<br>
+      Website by Harry Herring<br>
+      Pancake Robotics logo by Harry Herring<br>
+      <span style="font-family: 'Pancake Print'; font-size: 17px;">Pancake Print</span> font by Harry Herring<br>
+      Icons from <a href="https://fontawesome.com" target="_blank" rel="noopener noreferrer" class="accentText underline">Font Awesome</a>
+    </div>
+  </div>
+</section>
+
+
 <footer class="blurred-bar">
   Pancake Robotics | QEGS Alford, UK | FTC UK & Ireland | Team 27880<br>
   <span style="font-size: 20px; opacity: 50%;">Website by Harry Herring</span>
 </footer>
+
 </main>
 </div>
 
@@ -311,7 +362,22 @@ fetchYouTubeData();
 })();
 </script>
 
-
+<script>
+// Set a random rotation (--rand-rot) on hover/focus for social cards
+(function() {
+  const minRot = -2; // minimum rotation in degrees
+  const maxRot = 2;  // maximum rotation in degrees
+  const selector = '.social-card, .social-card-comingsoon';
+  document.querySelectorAll(selector).forEach(el => {
+    function applyRandom() {
+      var randomDeg = (Math.random() * (maxRot - minRot) + minRot).toFixed(2) * 7;
+      el.style.setProperty('--rand-rot', `${randomDeg}deg`);
+    }
+    el.addEventListener('mouseenter', applyRandom);
+    el.addEventListener('focus', applyRandom); // keyboard users
+  });
+})();
+</script>
 
 </body>
 </html>
