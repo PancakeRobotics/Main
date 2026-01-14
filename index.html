@@ -17,11 +17,55 @@
 
 <style>
   
-
 .social-card:hover {
   transform: rotate(var(--rand-rot)) scale(1.06);
 }
+.social-card, .social-card-comingsoon {
+  transition: transform 180ms ease;
+}
+.social-card:focus {
+  transform: rotate(var(--rand-rot)) scale(1.06);
+}
+.YouTubeCard:hover {
+  transform: none !important;
+}
+.YouTubeCard img {
+  transition: none !important;
+} 
 
+#about .pair-text {
+  height: 12rem !important;
+  overflow: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 0 0.5rem;
+}
+#about .pair-text p {
+  margin: 0 !important;
+  line-height: 1.4;
+}
+#about .pair-divider {
+  height: 12rem !important;
+}
+#about .pair-image {
+  width: 12rem !important;
+  height: 12rem !important;
+  object-fit: cover !important;
+  border-radius: 0.75rem !important;
+}
+
+@media (max-width: 767px) {
+  #about .pair-text { height: auto !important; padding: 1rem !important; }
+  #about .pair-image {
+    width: min(80vw, 16rem) !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    max-width: 80vw !important;
+  }
+}
 
 </style>
 
@@ -69,33 +113,42 @@ function copy_to_clipboard() {
   </div>
 </nav>
 
+<style>
+  .youtube-title {
+    font-family: 'Pancake Print', 'maple mono';
+    letter-spacing: 1.5px;
+  }
+</style>
+
 
 <main>
 <section id="about" class="py-8 px-6">
   <div class="blurred-box text-center">
     <div class="box-title"><i class="fa-solid fa-user-group" style="font-size: 18px;"></i> About Us</div>
-    <p class="max-w-4xl mx-auto text-gray-300 mt-4">
-      Pancake Robotics is a small Robotics Club ran by students of QEGS Alford. 
-      
-      <br>
-      Since starting in the 2024/5 season, 'Into The Deep' (Presented by RTX), we have been participating in
-      <a href="https://firstuk.org" target="_blank" rel="noopener noreferrer" class="accentText underline">FIRST Tech Challenge UK & Ireland’s</a>
-      regional competitions, with the aim of qualifying for the national championships.
-    </p><br>
-      <div class="complimentLine mx-auto my-6"></div><br>
-      <a class="YouTubeCard" href="https://www.youtube.com/@pancakerobotics">
-          <div class="flex flex-col md:flex-row items-center md:items-start gap-6 content-center">
-            <div class="flex-shrink-0 w-32 h-32 md:w-48 md:h-48 rounded-xl overflow-hidden border-4 border-green-400 shadow-glow">
-            <img id="ytAvatar" alt="YouTube Logo" class="w-full h-full object-cover">
-          </div>
-          <div class="flex-1 text-left">
-            <h2 id="ytTitle" class="pancakeprintfont text-2xl font-bold glow mb-2">Loading...</h2>
-            <p id="ytSubs" class="text-green-400 mb-2"></p>
-            <p id="ytDesc" class="text-gray-300 mb-2" style="font-size: 16px;"></p>
-          </div>
-        </div>
-      </a>
+    <div class="flex flex-col md:flex-row items-center md:items-center gap-6">
+      <div class="flex-1 text-gray-300 mt-4 md:mt-0 text-center pair-text" style="height: 12rem; overflow: auto;">
+        <p>
+          Pancake Robotics is a small Robotics Club ran by students of QEGS Alford. 
+          
+          <br>
+          Since starting in the 2024/5 season, 'Into The Deep' (Presented by RTX), we have been participating in
+          <a href="https://firstuk.org" target="_blank" rel="noopener noreferrer" class="accentText underline">FIRST Tech Challenge UK & Ireland’s</a>
+          regional competitions, with the aim of qualifying for the national championships.
+        </p>
+      </div>
+
+      <div class="hidden md:block w-px bg-green-400 mx-6 pair-divider" style="height: 12rem;"></div>
+      <div class="block md:hidden h-px bg-green-400 w-full my-6"></div>
+
+      <div class="flex-shrink-0 mt-4 md:mt-0 flex items-center">
+        <img src="https://pancakerobotics.co.uk/assets/images/SquareLogo.png" class="rounded-xl overflow-hidden border-4 border-green-400 shadow-glow pair-image mx-auto md:mx-0">
+      </div>
+    </div>
+
+
+
   </div>
+  
 
 </section>
 
@@ -262,7 +315,6 @@ function copy_to_clipboard() {
 
   .credits {
     font-size: 20px;
-    font-family: 'Maple Mono' monospace;
   }
 
 
@@ -277,6 +329,13 @@ function copy_to_clipboard() {
   }
 }
 
+  .credits-title {
+    font-size: 22px;
+    font-family: 'Maple Mono';
+    font-weight: bold;
+  }
+
+
 </style>
 
 <section id="credits" class="py-8 px-6">
@@ -289,27 +348,24 @@ function copy_to_clipboard() {
     </div>
 
 
-  <div class="auto-grid mt-4 credits">
+  <div class="auto-grid mt-4 credits" style="margin-top: -30px;">
 
-    <div><h2 class="text-pink-500" style="text-decoration: underline; scale: 1.2;">Socials!</h2><hr style="height:10px; visibility:hidden;" />
+    <div><h2 class="credits-title text-pink-500">Socials!</h2><hr style="height:10px; visibility:hidden;" />
         <i class="fa-regular fa-envelope"></i><i class="fa-brands fa-tumblr"></i><i class="fa-brands fa-github"></i> ran by Harry Herring<br>
         <i class="fa-brands fa-youtube"></i> ran by the team<br>
 
     </div>
 
-    <div><h2 class="text-pink-500" style="text-decoration: underline; scale: 1.2;">Website & Fonts!</h2><hr style="height:10px; visibility:hidden;" />
-      Website by Harry Herring<br>
-      Pancake Robotics logo by Harry Herring<br>
+    <div><h2 class="credits-title text-pink-500">Fonts!</h2><hr style="height:10px; visibility:hidden;" />
       <span style="font-family: 'Pancake Print'; font-size: 17px;">'Pancake Print'</span> font by Harry Herring<br>
       <span style="font-family: 'SyrupSans-Regular';">'Syrup Sans'</span> font by <a href="https://www.onlinewebfonts.com/download/21949b025df9045160fda6566f635b36" target="_blank" rel="noopener noreferrer" class="accentText underline">Emil Bertell</a><br>
       <span style="font-family: 'Maple Mono'; font-size: 17px;">'Maple Mono'</span> font by <a href="https://github.com/subframe7536/maple-font" target="_blank" rel="noopener noreferrer" class="accentText underline">subframe7536</a><br>
-      Icons from <a href="https://fontawesome.com" target="_blank" rel="noopener noreferrer" class="accentText underline">Font Awesome</a> 
     </div>
 
-    <div><h2 class="text-pink-500" style="text-decoration: underline; scale: 1.2;">Other!</h2><hr style="height:10px; visibility:hidden;" />
-      <i class="fa-solid fa-star" style="font-size: 14px;"></i> Sponsor 1 Placeholder<br>
-      <i class="fa-solid fa-star" style="font-size: 14px;"></i> Sponsor 2 Placeholder<br>
-      <i class="fa-solid fa-star" style="font-size: 14px;"></i> Sponsor 3 Placeholder<br>
+    <div><h2 class="credits-title text-pink-500">Other!</h2><hr style="height:10px; visibility:hidden;" />
+      Website by Harry Herring<br>
+      Pancake Robotics logo by Harry Herring<br>
+      Icons from <a href="https://fontawesome.com" target="_blank" rel="noopener noreferrer" class="accentText underline">Font Awesome</a> 
     </div>
 
   </div>
@@ -328,34 +384,6 @@ function copy_to_clipboard() {
 <script src="https://pancakerobotics.co.uk/assets/stylesheets/PageElements.js?"></script>
 
 <script>
-const channelId = "UCBVMvcvmw_-3hT7e-30YkSQ";
-const apiKey = "AIzaSyC1Edh-Z5LKxPSDW_p0ES5t4PBUl4zDizw";
-
-async function fetchYouTubeData() {
-  const url = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${apiKey}`;
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-    if (!data.items || data.items.length === 0) return;
-
-    const channel = data.items[0];
-    const avatar = channel.snippet.thumbnails.high.url;
-    const title = channel.snippet.title;
-    const desc = channel.snippet.description;
-    const subs = channel.statistics.subscriberCount;
-
-    document.getElementById("ytAvatar").src = avatar;
-    document.getElementById("ytTitle").innerText = title;
-    document.getElementById("ytDesc").innerText = desc.length > 200 ? desc.slice(0, 200) + "..." : desc;
-    document.getElementById("ytSubs").innerText = `${Number(subs).toLocaleString()} subscribers`;
-    document.getElementById("ytLink").href = `https://www.youtube.com/channel/${channelId}`;
-  } catch (err) {
-    console.error("YouTube API error:", err);
-  }
-}
-
-// Load on page start
-fetchYouTubeData();
 
 (function() {
   const root = document.documentElement;
@@ -393,10 +421,9 @@ fetchYouTubeData();
 </script>
 
 <script>
-// Set a random rotation (--rand-rot) on hover/focus for social cards
 (function() {
-  const minRot = -2; // minimum rotation in degrees
-  const maxRot = 2;  // maximum rotation in degrees
+  const minRot = -2;
+  const maxRot = 2;
   const selector = '.social-card, .social-card-comingsoon';
   document.querySelectorAll(selector).forEach(el => {
     function applyRandom() {
@@ -404,7 +431,7 @@ fetchYouTubeData();
       el.style.setProperty('--rand-rot', `${randomDeg}deg`);
     }
     el.addEventListener('mouseenter', applyRandom);
-    el.addEventListener('focus', applyRandom); // keyboard users
+    el.addEventListener('focus', applyRandom);
   });
 })();
 </script>
