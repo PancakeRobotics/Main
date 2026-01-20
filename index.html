@@ -67,6 +67,99 @@
   }
 }
 
+/* Icon-box component (sizes driven by --pair-size so neighbors stay in sync) */
+.icon-section { --pair-size: 12rem; }
+.icon-box {
+  width: var(--pair-size);
+  height: var(--pair-size);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: calc(var(--pair-size) * 0.54);
+}
+.icon-box__icon { font-size: calc(var(--pair-size) * 0.54); line-height: 1; }
+.icon-section .pair-text { height: var(--pair-size) !important; overflow: auto !important; display: flex !important; align-items: center !important; justify-content: center !important; text-align: center !important; padding: 0 0.5rem; }
+.icon-section .pair-divider { height: var(--pair-size) !important; }
+
+/* small variant: add this class to the section to scale everything down */
+.icon-section--sm { --pair-size: 10rem; }
+
+@media (max-width: 767px) {
+  .icon-section { --pair-size: 10rem; }
+  .icon-section .pair-text { height: auto !important; padding: 1rem !important; }
+  .icon-box { width: min(80vw, var(--pair-size)) !important; height: auto !important; padding: 1.25rem 0 !important; font-size: calc(min(80vw, var(--pair-size)) * 0.3) !important; }
+}
+
+/* Stack variant: force vertical stacking and reduce gaps for compact layout */
+.icon-section--stack { flex-direction: column !important; gap: 0.5rem !important; align-items: center !important; }
+.icon-section--stack .icon-box { margin-bottom: 0.25rem; }
+.icon-section--stack .pair-text { justify-content: center !important; text-align: center !important; }
+
+/* Ensure left-aligned utilities revert when stacking */
+.icon-section--stack .pair-text.pair-text--left { justify-content: center !important; text-align: center !important; }
+
+@media (min-width: 768px) {
+  .icon-section--stack { gap: 0.5rem; }
+
+  /* Desktop: arrange icon sections in a 2x2 grid */
+  .icon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .icon-grid .icon-section { margin: 0; }
+  /* If a section uses the stack helper, revert to row layout inside the desktop grid */
+  .icon-grid .icon-section.icon-section--stack { flex-direction: row !important; gap: 1rem !important; align-items: center !important; }
+  /* show divider on desktop */
+  .icon-section .pair-divider { display: block !important; }
+}
+
+/* hide pair divider on small screens */
+@media (max-width: 767px) { .icon-section .pair-divider { display: none !important; } }
+
+/* Icon grid defaults and mobile-friendly dividers */
+.icon-grid { display: block; }
+.icon-grid .icon-item { padding: 0.35rem 0.5rem; }
+.mobile-only { display: none; }
+
+@media (min-width: 768px) {
+  .icon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .icon-grid .icon-item { padding: 0.5rem; }
+  .mobile-only { display: none !important; }
+}
+
+@media (max-width: 767px) {
+  .mobile-only { display: block !important; }
+}
+
+/* Utility to left-align pair-text blocks while preserving the pair-text layout.
+   Use a more specific selector so it overrides the .icon-section .pair-text rule that uses !important. */
+.icon-section .pair-text.pair-text--left { justify-content: flex-start !important; text-align: left !important; }
+.icon-section .pair-text.pair-text--left p { width: 100%; text-align: left; }
+
+/* On small screens, fall back to centered layout for readability */
+@media (max-width: 767px) {
+  .icon-section .pair-text.pair-text--left { justify-content: center !important; text-align: center !important; }
+  .icon-section .pair-text.pair-text--left p { text-align: center; }
+}
+
+@media (max-width: 767px) {
+  /* Make icons larger on mobile by increasing the baseline pair-size */
+  .icon-section { --pair-size: 12rem; }
+  .icon-section .pair-text { height: auto !important; padding: 1rem !important; }
+  .icon-box { width: min(80vw, var(--pair-size)) !important; height: auto !important; padding: 1.5rem 0 !important; font-size: calc(min(80vw, var(--pair-size)) * 0.5) !important; }
+  /* Extra boost for stacked layout */
+  .icon-section--stack .icon-box { font-size: calc(min(80vw, var(--pair-size)) * 0.65) !important; }
+}
+
+/* Mobile overflow & box-sizing fixes to prevent touch-width issues */
+html, body, .content { max-width: 100vw; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, iframe, video { max-width: 100%; height: auto; display: block; }
+.icon-grid, .card-grid, .auto-grid, .card-grid-size { box-sizing: border-box; max-width: 100%; }
+.icon-box { box-sizing: border-box; }
+
+.icon-item{transition: transform 0.3s ease, box-shadow 0.3s ease; will-change: transform;}
+.icon-item:hover { transform: scale(1.05) rotate(0deg);}
+
 </style>
 
 <script>
@@ -155,9 +248,89 @@ function copy_to_clipboard() {
 
 
 
+<!-- Icon variant: About with icon on LEFT -->
+<section id="pages" class="py-8 px-6 icon-section icon-section--sm icon-section--stack">
+  <div class="blurred-box">
+    <div class="box-title"><i class="fa-solid fa-map-location-dot" style="font-size: 18px;"></i> Navigation</div>
+
+    <div class="icon-grid">
+      <a class="icon-item" href="https://pancakerobotics.co.uk">
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="flex-shrink-0 mt-4 md:mt-0">
+            <div class="icon-box mx-auto md:mx-0">
+              <i class="fa-solid fa-house"></i>
+            </div>
+          </div>
+          <div class="flex-1 text-gray-300 mt-4 md:mt-0 pair-text pair-text--left" style="height: 12rem; overflow: auto;">
+            <p>
+              <span class="accentText" style="text-align: left; text-decoration: underline;">Home</span><br>
+              The page you are currently on!
+            </p>
+          </div>
+        </div>
+        <div class="complimentLine mx-auto my-6 mobile-only"></div>
+      </a>
+
+      <a class="icon-item" href="https://pancakerobotics.co.uk/Inventory">
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="flex-shrink-0 mt-4 md:mt-0">
+            <div class="icon-box mx-auto md:mx-0">
+              <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+          </div>
+          <div class="flex-1 text-gray-300 mt-4 md:mt-0 pair-text pair-text--left" style="height: 12rem; overflow: auto;">
+            <p>
+              <span class="accentText" style="text-align: left; text-decoration: underline;">Inventory</span><br>
+              A page to help us keep track of parts we have!
+            </p>
+          </div>
+        </div>
+        <div class="complimentLine mx-auto my-6 mobile-only"></div>
+      </a>
+
+      <a class="icon-item" href="https://pancakerobotics.co.uk/Members">
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="flex-shrink-0 mt-4 md:mt-0">
+            <div class="icon-box mx-auto md:mx-0">
+              <i class="fa-solid fa-user-group"></i>
+            </div>
+          </div>
+          <div class="flex-1 text-gray-300 mt-4 md:mt-0 pair-text pair-text--left" style="height: 12rem; overflow: auto;">
+            <p>
+              <span class="accentText" style="text-align: left; text-decoration: underline;">Members</span><br>
+              Info about all members of Pancake Robotics, their roles and other places you can find them online!
+            </p>
+          </div>
+        </div>
+        <div class="complimentLine mx-auto my-6 mobile-only"></div>
+      </a>
+
+      <a class="icon-item" href="https://pancakerobotics.co.uk/History">
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="flex-shrink-0 mt-4 md:mt-0">
+            <div class="icon-box mx-auto md:mx-0">
+              <i class="fa-solid fa-book-bookmark"></i>
+            </div>
+          </div>
+          <div class="flex-1 text-gray-300 mt-4 md:mt-0 pair-text pair-text--left" style="height: 12rem; overflow: auto;">
+            <p>
+              <span class="accentText" style="text-align: left; text-decoration: underline;">History</span><br>
+              Discover the history of Pancake Robotics, in a neat timeline format!
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
 
 <section id="contact" class="py-8 px-6">
     <div class="blurred-box text-center">
+
+
     <div class="box-title"><i class="fa-solid fa-link" style="font-size: 18px;"></i> Links + Contacts</div><br>
 
 <style>
@@ -281,7 +454,7 @@ function copy_to_clipboard() {
           <div class="perforation perforation-right"><div></div><div></div><div></div><div></div></div>
           <div class="imagebox sponsor-info-cardB" style="background:#000;">
             <div style="text-align:center; padding:0.5rem;">
-              <h3 class="glow MapleMonoFont" style="color:#48ffab; margin:0; font-size: 18px;">but wait, there's more!</h3>
+              <h3 class="accentText glow MapleMonoFont" style="margin:0; font-size: 18px;">but wait, there's more!</h3>
               <p style="margin:0; color:#fff;">Your name will also appear in the description of every youtube video we post while you're a sponsor!</p>
             </div>
           </div>
@@ -292,7 +465,7 @@ function copy_to_clipboard() {
           <div class="perforation perforation-right"><div></div><div></div><div></div><div></div></div>
           <div class="imagebox sponsor-info-cardC" style="background:#000;">
             <div style="text-align:center; padding:0.5rem;">
-              <h3 class="glow MapleMonoFont" style="color:#48ffab; margin:0; font-size: 18px;">and remember:</h3>
+              <h3 class="accentText glow MapleMonoFont" style="margin:0; font-size: 18px;">and remember:</h3>
               <p style="margin:0; color:#fff;">We apreciate every bit of support, both big and small. Thank you for going on this journey with us!</p>
             </div>
           </div>
