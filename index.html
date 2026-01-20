@@ -8,7 +8,7 @@
 
 <link href="https://db.onlinewebfonts.com/c/21949b025df9045160fda6566f635b36?family=SyrupSans-Regular" rel="stylesheet">
 
-<link href="https://pancakerobotics.co.uk/assets/stylesheets/StyleSheet.css" rel="stylesheet">
+<link href="https://pancakerobotics.co.uk/assets/stylesheets/StyleSheet.css?" rel="stylesheet">
 <link href="https://pancakerobotics.co.uk/assets/stylesheets/LightModeStyles.css" rel="stylesheet">
 <link href="https://pancakerobotics.co.uk/assets/stylesheets/SocialLinksStyles.css" rel="stylesheet">
 
@@ -91,7 +91,7 @@ function copy_to_clipboard() {
 
 <header class="flex flex-wrap justify-between items-center px-6 py-4 w-full z-50 relative blurred-bar">
   <h1 class="pancakeprintfont text-3xl font-bold accentText">Pancake Robotics</h1>
-  <h1 class="MapleMonoFont text-xl sm:text-2xl font-bold text-pink-500 mt-2 sm:mt-0 sm:ml-auto complementText">
+  <h1 class="MapleMonoFont text-xl sm:text-2xl font-bold text-pink-500 mt-2 sm:mt-0 sm:ml-auto complementText text-center">
     one pancake, many opportunities!
   </h1>
 </header>
@@ -158,10 +158,49 @@ function copy_to_clipboard() {
 
 <section id="contact" class="py-8 px-6">
     <div class="blurred-box text-center">
-    <div class="box-title"><i class="fa-solid fa-link" style="font-size: 18px;"></i> Links & Contacts</div><br>
+    <div class="box-title"><i class="fa-solid fa-link" style="font-size: 18px;"></i> Links + Contacts</div><br>
+
+<style>
+  .card-grid-size {
+    max-width: 75%;
+    font-size: 30px;
+  }
+
+  .sponsor-info-cardA, .sponsor-info-cardB, .sponsor-info-cardC{
+    height:auto;
+  }
+
+@media (max-width: 768px) {
+  .card-grid-size {
+    max-width: 100%;
+    font-size: 30px;
+    width: fixed;
+  }
+
+      .social-card, .social-card-comingsoon {
+      width: fixed;
+      padding: 16px;
+    }
+
+    .sponsor-info-cardA{
+      height: 160px;
+    }
+
+    .sponsor-info-cardB{
+      height: 190px;
+    }
+
+    .sponsor-info-cardC{
+      height: 160px;
+    }
+
+}
 
 
-<div class="card-grid" style="max-width: 75%; font-size: 30px;">
+</style>
+
+
+<div class="card-grid card-grid-size">
       
       <button class="social-card" onclick="copy_to_clipboard()">
         <i class="fa-regular fa-envelope"></i>
@@ -224,12 +263,12 @@ function copy_to_clipboard() {
 <section id="sponsors" class="py-8 px-6">
   <div class="blurred-box">
     <div class="box-title"><i class="fa-solid fa-star" style="font-size: 18px;"></i> Sponsors</div>
-    <div class="auto-grid mt-4">
+    <div class="auto-grid mt-3">
 
         <div class="film-card" style="--angle-sponsor:5deg; pointer-events: none;">
           <div class="perforation perforation-left"><div></div><div></div><div></div><div></div></div>
           <div class="perforation perforation-right"><div></div><div></div><div></div><div></div></div>
-          <div class="imagebox" style="background:#000; height:auto;">
+          <div class="imagebox sponsor-info-cardA" style="background:#000;">
             <div style="text-align:center; padding:0.5rem;">
               <h3 class="glow MapleMonoFont" style="color:#48ffab; margin:0; font-size: 18px;">want to sponsor us?</h3>
               <p style="margin:0; color:#fff;">Please get in touch via email! Your logo and name will appear here, along with how you support us!</p>
@@ -240,7 +279,7 @@ function copy_to_clipboard() {
         <div class="film-card" style="--angle-sponsor:-2deg; pointer-events: none;">
           <div class="perforation perforation-left"><div></div><div></div><div></div><div></div></div>
           <div class="perforation perforation-right"><div></div><div></div><div></div><div></div></div>
-          <div class="imagebox" style="background:#000; height:auto;">
+          <div class="imagebox sponsor-info-cardB" style="background:#000;">
             <div style="text-align:center; padding:0.5rem;">
               <h3 class="glow MapleMonoFont" style="color:#48ffab; margin:0; font-size: 18px;">but wait, there's more!</h3>
               <p style="margin:0; color:#fff;">Your name will also appear in the description of every youtube video we post while you're a sponsor!</p>
@@ -251,15 +290,14 @@ function copy_to_clipboard() {
         <div class="film-card" style="--angle-sponsor:4deg; pointer-events: none;">
           <div class="perforation perforation-left"><div></div><div></div><div></div><div></div></div>
           <div class="perforation perforation-right"><div></div><div></div><div></div><div></div></div>
-          <div class="imagebox" style="background:#000; height:auto;">
+          <div class="imagebox sponsor-info-cardC" style="background:#000;">
             <div style="text-align:center; padding:0.5rem;">
               <h3 class="glow MapleMonoFont" style="color:#48ffab; margin:0; font-size: 18px;">and remember:</h3>
               <p style="margin:0; color:#fff;">We apreciate every bit of support, both big and small. Thank you for going on this journey with us!</p>
             </div>
           </div>
         </div>
-
-
+        
 <!-- Sponsor card template:
       <a href="#" target="_blank" rel="noopener noreferrer">
         <div class="film-card" style="--angle-sponsor:5deg;">
@@ -362,20 +400,23 @@ function copy_to_clipboard() {
   <div class="auto-grid mt-4 credits" style="margin-top: -30px;">
 
     <div><h2 class="credits-title text-pink-500">Socials!</h2><hr style="height:10px; visibility:hidden;" />
-        <i class="fa-regular fa-envelope"></i><i class="fa-brands fa-tumblr"></i><i class="fa-brands fa-github"></i> ran by Harry Herring<br>
-        <i class="fa-brands fa-youtube"></i> ran by the team<br>
-
+        <i class="fa-regular fa-envelope"></i><i class="fa-brands fa-tumblr"></i><i class="fa-brands fa-github"></i> ran by Harry<br>
+        <br>
+        <span class="text-pink-500 MapleMonoFont"><i class="fa-brands fa-youtube"></i> YouTube: <br></span>
+        Videos edited by Archie<br>
+        Captions written by <br>
+        Scripts by
     </div>
-
+    
     <div><h2 class="credits-title text-pink-500">Fonts!</h2><hr style="height:10px; visibility:hidden;" />
-      <span style="font-family: 'Pancake Print'; font-size: 17px;">'Pancake Print'</span> font by Harry Herring<br>
+      <span style="font-family: 'Pancake Print'; font-size: 17px;">'Pancake Print'</span> font by Harry<br>
       <span style="font-family: 'SyrupSans-Regular';">'Syrup Sans'</span> font by <a href="https://www.onlinewebfonts.com/download/21949b025df9045160fda6566f635b36" target="_blank" rel="noopener noreferrer" class="accentText underline">Emil Bertell</a><br>
-      <span style="font-family: 'Maple Mono'; font-size: 17px;">'Maple Mono'</span> font by <a href="https://github.com/subframe7536/maple-font" target="_blank" rel="noopener noreferrer" class="accentText underline">subframe7536</a><br>
+      <span style="font-family: 'Maple Mono'; font-size: 16px;">'Maple Mono'</span> font by <a href="https://github.com/subframe7536/maple-font" target="_blank" rel="noopener noreferrer" class="accentText underline">subframe7536</a><br>
     </div>
 
     <div><h2 class="credits-title text-pink-500">Other!</h2><hr style="height:10px; visibility:hidden;" />
-      Website by Harry Herring<br>
-      Pancake Robotics logo by Harry Herring<br>
+      Website by Harry<br>
+      Pancake Robotics logo by Harry<br>
       Icons from <a href="https://fontawesome.com" target="_blank" rel="noopener noreferrer" class="accentText underline">Font Awesome</a> 
     </div>
 
