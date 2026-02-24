@@ -44,9 +44,9 @@ const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 const navLinks = navMenu.querySelectorAll('a');
 
-const startTopDesktop = 120; // desktop initial
+const startTopDesktop = 16; // desktop initial
 const endTopDesktop = 16;    // desktop final
-const startTopMobile = 140;  // mobile initial
+const startTopMobile = 16;  // mobile initial
 const endTopMobile = 16;     // mobile final
 
 // Scroll-based top animation
@@ -65,6 +65,9 @@ function updateNavPosition() {
 // Initialize
 updateNavPosition();
 
+// Update on scroll and resize
+window.addEventListener('scroll', updateNavPosition);
+window.addEventListener('resize', updateNavPosition);
 
 // Nav toggle functionality
 navToggle.addEventListener('click', () => {
