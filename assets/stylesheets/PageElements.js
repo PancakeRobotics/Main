@@ -62,6 +62,10 @@ function updateNavPosition() {
   navToggle.style.top = startTop - (startTop - endTop) * t + "px";
 }
 
+// Initialize
+updateNavPosition();
+
+
 // Nav toggle functionality
 navToggle.addEventListener('click', () => {
   navToggle.classList.toggle('active');
