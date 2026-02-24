@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inventory | Pancake Robotics</title>
+<link rel="icon" type="image/x-icon" href="https://pancakerobotics.co.uk/assets/images/chef_noah_icon.png">
 
 <link href="https://db.onlinewebfonts.com/c/21949b025df9045160fda6566f635b36?family=SyrupSans-Regular" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -12,7 +13,18 @@
 <script src="https://kit.fontawesome.com/78cf3ba70d.js" crossorigin="anonymous"></script>
 
 <style>
+body { overflow-x: auto !important; }
+.overflow-x-auto { -webkit-overflow-scrolling: touch; }
 
+#partsTable td { word-break: keep-all; }
+
+@media (max-width: 767px) {
+  #partsTable th:nth-child(3),
+  #partsTable td:nth-child(3) {
+    display: none;
+  }
+  #partsTable td { white-space: nowrap; }
+}
 </style>
 </head>
 
@@ -23,10 +35,15 @@
 <div class="content relative">
 
 <header class="flex flex-wrap justify-between items-center px-6 py-4 w-full z-50 relative blurred-bar">
-  <h1 class="pancakeprintfont text-3xl font-bold accentText">Pancake Robotics - Inventory</h1>
-  <h1 class="MapleMonoFont text-xl sm:text-2xl font-bold text-pink-500 mt-2 sm:mt-0 sm:ml-auto complementText">
+  <h1 class="pancakeprintfont text-3xl font-bold accentText">
+    <img src="https://pancakerobotics.co.uk/assets/images/chef_noah_icon.svg" alt="logo" class="inline w-8 h-8 mr-1 align-text-bottom" />
+    Pancake Robotics - Inventory
+  </h1>
+  <h1></h1>
+  <h1 class="MapleMonoFont text-xl sm:text-2xl font-bold text-pink-500 mt-2 sm:mt-0 complementText text-center">
     one pancake, many opportunities!
   </h1>
+  <h1></h1>
 </header>
 
 <div id="navToggle" class="nav-toggle">
@@ -200,7 +217,7 @@
 </main>
 </div>
 
-<script src="https://pancakerobotics.co.uk/assets/stylesheets/PageElements.js?"></script>
+<script src="https://pancakerobotics.co.uk/assets/stylesheets/PageElements.js?3"></script>
 <script>
   (function() {
   const root = document.documentElement;
@@ -235,6 +252,20 @@
     });
   }
 })();
+</script>
+
+<script>
+  // close nav menu when clicking outside it
+  document.addEventListener('click', function(e) {
+    const navMenu = document.getElementById('navMenu');
+    const navToggle = document.getElementById('navToggle');
+    if (navMenu && navToggle && navMenu.classList.contains('active')) {
+      if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+      }
+    }
+  });
 </script>
 
 </body>
