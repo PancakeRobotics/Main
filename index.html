@@ -648,6 +648,20 @@ function copy_to_clipboard() {
 </script>
 
 <script>
+  // close nav menu when clicking outside it
+  document.addEventListener('click', function(e) {
+    const navMenu = document.getElementById('navMenu');
+    const navToggle = document.getElementById('navToggle');
+    if (navMenu && navToggle && navMenu.classList.contains('active')) {
+      if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+      }
+    }
+  });
+</script>
+
+<script>
 (function() {
   const minRot = -2;
   const maxRot = 2;
@@ -665,6 +679,7 @@ function copy_to_clipboard() {
 
 </body>
 </html>
+
 
 
 
