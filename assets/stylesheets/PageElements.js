@@ -62,13 +62,6 @@ function updateNavPosition() {
   navToggle.style.top = startTop - (startTop - endTop) * t + "px";
 }
 
-// Initialize
-updateNavPosition();
-
-// Update on scroll and resize
-window.addEventListener('scroll', updateNavPosition);
-window.addEventListener('resize', updateNavPosition);
-
 // Nav toggle functionality
 navToggle.addEventListener('click', () => {
   navToggle.classList.toggle('active');
