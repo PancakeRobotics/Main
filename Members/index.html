@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Members | Pancake Robotics</title>
+<link rel="icon" type="image/x-icon" href="https://pancakerobotics.co.uk/assets/images/chef_noah_icon.png">
 
 <link href="https://db.onlinewebfonts.com/c/21949b025df9045160fda6566f635b36?family=SyrupSans-Regular" rel="stylesheet">
 <link href="https://pancakerobotics.co.uk/assets/stylesheets/StyleSheet.css" rel="stylesheet">
@@ -39,10 +40,15 @@
 <div class="content relative">
 
 <header class="flex flex-wrap justify-between items-center px-6 py-4 w-full z-50 relative blurred-bar">
-  <h1 class="pancakeprintfont text-3xl font-bold accentText">Pancake Robotics - Members</h1>
-  <h1 class="MapleMonoFont text-xl sm:text-2xl font-bold text-pink-500 mt-2 sm:mt-0 sm:ml-auto complementText">
+  <h1 class="pancakeprintfont text-3xl font-bold accentText">
+    <img src="https://pancakerobotics.co.uk/assets/images/chef_noah_icon.svg" alt="logo" class="inline w-8 h-8 mr-1 align-text-bottom" />
+    Pancake Robotics - Members
+  </h1>
+  <h1></h1>
+  <h1 class="MapleMonoFont text-xl sm:text-2xl font-bold text-pink-500 mt-2 sm:mt-0 complementText text-center">
     one pancake, many opportunities!
   </h1>
+  <h1></h1>
 </header>
 
 <div id="navToggle" class="nav-toggle">
@@ -207,7 +213,19 @@ fetchMembers();
   })();
 </script>
 
-
+<script>
+  // close nav menu when clicking outside it
+  document.addEventListener('click', function(e) {
+    const navMenu = document.getElementById('navMenu');
+    const navToggle = document.getElementById('navToggle');
+    if (navMenu && navToggle && navMenu.classList.contains('active')) {
+      if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+      }
+    }
+  });
+</script>
 
 </body>
 </html>
