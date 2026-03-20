@@ -1,6 +1,6 @@
 [
   {
-    "name": "Caiden",
+    "name": "★ Caiden",
     "description": "...",
     "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
     "department": "Dmnt_Management",
@@ -47,7 +47,7 @@
     "social": {}
   },
   {
-    "name": "Harvey",
+    "name": "★ Harvey",
     "description": "...",
     "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
     "department": "Dmnt_Engineering",
@@ -76,7 +76,7 @@
     "social": {}
   },
   {
-    "name": "Jack",
+    "name": "★ Jack",
     "description": "...",
     "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
     "department": "Dmnt_Coding",
@@ -85,7 +85,7 @@
     "social": {}
   },
   {
-    "name": "Harry",
+    "name": "★ Harry",
     "description": "...",
     "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
     "department": "Dmnt_Design",
@@ -116,7 +116,7 @@
     "social": {}
   },
     {
-    "name": "<i class="fa-solid fa-star"></i> Archie",
+    "name": "★ Archie",
     "description": "...",
     "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
     "department": "ExMember",
