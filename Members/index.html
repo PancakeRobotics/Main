@@ -131,15 +131,12 @@ async function fetchMembers() {
           nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nicknames:</span> ${parts.join(', ')}</p>`;
         }
       }
-      
-
 
       if (isExMember) {
         div.className = 'blurred-box mb-8 ExMember';
       } else {
         div.className = 'blurred-box mb-8';
       }
-
 
       div.innerHTML = `
         <div class="box-title2 ${isExMember ? 'ExMember' : member.department || ''}"><span>${member.name}</span></div>
@@ -214,7 +211,6 @@ fetchMembers();
 </script>
 
 <script>
-  // close nav menu when clicking outside it
   document.addEventListener('click', function(e) {
     const navMenu = document.getElementById('navMenu');
     const navToggle = document.getElementById('navToggle');
