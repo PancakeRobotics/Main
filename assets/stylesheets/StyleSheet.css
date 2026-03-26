@@ -325,3 +325,168 @@ footer {
         font-family: 'Maple Mono', monospace;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.social-card:hover {
+  transform: rotate(var(--rand-rot)) scale(1.06);
+}
+.social-card, .social-card-comingsoon {
+  transition: transform 180ms ease;
+}
+.social-card:focus {
+  transform: rotate(var(--rand-rot)) scale(1.06);
+}
+.YouTubeCard:hover {
+  transform: none !important;
+}
+.YouTubeCard img {
+  transition: none !important;
+} 
+
+#about .pair-text {
+  height: 12rem !important;
+  overflow: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 0 0.5rem;
+}
+#about .pair-text p {
+  margin: 0 !important;
+  line-height: 1.4;
+}
+#about .pair-divider {
+  height: 12rem !important;
+}
+#about .pair-image {
+  width: 12rem !important;
+  height: 12rem !important;
+  object-fit: cover !important;
+  border-radius: 0.75rem !important;
+}
+
+@media (max-width: 767px) {
+  #about .pair-text { height: auto !important; padding: 1rem !important; }
+  #about .pair-image {
+    width: min(80vw, 16rem) !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    max-width: 80vw !important;
+  }
+}
+
+/* Icon-box component (sizes driven by --pair-size so neighbors stay in sync) */
+.icon-section { --pair-size: 12rem; }
+.icon-box {
+  width: var(--pair-size);
+  height: var(--pair-size);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: calc(var(--pair-size) * 0.54);
+}
+.icon-box__icon { font-size: calc(var(--pair-size) * 0.54); line-height: 1; }
+.icon-section .pair-text { height: var(--pair-size) !important; overflow: auto !important; display: flex !important; align-items: center !important; justify-content: center !important; text-align: center !important; padding: 0 0.5rem; }
+.icon-section .pair-divider { height: var(--pair-size) !important; }
+
+/* small variant: add this class to the section to scale everything down */
+.icon-section--sm { --pair-size: 10rem; }
+
+@media (max-width: 767px) {
+  .icon-section { --pair-size: 10rem; }
+  .icon-section .pair-text { height: auto !important; padding: 1rem !important; }
+  .icon-box { width: min(80vw, var(--pair-size)) !important; height: auto !important; padding: 1.25rem 0 !important; font-size: calc(min(80vw, var(--pair-size)) * 0.3) !important; }
+}
+
+/* Stack variant: force vertical stacking and reduce gaps for compact layout */
+.icon-section--stack { flex-direction: column !important; gap: 0.5rem !important; align-items: center !important; }
+.icon-section--stack .icon-box { margin-bottom: 0.25rem; }
+.icon-section--stack .pair-text { justify-content: center !important; text-align: center !important; }
+
+/* Ensure left-aligned utilities revert when stacking */
+.icon-section--stack .pair-text.pair-text--left { justify-content: center !important; text-align: center !important; }
+
+@media (min-width: 768px) {
+  .icon-section--stack { gap: 0.5rem; }
+
+  /* Desktop: arrange icon sections in a 2x2 grid */
+  .icon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .icon-grid .icon-section { margin: 0; }
+  /* If a section uses the stack helper, revert to row layout inside the desktop grid */
+  .icon-grid .icon-section.icon-section--stack { flex-direction: row !important; gap: 1rem !important; align-items: center !important; }
+  /* show divider on desktop */
+  .icon-section .pair-divider { display: block !important; }
+}
+
+/* hide pair divider on small screens */
+@media (max-width: 767px) { .icon-section .pair-divider { display: none !important; } }
+
+/* Icon grid defaults and mobile-friendly dividers */
+.icon-grid { display: block; }
+.icon-grid .icon-item { padding: 0.35rem 0.5rem; }
+.mobile-only { display: none; }
+
+@media (min-width: 768px) {
+  .icon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .icon-grid .icon-item { padding: 0.5rem; }
+  .mobile-only { display: none !important; }
+}
+
+@media (max-width: 767px) {
+  .mobile-only { display: block !important; }
+}
+
+/* Utility to left-align pair-text blocks while preserving the pair-text layout.
+   Use a more specific selector so it overrides the .icon-section .pair-text rule that uses !important. */
+.icon-section .pair-text.pair-text--left { justify-content: flex-start !important; text-align: left !important; }
+.icon-section .pair-text.pair-text--left p { width: 100%; text-align: left; }
+
+/* On small screens, fall back to centered layout for readability */
+@media (max-width: 767px) {
+  .icon-section .pair-text.pair-text--left { justify-content: center !important; text-align: center !important; }
+  .icon-section .pair-text.pair-text--left p { text-align: center; }
+}
+
+@media (max-width: 767px) {
+  /* Make icons larger on mobile by increasing the baseline pair-size */
+  .icon-section { --pair-size: 12rem; }
+  .icon-section .pair-text { height: auto !important; padding: 1rem !important; }
+  .icon-box { width: min(80vw, var(--pair-size)) !important; height: auto !important; padding: 1.5rem 0 !important; font-size: calc(min(80vw, var(--pair-size)) * 0.5) !important; }
+  /* Extra boost for stacked layout */
+  .icon-section--stack .icon-box { font-size: calc(min(80vw, var(--pair-size)) * 0.65) !important; }
+}
+
+/* Mobile overflow & box-sizing fixes to prevent touch-width issues */
+html, body, .content { max-width: 100vw; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, iframe, video { max-width: 100%; height: auto; display: block; }
+.icon-grid, .card-grid, .auto-grid, .card-grid-size { box-sizing: border-box; max-width: 100%; }
+.icon-box { box-sizing: border-box; }
+
+.icon-item{transition: transform 0.3s ease, box-shadow 0.3s ease; will-change: transform;}
+.icon-item:hover { transform: scale(1.05) rotate(0deg);}
+
+.blackText{color:black}
