@@ -3,30 +3,12 @@
     "name": "★ Caiden",
     "description": "One of the founding members!",
     "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
-    "department": "Dmnt_Management",
+    "department": "ExMember",
     "role": "Project Manager, Head of Communications & Outreach, Strategy Officer",
     "from": "2024-present",
     "social": {
       "youtube": "https://www.youtube.com/@AV-8History"
     }
-  },
-  {
-    "name": "Nola",
-    "description": "...",
-    "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
-    "department": "Dmnt_Management",
-    "role": "Project Manager",
-    "from": "2025-present",
-    "social": {}
-  },
-  {
-    "name": "Sadie",
-    "description": "...",
-    "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
-    "department": "Dmnt_Documentation",
-    "role": "Head of Documentation, Inventory Manager, Concept Artist",
-    "from": "2025-present",
-    "social": {}
   },
   {
     "name": "Max",
@@ -38,20 +20,11 @@
     "social": {}
   },
   {
-    "name": "Dylan",
-    "description": "...",
-    "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
-    "department": "Dmnt_Engineering",
-    "role": "Head of Engineering, Manipulation Officer, Electrical Engineer, Health & Safety Officer, Finance Officer, Communications Officer",
-    "from": "2025-present",
-    "social": {}
-  },
-  {
     "name": "★ Harvey",
     "description": "One of the founding members!",
     "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
     "department": "Dmnt_Engineering",
-    "role": "Manipulation Officer, Drivetrain Engineer, Filming Coordinator, Video Editor, Software Developer",
+    "role": "Drivetrain Engineer, Filming Coordinator, Video Editor, Software Developer",
     "from": "2024-present",
     "social": {
       "youtube": "https://www.youtube.com/@SimplyBugsy"
@@ -62,7 +35,7 @@
     "description": "...",
     "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
     "department": "Dmnt_Engineering",
-    "role": "Base Engineer",
+    "role": "Robot Engineer",
     "from": "2025-present",
     "social": {}
   },
@@ -79,7 +52,7 @@
     "name": "★ Jack",
     "description": "One of the founding members!",
     "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
-    "department": "Dmnt_Coding",
+    "department": "ExMember",
     "role": "Head of Coding, Software Developer, Data Officer",
     "from": "2024-present",
     "social": {}
@@ -88,7 +61,7 @@
     "name": "★ Harry",
     "description": "One of the founding members!",
     "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
-    "department": "Dmnt_Design",
+    "department": "ExMember",
     "role": "Head of Design & Brand Identity, Website Developer",
     "from": "2024-present",
     "social": {
@@ -96,15 +69,6 @@
       "film": "https://www.youtube.com/@PurpleSeaProductions"
     },
     "nicknames": "Fiskur"
-  },
-  {
-    "name": "Jessica",
-    "description": "...",
-    "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
-    "department": "Dmnt_Design",
-    "role": "Concept Artist",
-    "from": "2025-present",
-    "social": {}
   },
   {
     "name": "Amber",
