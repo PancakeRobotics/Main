@@ -339,16 +339,27 @@ function renderMembers() {
       <div class="box-title2 ${isExMember ? 'ExMember' : primaryDepartment || ''}"><span>${member.name}</span>${nicknameHtml}</div>
       <div class="mt-4 flex flex-col sm:flex-row items-center gap-4">
         <img src="${member.avatar}" alt="${member.name}" class="rounded-lg object-cover flex-shrink-0" style="width: 180px; height: 180px;">
-        <div class="flex-1 flex flex-col justify-center">
-          <p class="text-gray-400 text-center">${member.description}</p>
-          <p class="text-gray-400 text-center"><span class="role-label">Departments:</span> ${departmentText}</p>
-          <p class="text-gray-400 text-center"><span class="role-label" style="color: ${getDepartmentColor(primaryDepartment)};">Role:</span> ${member.role || 'N/A'}</p>
-          <p class="text-gray-400 text-center"><span class="from-label" style="color: ${getDepartmentColor(primaryDepartment)};">Member from:</span> ${member.from || 'N/A'}</p>
-          <div class="mt-4 flex justify-center gap-4">
-            ${Object.entries(member.social || {}).map(([platform, link]) => 
-              `<a href="${link}" target="_blank" rel="noopener noreferrer" style="color: ${getDepartmentColor(primaryDepartment)};"><i class="${getIconClass(platform)} text-3xl"></i></a>`
-            ).join('')}
+        <div class="flex-1 flex flex-col justify-center items-start text-left min-w-0">
+          <p class="hidden text-gray-400 text-left">${member.description}</p>
+          <div class="mt-2 flex flex-col gap-1 w-full max-w-4xl">
+            <div class="flex items-start">
+              <span class="inline-block w-36 shrink-0 text-right pr-3 role-label">Departments:</span>
+              <span class="text-gray-400 flex-1">${departmentText}</span>
+            </div>
+            <div class="flex items-start">
+              <span class="inline-block w-36 shrink-0 text-right pr-3 role-label" style="color: ${getDepartmentColor(primaryDepartment)};">Role:</span>
+              <span class="text-gray-400 flex-1">${member.role || 'N/A'}</span>
+            </div>
+            <div class="flex items-start">
+              <span class="inline-block w-36 shrink-0 text-right pr-3 from-label" style="color: ${getDepartmentColor(primaryDepartment)};">Member from:</span>
+              <span class="text-gray-400 flex-1">${member.from || 'N/A'}</span>
+            </div>
           </div>
+        </div>
+        <div class="mt-2 flex flex-col justify-center gap-3 sm:ml-auto sm:mt-0 self-center">
+          ${Object.entries(member.social || {}).map(([platform, link]) => 
+            `<a href="${link}" target="_blank" rel="noopener noreferrer" style="color: ${getDepartmentColor(primaryDepartment)};" class="text-3xl leading-none"><i class="${getIconClass(platform)}"></i></a>`
+          ).join('')}
         </div>
       </div>
     `;
