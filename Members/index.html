@@ -34,6 +34,73 @@
       gap: 0.5rem;
       flex-wrap: wrap;
     }
+
+    @media (max-width: 767px) {
+      .box-title2 {
+        position: static;
+        margin: 0 auto 1rem;
+        padding: 0.5rem 1rem;
+        width: fit-content;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .blurred-box {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .blurred-box .mt-4.flex {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .blurred-box img {
+        width: 100%;
+        max-width: 220px;
+        height: auto;
+      }
+
+      .blurred-box .flex-1 {
+        width: 100%;
+      }
+
+      .blurred-box .w-full.max-w-4xl {
+        max-width: 100%;
+      }
+
+      .box-title2 span + span {
+        margin-top: 0.25rem;
+      }
+
+      .mt-2.flex.flex-col.gap-1.w-full.max-w-4xl {
+        width: 100%;
+      }
+
+      .mt-2.flex.flex-col.gap-1.w-full.max-w-4xl > .flex.items-start {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        margin-top: 1.5rem;
+      }
+
+      .mt-2.flex.flex-col.gap-1.w-full.max-w-4xl > .flex.items-start span.inline-block {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+
+      .mt-2.flex.flex-col.justify-center.gap-3.sm\:ml-auto.sm\:mt-0.self-center {
+        margin-top: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .text-left {
+        text-align: center !important;
+      }
+    }
 </style>
 </head>
 
@@ -74,7 +141,7 @@
 
 
 <main>
-<section id="search+filter">
+<section id="search+filter" class="py-8 px-6">
   <div class="blurred-box text-center mb-5 px-4 py-4">
     <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
       <div class="box-title mb-0">Search + Filter</div>
