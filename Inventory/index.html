@@ -16,7 +16,45 @@
 body { overflow-x: auto !important; }
 .overflow-x-auto { -webkit-overflow-scrolling: touch; }
 
+#partsTable {
+  table-layout: fixed;
+  width: 100%;
+}
+
 #partsTable td { word-break: keep-all; }
+
+#partsTable th:nth-child(1),
+#partsTable td:nth-child(1) {
+  width: 9%;
+  min-width: 120px;
+  max-width: 160px;
+}
+
+#partsTable th:nth-child(2),
+#partsTable td:nth-child(2) {
+  width: 34%;
+}
+
+#partsTable th:nth-child(3),
+#partsTable td:nth-child(3) {
+  width: 12%;
+  min-width: 220px;
+  max-width: 280px;
+}
+
+#partsTable td:nth-child(3) {
+  white-space: nowrap;
+  overflow-x: auto;
+  vertical-align: top;
+}
+
+#partsTable td:nth-child(3) .tag-cell {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
 
 @media (max-width: 767px) {
   #partsTable th:nth-child(3),
@@ -66,9 +104,40 @@ body { overflow-x: auto !important; }
 
 <main>
 
-<section id="parts" class="py-8 px-6">
+
+<section id="search+filter">
+    <div class="blurred-box text-center mb-5 px-4 py-4">
+      <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div class="box-title mb-0">Search + Filter</div>
+      </div>
+
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <label class="flex items-center gap-2 text-gray-200 MapleMonoFont text-2xl">
+          <i class="fa-solid fa-magnifying-glass text-pink-300"></i>
+          <input id="partsSearch" type="text" placeholder="Search parts" class="bg-transparent border-0 border-b border-pink-500/20 px-1 py-1 text-gray-50 placeholder:text-gray-400 focus:outline-none focus:border-pink-400/40" style="font-size: 22px; width: 300px;">
+        </label>
+      </div>
+
+      <div id="tagFilters" class="mt-4 flex flex-wrap gap-2 text-xl"></div>
+      <div class="mt-4 flex flex-wrap items-center gap-3">
+        <div class="flex-1"></div>
+        <div id="resultsSummary" class="text-xl text-gray-300 text-center flex-1"></div>
+        <div class="flex-1 flex justify-end">
+          <button id="clearFiltersBtn" type="button" class="text-base font-semibold text-pink-300 hover:text-pink-200 transition">
+            Reset filters
+          </button>
+        </div>
+      </div>
+    </div>
+</section>
+    
+
+
+<section  class="py-8 px-6">
   <div class="blurred-box text-center">
     <div class="box-title">Part Inventory</div>
+
+
 
     <div class="overflow-x-auto">
       <table id="partsTable" class="min-w-full text-left border-collapse MapleMonoFont">
@@ -84,7 +153,9 @@ body { overflow-x: auto !important; }
 
             <script>
             const CSV_URL = "https://pancakerobotics.co.uk/assets/parts.csv?10";
-            let activeFilter = null;
+            let partsData = [];
+            let activeTagFilters = new Set();
+            let searchTerm = "";
 
             function stringToColor(str) {
               const palette = [
@@ -105,13 +176,28 @@ body { overflow-x: auto !important; }
             function makeTag(name) {
               const color = stringToColor(name);
               return `
-                <span 
-                  class="px-2 py-1 rounded-xl text-black text-sm font-semibold mr-1 cursor-pointer transition"
+                <button
+                  type="button"
+                  class="px-2.5 py-1 rounded-full text-black text-sm font-semibold mr-1 mb-1 border border-black/10 transition opacity-90"
                   style="background:${color};"
-                  onclick="filterByTag('${name}')"
+                  data-tag="${name}"
                 >
                   ${name}
-                </span>
+                </button>
+              `;
+            }
+
+            function makeFilterChip(name, count, isActive) {
+              const color = stringToColor(name);
+              return `
+                <button
+                  type="button"
+                  class="text-lg sm:text-xl transition ${isActive ? 'font-semibold underline underline-offset-4' : 'hover:opacity-90'}"
+                  style="color:${color};"
+                  data-tag="${name}"
+                >
+                  ${name} <span class="opacity-80">(${count})</span>
+                </button>
               `;
             }
 
@@ -119,88 +205,157 @@ body { overflow-x: auto !important; }
               fetch(CSV_URL)
                 .then(response => response.text())
                 .then(text => {
-                  const lines = text.trim().split("\n");
-                  const tbody = document.getElementById("partsBody");
-                  tbody.innerHTML = ""; 
+                  const lines = text.trim().split("\n").filter(line => line.trim());
+                  partsData = lines.map(line => {
+                    const [id = "", name = "", altRaw = ""] = line.split(",");
 
-                  lines.forEach(line => {
-                    const [id, name, altRaw] = line.split(",");
-
-                    const altNames = altRaw
+                    const tags = altRaw
                       .split(/[,;]+/)
                       .map(s => s.trim())
                       .filter(s => s.length > 0);
 
-                    const row = document.createElement("tr");
-                    row.className = "hover:bg-white/5 transition";
-
-                    row.setAttribute("data-tags", altNames.join("|"));
-
-                    row.innerHTML = `
-                      <td class="py-2 px-3">${id.trim()}</td>
-                      <td class="py-2 px-3">${name.trim()}</td>
-                      <td class="py-2 px-3">
-                        ${altNames.map(tag => makeTag(tag)).join(" ")}
-                      </td>
-                    `;
-
-                    tbody.appendChild(row);
+                    return {
+                      id: id.trim(),
+                      name: name.trim(),
+                      tags
+                    };
                   });
+
+                  renderFilters();
+                  renderRows();
                 })
                 .catch(error => console.error("Error loading parts:", error));
             }
 
-            document.addEventListener("DOMContentLoaded", loadParts);
+            function renderFilters() {
+              const panel = document.getElementById("tagFilters");
+              if (!panel) return;
 
-            function filterByTag(tag) {
-              if (activeFilter === tag) {
-                clearFilter();
-                return;
-              }
-
-              activeFilter = tag;
-
-              const rows = document.querySelectorAll("#partsBody tr");
-
-              rows.forEach(row => {
-                const tags = row.getAttribute("data-tags").split("|");
-                row.style.display = tags.includes(tag) ? "" : "none";
+              const counts = {};
+              partsData.forEach(part => {
+                part.tags.forEach(tag => {
+                  counts[tag] = (counts[tag] || 0) + 1;
+                });
               });
 
-              showClearFilterButton(tag);
-            }
+              const sortedTags = Object.keys(counts).sort((a, b) => a.localeCompare(b));
 
-            function clearFilter() {
-              activeFilter = null;
-
-              const rows = document.querySelectorAll("#partsBody tr");
-              rows.forEach(row => row.style.display = "");
-
-              const btn = document.getElementById("clearFilterBtn");
-              if (btn) btn.remove();
-            }
-
-            function showClearFilterButton(tag) {
-              let existing = document.getElementById("clearFilterBtn");
-              if (existing) existing.remove();
-
-              const table = document.getElementById("partsTable");
-
-              const btn = document.createElement("div");
-              btn.id = "clearFilterBtn";
-              btn.className = "my-3";
-              btn.innerHTML = `
-                <span 
-                  class="px-3 py-1 rounded-xl text-gray-50 font-bold cursor-pointer"
-                  style="border: 2px solid #ff6b6b; font-size: 18px;"
-                  onclick="clearFilter()"
-                >
-                  Clear filter: ${tag}
-                </span>
+              panel.innerHTML = `
+                ${sortedTags.map(tag => makeFilterChip(tag, counts[tag], activeTagFilters.has(tag))).join("")}
               `;
-              
-              table.parentElement.prepend(btn);
+
+              panel.querySelectorAll("button[data-tag]").forEach(button => {
+                button.addEventListener("click", () => {
+                  const tag = button.getAttribute("data-tag");
+                  if (activeTagFilters.has(tag)) {
+                    activeTagFilters.delete(tag);
+                  } else {
+                    activeTagFilters.add(tag);
+                  }
+
+                  renderFilters();
+                  renderRows();
+                });
+              });
             }
+
+            function renderRows() {
+              const tbody = document.getElementById("partsBody");
+              if (!tbody) return;
+
+              const term = searchTerm.trim().toLowerCase();
+              const normalizedTerm = term.replace(/[^a-z0-9]+/g, " ").trim();
+              const searchTerms = normalizedTerm ? normalizedTerm.split(/\s+/).filter(Boolean) : [];
+
+              const visibleParts = partsData.filter(part => {
+                const haystack = `${part.id} ${part.name} ${part.tags.join(" ")}`.toLowerCase();
+                const normalizedHaystack = haystack.replace(/[^a-z0-9]+/g, " ").trim();
+                const haystackTerms = normalizedHaystack.split(/\s+/).filter(Boolean);
+
+                const matchesSearch = searchTerms.length === 0 || searchTerms.every(searchTermPart =>
+                  haystackTerms.some(haystackTerm => haystackTerm.includes(searchTermPart))
+                );
+
+                const matchesTags = activeTagFilters.size === 0 || [...activeTagFilters].some(tag => part.tags.includes(tag));
+                return matchesSearch && matchesTags;
+              });
+
+              tbody.innerHTML = "";
+
+              if (visibleParts.length === 0) {
+                tbody.innerHTML = `
+                  <tr>
+                    <td colspan="3" class="py-8 px-3 text-center text-gray-400">
+                      No parts matched your search.
+                    </td>
+                  </tr>
+                `;
+              } else {
+                visibleParts.forEach(part => {
+                  const row = document.createElement("tr");
+                  row.className = "hover:bg-white/5 transition";
+
+                  row.innerHTML = `
+                    <td class="py-2 px-3">${part.id}</td>
+                    <td class="py-2 px-3">${part.name}</td>
+                    <td class="py-2 px-3 align-top">
+                      <div class="tag-cell">
+                        ${part.tags.map(tag => makeTag(tag)).join(" ")}
+                      </div>
+                    </td>
+                  `;
+
+                  row.querySelectorAll("button[data-tag]").forEach(button => {
+                    button.addEventListener("click", () => {
+                      const tag = button.getAttribute("data-tag");
+                      if (activeTagFilters.has(tag)) {
+                        activeTagFilters.delete(tag);
+                      } else {
+                        activeTagFilters.add(tag);
+                      }
+
+                      renderFilters();
+                      renderRows();
+                    });
+                  });
+
+                  tbody.appendChild(row);
+                });
+              }
+
+              updateSummary(visibleParts.length, partsData.length);
+            }
+
+            function updateSummary(count, total) {
+              const summary = document.getElementById("resultsSummary");
+              if (!summary) return;
+
+              summary.innerHTML = `${count} of ${total} shown`;
+            }
+
+            document.addEventListener("DOMContentLoaded", () => {
+              const searchInput = document.getElementById("partsSearch");
+              const clearButton = document.getElementById("clearFiltersBtn");
+
+              if (searchInput) {
+                searchInput.addEventListener("input", event => {
+                  searchTerm = event.target.value;
+                  renderRows();
+                });
+              }
+
+              if (clearButton) {
+                clearButton.addEventListener("click", () => {
+                  searchTerm = "";
+                  activeTagFilters.clear();
+                  if (searchInput) searchInput.value = "";
+                  renderFilters();
+                  renderRows();
+                });
+              }
+
+              loadParts();
+            });
           </script>
         </tbody>
       </table>
