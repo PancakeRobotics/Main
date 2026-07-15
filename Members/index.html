@@ -29,6 +29,10 @@
       text-transform: uppercase;
       font-size: 20px;
       font-family: 'Maple Mono', monospace;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
 </style>
 </head>
@@ -130,6 +134,28 @@ function getIconClass(platform) {
   return icons[platform.toLowerCase()] || 'fas fa-link';
 }
 
+function getMemberDepartments(member) {
+  const rawDepartments = member.departments || member.department;
+
+  if (Array.isArray(rawDepartments)) {
+    return rawDepartments.map(value => String(value).trim()).filter(Boolean);
+  }
+
+  if (typeof rawDepartments === 'string') {
+    return rawDepartments
+      .split(',')
+      .map(value => value.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+}
+
+function getPrimaryDepartment(member) {
+  const departments = getMemberDepartments(member);
+  return departments[0] || member.department || 'Unassigned';
+}
+
 function getDepartmentColor(department) {
   const colorMap = {
     Dmnt_Management: '#ff5959',
@@ -138,7 +164,8 @@ function getDepartmentColor(department) {
     Dmnt_Communications: '#5fe869',
     Dmnt_Coding: '#4cc5fe',
     Dmnt_Design: '#b062c4',
-    ExMember: '#616161'
+    ExMember: '#616161',
+    FoundingMember: '#616161'
   };
 
   return colorMap[department] || '#f783ac';
@@ -171,7 +198,8 @@ function renderDepartmentFilters() {
     'Dmnt_Communications',
     'Dmnt_Coding',
     'Dmnt_Design',
-    'ExMember'
+    'ExMember',
+    'FoundingMember'
   ];
 
   allDepartments.forEach(department => {
@@ -179,14 +207,34 @@ function renderDepartmentFilters() {
   });
 
   allMembers.forEach(member => {
-    const department = member.department || 'Unassigned';
-    counts[department] = (counts[department] || 0) + 1;
+    const departments = getMemberDepartments(member);
+
+    if (departments.length === 0) {
+      counts.Unassigned = (counts.Unassigned || 0) + 1;
+    } else {
+      departments.forEach(department => {
+        counts[department] = (counts[department] || 0) + 1;
+      });
+    }
+
+    if (typeof member.name === 'string' && member.name.trim().startsWith('★')) {
+      counts.FoundingMember = (counts.FoundingMember || 0) + 1;
+    }
   });
 
   const sortedDepartments = allDepartments.filter(department => counts[department] !== undefined);
+  const leftDepartments = sortedDepartments.filter(department => department !== 'ExMember' && department !== 'FoundingMember');
+  const rightDepartments = sortedDepartments.filter(department => department === 'ExMember' || department === 'FoundingMember');
 
   panel.innerHTML = `
-    ${sortedDepartments.map(department => makeDepartmentChip(department, counts[department], activeDepartmentFilters.has(department))).join('')}
+    <div class="flex flex-wrap items-center gap-2 w-full">
+      <div class="flex flex-wrap items-center gap-2">
+        ${leftDepartments.map(department => makeDepartmentChip(department, counts[department], activeDepartmentFilters.has(department))).join('')}
+      </div>
+      <div class="ml-auto flex flex-wrap items-center gap-2">
+        ${rightDepartments.map(department => makeDepartmentChip(department, counts[department], activeDepartmentFilters.has(department))).join('')}
+      </div>
+    </div>
   `;
 
   panel.querySelectorAll('button[data-department]').forEach(button => {
@@ -236,7 +284,14 @@ function renderMembers() {
 
   const visibleMembers = allMembers.filter(member => {
     const matchesSearchText = matchesSearch(member, getSearchTerms(searchTerm));
-    const matchesDepartments = activeDepartmentFilters.size === 0 || [...activeDepartmentFilters].some(department => (member.department || 'Unassigned') === department);
+    const isFoundingMember = typeof member.name === 'string' && member.name.trim().startsWith('★');
+    const memberDepartments = getMemberDepartments(member);
+    const matchesDepartments = activeDepartmentFilters.size === 0 || [...activeDepartmentFilters].some(department => {
+      if (department === 'FoundingMember') {
+        return isFoundingMember;
+      }
+      return memberDepartments.includes(department) || (memberDepartments.length === 0 && department === 'Unassigned');
+    });
     return matchesSearchText && matchesDepartments;
   });
 
@@ -252,23 +307,21 @@ function renderMembers() {
   }
 
   visibleMembers.forEach(member => {
-    const isExMember = member.department === 'ExMember';
+    const primaryDepartment = getPrimaryDepartment(member);
+    const memberDepartments = getMemberDepartments(member);
+    const isExMember = primaryDepartment === 'ExMember';
     const div = document.createElement('div');
 
     let nicknameHtml = '';
     const n = member.nicknames;
     if (Array.isArray(n)) {
-      if (n.length === 1) {
-        nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nickname:</span> ${n[0]}</p>`;
-      } else if (n.length > 1) {
-        nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nicknames:</span> ${n.join(', ')}</p>`;
+      if (n.length >= 1) {
+        nicknameHtml = `<span class="text-sm sm:text-base opacity-90 font-normal tracking-wide" style="color: rgba(255,255,255,0.9);">(${n[0]})</span>`;
       }
     } else if (typeof n === 'string' && n.trim()) {
       const parts = n.split(',').map(s => s.trim()).filter(Boolean);
-      if (parts.length === 1) {
-        nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nickname:</span> ${parts[0]}</p>`;
-      } else if (parts.length > 1) {
-        nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nicknames:</span> ${parts.join(', ')}</p>`;
+      if (parts.length >= 1) {
+        nicknameHtml = `<span class="text-sm sm:text-base opacity-90 font-normal tracking-wide" style="color: rgba(255,255,255,0.9);">(${parts[0]})</span>`;
       }
     }
 
@@ -278,18 +331,22 @@ function renderMembers() {
       div.className = 'blurred-box mb-8';
     }
 
+    const departmentText = memberDepartments.length > 0
+      ? memberDepartments.map(dept => dept.replace(/^Dmnt_/, '')).join(', ')
+      : 'Unassigned';
+
     div.innerHTML = `
-      <div class="box-title2 ${isExMember ? 'ExMember' : member.department || ''}"><span>${member.name}</span></div>
+      <div class="box-title2 ${isExMember ? 'ExMember' : primaryDepartment || ''}"><span>${member.name}</span>${nicknameHtml}</div>
       <div class="mt-4 flex flex-col sm:flex-row items-center gap-4">
         <img src="${member.avatar}" alt="${member.name}" class="rounded-lg object-cover flex-shrink-0" style="width: 180px; height: 180px;">
         <div class="flex-1 flex flex-col justify-center">
           <p class="text-gray-400 text-center">${member.description}</p>
-          ${nicknameHtml}
-          <p class="text-gray-400 text-center"><span class="role-label">Role:</span> ${member.role || 'N/A'}</p>
-          <p class="text-gray-400 text-center"><span class="from-label">Member from:</span> ${member.from || 'N/A'}</p>
+          <p class="text-gray-400 text-center"><span class="role-label">Departments:</span> ${departmentText}</p>
+          <p class="text-gray-400 text-center"><span class="role-label" style="color: ${getDepartmentColor(primaryDepartment)};">Role:</span> ${member.role || 'N/A'}</p>
+          <p class="text-gray-400 text-center"><span class="from-label" style="color: ${getDepartmentColor(primaryDepartment)};">Member from:</span> ${member.from || 'N/A'}</p>
           <div class="mt-4 flex justify-center gap-4">
             ${Object.entries(member.social || {}).map(([platform, link]) => 
-              `<a href="${link}" target="_blank" rel="noopener noreferrer" class="accentText"><i class="${getIconClass(platform)} text-3xl"></i></a>`
+              `<a href="${link}" target="_blank" rel="noopener noreferrer" style="color: ${getDepartmentColor(primaryDepartment)};"><i class="${getIconClass(platform)} text-3xl"></i></a>`
             ).join('')}
           </div>
         </div>
