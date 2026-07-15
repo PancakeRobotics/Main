@@ -3,7 +3,7 @@
     "name": "★ Harvey",
     "description": "One of the founding members!",
     "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
-    "department": "Dmnt_Management",
+    "departments": ["Dmnt_Management", "Dmnt_Coding"],
     "role": "Drivetrain Engineer, Filming Coordinator, Video Editor, Software Developer",
     "from": "2024-present",
     "social": {
