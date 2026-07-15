@@ -70,6 +70,32 @@
 
 
 <main>
+<section id="search+filter">
+  <div class="blurred-box text-center mb-5 px-4 py-4">
+    <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+      <div class="box-title mb-0">Search + Filter</div>
+    </div>
+
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <label class="flex items-center gap-2 text-gray-200 MapleMonoFont text-2xl">
+        <i class="fa-solid fa-magnifying-glass text-pink-300"></i>
+        <input id="membersSearch" type="text" placeholder="Search members" class="bg-transparent border-0 border-b border-pink-500/20 px-1 py-1 text-gray-50 placeholder:text-gray-400 focus:outline-none focus:border-pink-400/40" style="font-size: 22px; width: 300px;">
+      </label>
+    </div>
+
+    <div id="departmentFilters" class="mt-4 flex flex-wrap gap-2 text-xl"></div>
+    <div class="mt-4 flex flex-wrap items-center gap-3">
+      <div class="flex-1"></div>
+      <div id="resultsSummary" class="text-xl text-gray-300 text-center flex-1"></div>
+      <div class="flex-1 flex justify-end">
+        <button id="clearFiltersBtn" type="button" class="text-base font-semibold text-pink-300 hover:text-pink-200 transition">
+          Reset filters
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="members" class="py-8 px-6">
   <div id="members-container">
   </div>
@@ -85,6 +111,10 @@
 <script src="https://pancakerobotics.co.uk/assets/stylesheets/PageElements.js?"></script>
 
 <script>
+let allMembers = [];
+let activeDepartmentFilters = new Set();
+let searchTerm = "";
+
 function getIconClass(platform) {
   const icons = {
     youtube: 'fab fa-youtube',
@@ -100,6 +130,184 @@ function getIconClass(platform) {
   return icons[platform.toLowerCase()] || 'fas fa-link';
 }
 
+function getDepartmentColor(department) {
+  const colorMap = {
+    Dmnt_Management: '#ff5959',
+    Dmnt_Documentation: '#ffb25c',
+    Dmnt_Engineering: '#fffb5e',
+    Dmnt_Communications: '#5fe869',
+    Dmnt_Coding: '#4cc5fe',
+    Dmnt_Design: '#b062c4',
+    ExMember: '#616161'
+  };
+
+  return colorMap[department] || '#f783ac';
+}
+
+function makeDepartmentChip(name, count, isActive) {
+  const displayName = name.replace(/^Dmnt_/, '');
+  const color = getDepartmentColor(name);
+  return `
+    <button
+      type="button"
+      class="text-lg sm:text-xl transition ${isActive ? 'font-semibold underline underline-offset-4' : 'hover:opacity-90'}"
+      style="color:${color};"
+      data-department="${name}"
+    >
+      ${displayName} <span class="opacity-80">(${count})</span>
+    </button>
+  `;
+}
+
+function renderDepartmentFilters() {
+  const panel = document.getElementById('departmentFilters');
+  if (!panel) return;
+
+  const counts = {};
+  const allDepartments = [
+    'Dmnt_Management',
+    'Dmnt_Documentation',
+    'Dmnt_Engineering',
+    'Dmnt_Communications',
+    'Dmnt_Coding',
+    'Dmnt_Design',
+    'ExMember'
+  ];
+
+  allDepartments.forEach(department => {
+    counts[department] = 0;
+  });
+
+  allMembers.forEach(member => {
+    const department = member.department || 'Unassigned';
+    counts[department] = (counts[department] || 0) + 1;
+  });
+
+  const sortedDepartments = allDepartments.filter(department => counts[department] !== undefined);
+
+  panel.innerHTML = `
+    ${sortedDepartments.map(department => makeDepartmentChip(department, counts[department], activeDepartmentFilters.has(department))).join('')}
+  `;
+
+  panel.querySelectorAll('button[data-department]').forEach(button => {
+    button.addEventListener('click', () => {
+      const department = button.getAttribute('data-department');
+      if (activeDepartmentFilters.has(department)) {
+        activeDepartmentFilters.delete(department);
+      } else {
+        activeDepartmentFilters.add(department);
+      }
+
+      renderDepartmentFilters();
+      renderMembers();
+    });
+  });
+}
+
+function getSearchTerms(term) {
+  const normalizedTerm = term.replace(/[^a-z0-9]+/g, ' ').trim();
+  return normalizedTerm ? normalizedTerm.split(/\s+/).filter(Boolean) : [];
+}
+
+function matchesSearch(member, searchTerms) {
+  if (searchTerms.length === 0) return true;
+
+  const haystack = [
+    member.name,
+    member.nicknames,
+    member.role,
+    member.description,
+    member.department,
+    member.from
+  ].filter(Boolean).join(' ').toLowerCase();
+
+  const normalizedHaystack = haystack.replace(/[^a-z0-9]+/g, ' ').trim();
+  const haystackTerms = normalizedHaystack.split(/\s+/).filter(Boolean);
+
+  return searchTerms.every(searchTermPart =>
+    haystackTerms.some(haystackTerm => haystackTerm.includes(searchTermPart))
+  );
+}
+
+function renderMembers() {
+  const container = document.getElementById('members-container');
+  const summary = document.getElementById('resultsSummary');
+  if (!container) return;
+
+  const visibleMembers = allMembers.filter(member => {
+    const matchesSearchText = matchesSearch(member, getSearchTerms(searchTerm));
+    const matchesDepartments = activeDepartmentFilters.size === 0 || [...activeDepartmentFilters].some(department => (member.department || 'Unassigned') === department);
+    return matchesSearchText && matchesDepartments;
+  });
+
+  container.innerHTML = '';
+
+  if (summary) {
+    summary.textContent = `${visibleMembers.length} of ${allMembers.length} shown`;
+  }
+
+  if (visibleMembers.length === 0) {
+    container.innerHTML = '<p class="text-gray-400 text-center py-8">No members matched your search.</p>';
+    return;
+  }
+
+  visibleMembers.forEach(member => {
+    const isExMember = member.department === 'ExMember';
+    const div = document.createElement('div');
+
+    let nicknameHtml = '';
+    const n = member.nicknames;
+    if (Array.isArray(n)) {
+      if (n.length === 1) {
+        nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nickname:</span> ${n[0]}</p>`;
+      } else if (n.length > 1) {
+        nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nicknames:</span> ${n.join(', ')}</p>`;
+      }
+    } else if (typeof n === 'string' && n.trim()) {
+      const parts = n.split(',').map(s => s.trim()).filter(Boolean);
+      if (parts.length === 1) {
+        nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nickname:</span> ${parts[0]}</p>`;
+      } else if (parts.length > 1) {
+        nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nicknames:</span> ${parts.join(', ')}</p>`;
+      }
+    }
+
+    if (isExMember) {
+      div.className = 'blurred-box mb-8 ExMember';
+    } else {
+      div.className = 'blurred-box mb-8';
+    }
+
+    div.innerHTML = `
+      <div class="box-title2 ${isExMember ? 'ExMember' : member.department || ''}"><span>${member.name}</span></div>
+      <div class="mt-4 flex flex-col sm:flex-row items-center gap-4">
+        <img src="${member.avatar}" alt="${member.name}" class="rounded-lg object-cover flex-shrink-0" style="width: 180px; height: 180px;">
+        <div class="flex-1 flex flex-col justify-center">
+          <p class="text-gray-400 text-center">${member.description}</p>
+          ${nicknameHtml}
+          <p class="text-gray-400 text-center"><span class="role-label">Role:</span> ${member.role || 'N/A'}</p>
+          <p class="text-gray-400 text-center"><span class="from-label">Member from:</span> ${member.from || 'N/A'}</p>
+          <div class="mt-4 flex justify-center gap-4">
+            ${Object.entries(member.social || {}).map(([platform, link]) => 
+              `<a href="${link}" target="_blank" rel="noopener noreferrer" class="accentText"><i class="${getIconClass(platform)} text-3xl"></i></a>`
+            ).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
+
+    const boxTitle = div.querySelector('.box-title2');
+    const bgColor = getComputedStyle(boxTitle).backgroundColor;
+    const roleLabel = div.querySelector('.role-label');
+    if (roleLabel) roleLabel.style.color = bgColor;
+    const fromLabel = div.querySelector('.from-label');
+    if (fromLabel) fromLabel.style.color = bgColor;
+    const nameLabel = div.querySelector('.name-label');
+    if (nameLabel) nameLabel.style.color = bgColor;
+  });
+}
+
 async function fetchMembers() {
   const url = `https://pancakerobotics.co.uk/assets/members.json?ts=${Date.now()}`;
   try {
@@ -107,70 +315,38 @@ async function fetchMembers() {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const members = await response.json();
-    const container = document.getElementById('members-container');
-    container.innerHTML = '';
-    members.forEach(member => {
-      const angle = Math.random() * 6 - 3;
-      const isExMember = member.department === 'ExMember';
-      const div = document.createElement('div');
-
-      let nicknameHtml = '';
-      const n = member.nicknames;
-      if (Array.isArray(n)) {
-        if (n.length === 1) {
-          nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nickname:</span> ${n[0]}</p>`;
-        } else if (n.length > 1) {
-          nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nicknames:</span> ${n.join(', ')}</p>`;
-        }
-      } else if (typeof n === 'string' && n.trim()) {
-        const parts = n.split(',').map(s => s.trim()).filter(Boolean);
-        if (parts.length === 1) {
-          nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nickname:</span> ${parts[0]}</p>`;
-        } else if (parts.length > 1) {
-          nicknameHtml = `<p class="text-gray-400 text-center"><span class="name-label">Nicknames:</span> ${parts.join(', ')}</p>`;
-        }
-      }
-
-      if (isExMember) {
-        div.className = 'blurred-box mb-8 ExMember';
-      } else {
-        div.className = 'blurred-box mb-8';
-      }
-
-      div.innerHTML = `
-        <div class="box-title2 ${isExMember ? 'ExMember' : member.department || ''}"><span>${member.name}</span></div>
-        <div class="mt-4 flex flex-col sm:flex-row items-center gap-4">
-          <img src="${member.avatar}" alt="${member.name}" class="rounded-lg object-cover flex-shrink-0" style="width: 180px; height: 180px;">
-          <div class="flex-1 flex flex-col justify-center">
-            <p class="text-gray-400 text-center">${member.description}</p>
-            ${nicknameHtml}
-            <p class="text-gray-400 text-center"><span class="role-label">Role:</span> ${member.role || 'N/A'}</p>
-            <p class="text-gray-400 text-center"><span class="from-label">Member from:</span> ${member.from || 'N/A'}</p>
-            <div class="mt-4 flex justify-center gap-4">
-              ${Object.entries(member.social || {}).map(([platform, link]) => 
-                `<a href="${link}" target="_blank" rel="noopener noreferrer" class="accentText"><i class="${getIconClass(platform)} text-3xl"></i></a>`
-              ).join('')}
-            </div>
-          </div>
-        </div>
-      `;
-      container.appendChild(div);
-      const boxTitle = div.querySelector('.box-title2');
-      const bgColor = getComputedStyle(boxTitle).backgroundColor;
-      const roleLabel = div.querySelector('.role-label');
-      if (roleLabel) roleLabel.style.color = bgColor;
-      const fromLabel = div.querySelector('.from-label');
-      if (fromLabel) fromLabel.style.color = bgColor;
-      const nameLabel = div.querySelector('.name-label');
-      if (nameLabel) nameLabel.style.color = bgColor;
-    });
+    allMembers = await response.json();
+    renderDepartmentFilters();
+    renderMembers();
   } catch (error) {
     console.error('Error fetching members:', error);
     document.getElementById('members-container').innerHTML = '<p class="text-red-400">Failed to load members data. Please check the console for details.</p>';
   }
 }
 
+function setupMemberSearch() {
+  const searchInput = document.getElementById('membersSearch');
+  const clearButton = document.getElementById('clearFiltersBtn');
+
+  if (searchInput) {
+    searchInput.addEventListener('input', event => {
+      searchTerm = event.target.value;
+      renderMembers();
+    });
+  }
+
+  if (clearButton) {
+    clearButton.addEventListener('click', () => {
+      searchTerm = '';
+      activeDepartmentFilters.clear();
+      if (searchInput) searchInput.value = '';
+      renderDepartmentFilters();
+      renderMembers();
+    });
+  }
+}
+
+setupMemberSearch();
 fetchMembers();
 </script>
 
