@@ -1,326 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pancake Robotics</title>
-<link rel="icon" type="image/x-icon" href="https://pancakerobotics.co.uk/assets/images/chef_noah_icon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://db.onlinewebfonts.com/c/21949b025df9045160fda6566f635b36?family=SyrupSans-Regular" rel="stylesheet">
-<link href="https://pancakerobotics.co.uk/assets/stylesheets/StyleSheet.css" rel="stylesheet">
-<link href="https://pancakerobotics.co.uk/assets/stylesheets/LightModeStyles.css" rel="stylesheet">
-<link href="https://pancakerobotics.co.uk/assets/stylesheets/TimelineStyles.css?lightmode" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://kit.fontawesome.com/78cf3ba70d.js" crossorigin="anonymous"></script>
+  <title>History | Pancake Robotics</title>
 
-<script>
-  var appearancePref = localStorage.getItem('theme');
-  if (appearancePref) {
-    document.querySelector('html').classList.add('appearance--' + appearancePref);
-  }
-</script>
+  <link rel="icon" type="image/x-icon" href="https://pancakerobotics.co.uk/assets/images/chef_noah_icon.png">
 
-<style>
-  .image-appearance--dark,
-  .image-appearance--light {
-    display: none;
-  }
+  <link href="https://db.onlinewebfonts.com/c/21949b025df9045160fda6566f635b36?family=SyrupSans-Regular" rel="stylesheet">
+  <link href="https://pancakerobotics.co.uk/assets/stylesheets/StyleSheet.css" rel="stylesheet">
+  <link href="https://pancakerobotics.co.uk/assets/stylesheets/LightModeStyles.css" rel="stylesheet">
+  <link href="https://pancakerobotics.co.uk/assets/stylesheets/TimelineStyles.css?lightmode" rel="stylesheet">
 
-  html.appearance--dark {
-    .image-appearance--dark {
-      display: inline-block;
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/78cf3ba70d.js" crossorigin="anonymous"></script>
+
+  <script>
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme) {
+      document.documentElement.classList.add(`appearance--${savedTheme}`);
     }
-  }
+  </script>
 
-  html.appearance--light {
+  <style>
+    .image-appearance--dark,
     .image-appearance--light {
+      display: none;
+    }
+
+    html.appearance--dark .image-appearance--dark,
+    html.appearance--light .image-appearance--light {
       display: inline-block;
     }
-  }
-</style>
+  </style>
 </head>
 
 <body>
-
-<div class="circuit-bg"><svg id="honeySvg"></svg></div>
-
-<div class="content relative">
-
-<header class="flex flex-wrap justify-between items-center px-6 py-4 w-full z-50 relative blurred-bar">
-  <h1 class="pancakeprintfont text-3xl font-bold accentText">
-    <img src="https://pancakerobotics.co.uk/assets/images/chef_noah_icon.svg" alt="logo" class="inline w-8 h-8 mr-1 align-text-bottom" />
-    Pancake Robotics - History
-  </h1>
-  <h1></h1>
-  <h1 class="MapleMonoFont text-xl sm:text-2xl font-bold text-pink-500 mt-2 sm:mt-0 complementText text-center">
-    one pancake, many opportunities!
-  </h1>
-  <h1></h1>
-</header>
-
-<div id="navToggle" class="nav-toggle">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-
-<nav id="navMenu" class="nav-menu pancakeprintfont">
-  <a href="https://pancakerobotics.co.uk"><i class="fa-solid fa-house"></i> Home</a>
-  <a href="https://pancakerobotics.co.uk/Inventory"><i class="fa-solid fa-boxes-stacked"></i> Inventory</a>
-  <a href="https://pancakerobotics.co.uk/Members"><i class="fa-solid fa-user-group"></i> Members</a>
-  <a href="https://pancakerobotics.co.uk/History"><i class="fa-solid fa-book-bookmark"></i> History</a>
-  <div class="nav-footer">
-    <button id="theme-toggle" class="nav-toggle-btn"><i id="theme-toggle-icon" class="fas fa-moon"></i> Theme Toggle</button><br>
-    <span id="n/a" style="color: rgba(0, 0, 0, 0);"><i id="n/aa" class="fas fa-moon"></i></span>
+  <div class="circuit-bg">
+    <svg id="honeySvg"></svg>
   </div>
-</nav>
 
-<main>
-  
-  <div class="blurred-box">
-    <div class="box-title">Our History</div>
-      <br><br>
+  <div class="content relative">
+    <header class="flex flex-wrap justify-between items-center px-6 py-4 w-full z-50 relative blurred-bar">
+      <h1 class="pancakeprintfont text-3xl font-bold accentText">
+        <img
+          src="https://pancakerobotics.co.uk/assets/images/chef_noah_icon.svg"
+          alt="Pancake Robotics logo"
+          class="inline w-8 h-8 mr-1 align-text-bottom"
+        >
+        Pancake Robotics - History
+      </h1>
 
+      <p class="MapleMonoFont text-xl sm:text-2xl font-bold text-pink-500 mt-2 sm:mt-0 complementText text-center">
+        one pancake, many opportunities!
+      </p>
+    </header>
 
-  <div class="timeline-wrapper">
-    
-    <div class="timeline" style="max-width: 850px;">
+    <button id="navToggle" class="nav-toggle" type="button" aria-label="Open navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-      <div class="timeline-entry">
-        <div class="timeline-date text-pink-500">1st October 2024</div>
-        <div class="timeline-content">
-          <img class="youtube-thumbnail" src="https://pancakerobotics.co.uk/assets/images/ftc-first-dive-wallpaper-lightdark.png" alt="official FIRST AGE wallpaper (light)">          
-          <div class="video-title MapleMonoFont accentText smaller italic">FIRST® DIVE™ presented by Qualcomm</div>
-          <div class="timeline-title text-pink-500">Pancake Robotics</div>
-          <p class="text-gray-300">
-            On this date, Pancake Robotics officially began! <br>
-            We are a student-led robotics team based at Queen Elizabeth's Grammar School in Alford, UK, competing at FTC-UK competitions!<br>
-          </p>
-        </div>
+    <nav id="navMenu" class="nav-menu pancakeprintfont">
+      <a href="https://pancakerobotics.co.uk">
+        <i class="fa-solid fa-house"></i>
+        Home
+      </a>
+      <a href="https://pancakerobotics.co.uk/Inventory">
+        <i class="fa-solid fa-boxes-stacked"></i>
+        Inventory
+      </a>
+      <a href="https://pancakerobotics.co.uk/Members">
+        <i class="fa-solid fa-user-group"></i>
+        Members
+      </a>
+      <a href="https://pancakerobotics.co.uk/History">
+        <i class="fa-solid fa-book-bookmark"></i>
+        History
+      </a>
+
+      <div class="nav-footer">
+        <button id="theme-toggle" class="nav-toggle-btn" type="button">
+          <i id="theme-toggle-icon" class="fas fa-moon"></i>
+          Theme Toggle
+        </button>
       </div>
+    </nav>
 
-
-      <div class="timeline-entry">
-        <div class="timeline-date text-pink-500">8th October 2024</div>
-        <div class="timeline-content">
-
-          <img class="youtube-thumbnail" src="https://pancakerobotics.co.uk/assets/images/Pancake Robotics Chef Noah 16by9.png" alt="Chef Noah 16:9 Image">
-          <div class="video-title MapleMonoFont accentText smaller italic">Our mascott, Chef Noah, created by Harry</div>
-
-          <div class="timeline-title text-pink-500">Chef's Kiss</div>
-          <p class="text-gray-300">
-            After the group got together on the 1st of October, we realised we would need a logo for our Youtube Channel and other social media platforms.
-            Harry Herring, head of the design department, created our mascot "Chef Noah", which has become an iconic symbol for our team.
-          </p>
-
+    <main>
+      <section class="blurred-box">
+        <div class="box-title">
+          <i class="fa-solid fa-book-bookmark"></i>
+          Our History
         </div>
-      </div>
 
-      <div class="timeline-entry">
-        <div class="timeline-date text-pink-500">Late 2024</div>
-        <div class="timeline-content">
+        <div class="timeline-wrapper">
+          <div class="timeline" style="max-width: 850px;">
 
-          <img class="youtube-thumbnail" src="https://pancakerobotics.co.uk/assets/images/PamBehindBars.jpg" alt="Chef Noah 16:9 Image">
-          <div class="video-title MapleMonoFont accentText smaller italic">Pam Cakes locked behind bars - The crime? That terrible pun.</div>
+            <article class="timeline-entry">
+              <div class="timeline-date text-pink-500">1st October 2024</div>
 
-          <div class="timeline-title text-pink-500">PUNcake Robotics</div>
-          <p class="text-gray-300">
-            Eventually we had to face the fact that our team name "Pancake Robotics" would lead to a lot of pancake-related puns.<br>
-            This led to our 2024/5 season robot being named "Pam Cakes". We decided that we should make it a tradition to name our robots after pancake-related puns!<br>
-          </p>
+              <div class="timeline-content">
+                <img
+                  class="youtube-thumbnail"
+                  src="https://pancakerobotics.co.uk/assets/images/ftc-first-dive-wallpaper-lightdark.png"
+                  alt="FIRST DIVE wallpaper"
+                >
 
+                <div class="video-title MapleMonoFont accentText smaller italic">
+                  FIRST® DIVE™ presented by Qualcomm
+                </div>
+
+                <h2 class="timeline-title text-pink-500">Pancake Robotics</h2>
+
+                <p class="text-gray-300">
+                  On this date, Pancake Robotics officially began!<br>
+                  We are a student-led robotics team based at Queen Elizabeth's Grammar School in Alford, UK, competing at FTC-UK competitions!
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-entry">
+              <div class="timeline-date text-pink-500">8th October 2024</div>
+
+              <div class="timeline-content">
+                <img
+                  class="youtube-thumbnail"
+                  src="https://pancakerobotics.co.uk/assets/images/Pancake Robotics Chef Noah 16by9.png"
+                  alt="Chef Noah"
+                >
+
+                <div class="video-title MapleMonoFont accentText smaller italic">
+                  Our mascot, Chef Noah, created by Harry
+                </div>
+
+                <h2 class="timeline-title text-pink-500">Chef's Kiss</h2>
+
+                <p class="text-gray-300">
+                  After the group got together on the 1st of October, we realised we would need a logo for our YouTube channel and other social media platforms.
+                  Harry Herring, head of the design department, created our mascot "Chef Noah", which has become an iconic symbol for our team.
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-entry">
+              <div class="timeline-date text-pink-500">Late 2024</div>
+
+              <div class="timeline-content">
+                <img
+                  class="youtube-thumbnail"
+                  src="https://pancakerobotics.co.uk/assets/images/PamBehindBars.jpg"
+                  alt="Pam Cakes behind bars"
+                >
+
+                <div class="video-title MapleMonoFont accentText smaller italic">
+                  Pam Cakes locked behind bars - The crime? That terrible pun.
+                </div>
+
+                <h2 class="timeline-title text-pink-500">PUNcake Robotics</h2>
+
+                <p class="text-gray-300">
+                  Eventually we had to face the fact that our team name "Pancake Robotics" would lead to a lot of pancake-related puns.<br>
+                  This led to our 2024/5 season robot being named "Pam Cakes". We decided that we should make it a tradition to name our robots after pancake-related puns!
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-entry">
+              <div class="timeline-date text-pink-500">25th March 2025</div>
+
+              <div class="timeline-content">
+                <img
+                  class="youtube-thumbnail"
+                  src="https://pancakerobotics.co.uk/assets/images/Pancake robotics competition day.jpg"
+                  alt="Pam Cakes on competition day"
+                >
+
+                <div class="video-title MapleMonoFont accentText smaller italic">
+                  An image capturing the beginning of one of our games. We are the robot in the top left of the playing field.
+                </div>
+
+                <h2 class="timeline-title text-pink-500">Competition Day</h2>
+
+                <p class="text-gray-300">
+                  The time had come to show off all our hard work at the FTC UK &amp; Ireland competition!<br>
+                  Our team arrived at the venue (Sheffield-Hallam Uni), filled with excitement and a bit of nervousness. After a few setbacks (namely needing to file down part of our robot, as it exceeded size limits), we were ready to compete.<br>
+                  We played 5 matches in total, winning 2 of them! Overall this placed us in 10th place! This was an amazing achievement for our first competition, and we can't wait to improve even further in the 2025/6 season!
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-entry">
+              <div class="timeline-date text-pink-500">6th September 2025</div>
+
+              <div class="timeline-content">
+                <img
+                  class="youtube-thumbnail"
+                  src="https://pancakerobotics.co.uk/assets/images/FIRST_AGE-wallpaper-dark.png"
+                  alt="FIRST AGE wallpaper"
+                >
+
+                <div class="video-title MapleMonoFont accentText smaller italic">
+                  FIRST® AGE™ presented by Qualcomm
+                </div>
+
+                <h2 class="timeline-title text-pink-500">A New Season</h2>
+
+                <p class="text-gray-300">
+                  The new FTC UK &amp; Ireland season, FIRST AGE, has officially begun!<br>
+                  We are excited to start designing and building our new robot for this season, and can't wait to see what challenges and opportunities it brings!
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-entry">
+              <div class="timeline-date text-pink-500">25th March 2026</div>
+
+              <div class="timeline-content">
+                <img
+                  class="youtube-thumbnail"
+                  src="https://pancakerobotics.co.uk/assets/images/2026 competition day.jpeg"
+                  alt="2026 competition day"
+                >
+
+                <div class="video-title MapleMonoFont accentText smaller italic">
+                  Some last minute adjustments
+                </div>
+
+                <h2 class="timeline-title text-pink-500">Competition Day, Again!</h2>
+
+                <p class="text-gray-300">
+                  It had reached that time of the season yet again.<br>
+                  Once again our team arrived at Sheffield-Hallam Uni, and we were ready to compete.<br>
+                  We played 5 matches in total, overall placing 10th, the same position as last year! Although we didn't improve on our performance, we still learnt a lot for next year!
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-entry">
+              <div class="timeline-date text-pink-500">July 2026</div>
+
+              <div class="timeline-content">
+                <img
+                  class="youtube-thumbnail"
+                  src="https://pancakerobotics.co.uk/assets/images/placeholder.png"
+                  alt="Placeholder image for departing members"
+                >
+
+                <div class="video-title MapleMonoFont accentText smaller italic">
+                  Placeholder caption
+                </div>
+
+                <h2 class="timeline-title text-pink-500">Time to Say Goodbye</h2>
+
+                <p class="text-gray-300">
+                  As the season comes to an end, it's time to say goodbye to our team members.<br>
+                  This time is a sad one - after today, only one of the original members will remain.<br>
+                  Saying goodbye is hard, but it is necessary. New members will be brought in for next season to fill the vacant roles.<br><br>
+
+                  The 3 that are leaving have been an amazing part of our team, and we are so grateful for all the hard work they have put in. We wish them all the best in their future endeavours, and hope to see them again soon!<br>
+                  Below are what they will be doing after leaving the team:<br><br>
+
+                  Harry: Is going to university to study Media Production. Will still be working on this website in their free time.<br>
+                  Jack: Is going to university to study Computer Science.<br>
+                  Caiden: Is going to college.
+                </p>
+              </div>
+            </article>
+
+            <div class="timeline-end-cap"></div>
+          </div>
         </div>
-      </div>
+      </section>
+    </main>
 
-      <div class="timeline-entry">
-        <div class="timeline-date text-pink-500">25th March 2025</div>
-        <div class="timeline-content">
-
-          <img class="youtube-thumbnail" src="https://pancakerobotics.co.uk/assets/images/Pancake robotics competition day.jpg" alt="Pam Cakes on Competition Day">
-          <div class="video-title MapleMonoFont accentText smaller italic">An image capturing the begining of one of our games. We are the robot in the top left of the playing field.</div>
-
-          <div class="timeline-title text-pink-500">Competition Day</div>
-          <p class="text-gray-300">
-            The time had come to show off all our hard work at the FTC UK & Ireland competition!<br>
-            Our team arrived at the venue (Sheffield-Hallam Uni), filled with excitement and a bit of nervousness. After a few setbacks (namely needing to file down part of our robot, as it exceeded size limits), we were ready to compete.<br>
-            We played 5 matches in total, winning 2 of them! Overall this placed us in 10th place! This was an amazing achievement for our first competition, and we can't wait to improve even further in the 2025/6 season!<br>
-          </p>
-        </div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-date text-pink-500">6th September 2025</div>
-        <div class="timeline-content">
-
-
-        <img src="https://pancakerobotics.co.uk/assets/images/FIRST_AGE-wallpaper-dark.png" alt="An image with two color modes" class="youtube-thumbnail">
-
-
-          <div class="video-title MapleMonoFont accentText smaller italic">FIRST® AGE™ presented by Qualcomm</div>
-
-          <div class="timeline-title text-pink-500">A New Season</div>
-          <p class="text-gray-300">
-            The new FTC UK & Ireland season, FIRST AGE, has officially begun!<br>
-            We are excited to start designing and building our new robot for this season, and can't wait to see what challenges and opportunities it brings!<br>
-          </p>
-        </div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-date text-pink-500">25th March 2026</div>
-        <div class="timeline-content">
-
-          <img class="youtube-thumbnail" src="https://pancakerobotics.co.uk/assets/images/2026 competition day.jpeg" alt="2026 Competition Day Photo Placeholder">
-          <div class="video-title MapleMonoFont accentText smaller italic">Some last minute adjustments</div>
-
-          <div class="timeline-title text-pink-500">Competition Day, Again!</div>
-          <p class="text-gray-300">
-            It had reached that time of the season yet again.<br>
-            Once again our team arrived at Sheffield-Hallam Uni, and we were ready to compete.<br>
-            We played 5 matches in total, overall placing 10th, the same position as last year! Although we didn't improve on our performance, we still learnt a lot for next year!<br>
-          </p>
-        </div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-date text-pink-500">July 2026</div>
-        <div class="timeline-content">
-
-          <img class="youtube-thumbnail" src="https://pancakerobotics.co.uk/assets/images/placeholder.png" alt="something about the leaving members">
-          <div class="video-title MapleMonoFont accentText smaller italic">placeholeder caption</div>
-
-          <div class="timeline-title text-pink-500">Time to say goodbye</div>
-          <p class="text-gray-300">
-            As the season comes to an end, it's time to say goodbye to our team members.<br>
-            This time is a sad one - after today, only one of the original members will remain.<br>
-            Saying goodbye is hard, but it is necessary. New members will be brought in for next season to fill the vacant roles.<br>
-            <br>
-            The 3 that are leaving have been an amazing part of our team, and we are so grateful for all the hard work they have put in. We wish them all the best in their future endeavours, and hope to see them again soon!<br>
-            Below are what they will be doing after leaving the team:<br>
-            
-            Harry: Is going to university to study Media Production. Will still be working on this website in their free time.<br>
-            Jack: Is going to university to study Computer Science.<br>
-            Caiden: Is going to college.
-
-          </p>
-        </div>
-      </div>
-
-      <!-- Template for future timeline entries:
-      <div class="timeline-entry">
-        <div class="timeline-date text-pink-500">31st August 2024</div>
-        <div class="timeline-content">
-
-          <a class="video-image" href="https://www.youtube.com/watch?v=kgCSgKFfhQU" target="_blank">
-            <img class="youtube-thumbnail" src="https://i0.wp.com/www.bishoprook.com/wp-content/uploads/2021/05/placeholder-image-gray-16x9-1.png?ssl=1" alt="placeholder image">
-          </a>
-          <div class="video-title MapleMonoFont accentText smaller italic">Image Caption</div>
-
-          <div class="timeline-title text-pink-500">Title</div>
-          <p class="text-gray-300">
-            Placeholder Text
-          </p>
-        </div>
-      </div>
-      -->
-
-      <!-- ➕ Add more entries here -->
-
-
-      <div class="timeline-end-cap"></div>
-      
-    </div>
-    
+    <footer class="blurred-bar">
+      Pancake Robotics | QEGS Alford, UK | FTC UK &amp; Ireland | Team 27880<br>
+      <span style="font-size: 20px; opacity: 50%;">Website by Harry Herring</span>
+    </footer>
   </div>
-  <br><br>
-</div>
 
+  <script src="https://pancakerobotics.co.uk/assets/stylesheets/PageElements.js"></script>
 
-<footer class="blurred-bar">
-  Pancake Robotics | QEGS Alford, UK | FTC UK & Ireland | Team 27880<br>
-  <span style="font-size: 20px; opacity: 50%;">Website by Harry Herring</span>
-</footer>
-</main>
-</div>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-toggle-icon');
 
-<script src="https://pancakerobotics.co.uk/assets/stylesheets/PageElements.js?"></script>
-
-<script>
-const channelId = "UCBVMvcvmw_-3hT7e-30YkSQ";
-const apiKey = "AIzaSyC1Edh-Z5LKxPSDW_p0ES5t4PBUl4zDizw";
-
-async function fetchYouTubeData() {
-  const url = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${apiKey}`;
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-    if (!data.items || data.items.length === 0) return;
-
-    const channel = data.items[0];
-    const avatar = channel.snippet.thumbnails.high.url;
-    const title = channel.snippet.title;
-    const desc = channel.snippet.description;
-    const subs = channel.statistics.subscriberCount;
-
-    document.getElementById("ytAvatar").src = avatar;
-    document.getElementById("ytTitle").innerText = title;
-    document.getElementById("ytDesc").innerText = desc.length > 200 ? desc.slice(0, 200) + "..." : desc;
-    document.getElementById("ytSubs").innerText = `${Number(subs).toLocaleString()} subscribers`;
-    document.getElementById("ytLink").href = `https://www.youtube.com/channel/${channelId}`;
-  } catch (err) {
-    console.error("YouTube API error:", err);
-  }
-}
-
-fetchYouTubeData();
-
-(function() {
-  const root = document.documentElement;
-  const toggleBtn = document.getElementById('theme-toggle');
-  const icon = document.getElementById('theme-toggle-icon');
-  if (localStorage.getItem('theme') === 'light') {
-    root.classList.add('light-mode');
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  }
-  toggleBtn.addEventListener('click', function() {
-    root.classList.toggle('light-mode');
-    const isLight = root.classList.contains('light-mode');
-    icon.classList.toggle('fa-moon', !isLight);
-    icon.classList.toggle('fa-sun', isLight);
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  });
-})();
-
-(function() {
-  const toggleBtn = document.getElementById('theme-toggle');
-  function pokeSvg() {
-    const honeySvg = document.getElementById('honeySvg');
-    if (!honeySvg) return;
-    const v = honeySvg.getAttribute('data-theme-poke') === '1' ? '0' : '1';
-    honeySvg.setAttribute('data-theme-poke', v);
-  }
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', function() {
-      requestAnimationFrame(() => requestAnimationFrame(pokeSvg));
-    });
-  }
-})();
-</script>
-
-<script>
-  document.addEventListener('click', function(e) {
-    const navMenu = document.getElementById('navMenu');
-    const navToggle = document.getElementById('navToggle');
-    if (navMenu && navToggle && navMenu.classList.contains('active')) {
-      if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-      }
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.add('light-mode');
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
     }
-  });
-</script>
 
+    themeToggle?.addEventListener('click', () => {
+      const isLight = document.documentElement.classList.toggle('light-mode');
+
+      themeIcon.classList.toggle('fa-moon', !isLight);
+      themeIcon.classList.toggle('fa-sun', isLight);
+
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+      const honeySvg = document.getElementById('honeySvg');
+
+      if (honeySvg) {
+        const nextValue = honeySvg.getAttribute('data-theme-poke') === '1' ? '0' : '1';
+        honeySvg.setAttribute('data-theme-poke', nextValue);
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      const navMenu = document.getElementById('navMenu');
+      const navToggle = document.getElementById('navToggle');
+
+      if (
+        navMenu?.classList.contains('active') &&
+        !navMenu.contains(event.target) &&
+        !navToggle?.contains(event.target)
+      ) {
+        navMenu.classList.remove('active');
+        navToggle?.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
