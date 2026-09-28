@@ -14,7 +14,7 @@
   {
     "name": "Max",
     "description": "...",
-    "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
+    "avatar": "https://pancakerobotics.co.ukassets/images/Photos-1-001/MaxHuckstepp_Avatar.jpeg",
     "department": "Dmnt_Documentation",
     "role": "Finance Officer",
     "from": "2025 - present",
@@ -40,18 +40,9 @@
     "social": {}
   },
   {
-    "name": "Amber",
-    "description": "...",
-    "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
-    "department": "Dmnt_Design",
-    "role": "Misc. Artist",
-    "from": "2025 - present",
-    "social": {}
-  },
-  {
     "name": "★ Caiden",
     "description": "One of the founding members!",
-    "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
+    "avatar": "https://pancakerobotics.co.uk/assets/images/Photos-1-001/CaidenNutland_Avatar.jpg",
     "departments": ["ExMember", "Dmnt_Management"],
     "role": "Project Manager, Head of Communications & Outreach, Strategy Officer",
     "from": "Oct 2024 - May 2026",
@@ -62,7 +53,7 @@
     {
     "name": "★ Harry",
     "description": "One of the founding members!",
-    "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
+    "avatar": "https://pancakerobotics.co.uk/assets/images/Photos-1-001/HarryHerring_Avatar.jpg",
     "departments": ["ExMember", "Dmnt_Design", "Dmnt_Coding"],
     "role": "Head of Design & Brand Identity, Website Developer",
     "from": "Oct 2024 - May 2026",
@@ -76,7 +67,7 @@
   {
     "name": "★ Jack",
     "description": "One of the founding members!",
-    "avatar": "https://pancakerobotics.co.uk/assets/images/placeholder-avatar.jpg",
+    "avatar": "https://pancakerobotics.co.uk/assets/images/Photos-1-001/JackDaniels_Avatar.jpg",
     "departments": ["ExMember", "Dmnt_Coding"],
     "role": "Head of Coding, Software Developer, Data Officer",
     "from": "Oct 2024 - May 2026",
